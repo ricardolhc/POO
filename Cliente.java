@@ -6,7 +6,7 @@ public class Cliente {
     private String endereco;
     private int telefone;
 
-    Cliente(String nome, String cpf, int numeroCarteiraMotorista, String endereco, int telefone){
+    public Cliente(String nome, String cpf, int numeroCarteiraMotorista, String endereco, int telefone){
         this.nome = nome;
         this.cpf = cpf;
         this.numeroCarteiraMotorista = numeroCarteiraMotorista;

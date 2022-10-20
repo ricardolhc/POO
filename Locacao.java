@@ -1,4 +1,4 @@
-public abstract class Locacao extends Veiculo{
+public class Locacao extends Veiculo {
 
     private static int codigoUnico = 1;
 
@@ -7,12 +7,13 @@ public abstract class Locacao extends Veiculo{
     private String dataInicial;
     private String dataFinal;
 
-    Locacao(boolean seguro, String dataInicial, String dataFinal, String placa, int ano, double diaria){
+
+    public Locacao(boolean seguro, String dataInicial, String dataFinal, String placa, int ano, double diaria){
         super(placa, ano, diaria);
-        this.codigo = codigoUnico++;
         this.seguro = seguro;
         this.dataInicial = dataInicial;
         this.dataFinal = dataFinal;
+        this.codigo = codigoUnico++;
     }
 
     public int getCodigo() { return codigo; }
@@ -22,5 +23,13 @@ public abstract class Locacao extends Veiculo{
     public String getDatainicial() { return dataInicial; }
 
     public String getDatafinal() { return dataFinal; }
+
+    public void setCodigo(int codigo){this.codigo = codigo;}
+
+    public void setSeguro(boolean seguro){this.seguro = seguro;}
+
+    public void setDataInicial(String dataInicial){this.dataInicial = dataInicial;}
+
+    public void setDataFinal(String dataFinal){this.dataFinal = dataFinal;} 
 
 }
