@@ -13,8 +13,12 @@ public class Caminhao extends Veiculo {
 
     public int getCargamaxima() { return cargaMaxima; }
 
-    public void setNumeroEixos(int numeroEixos){this.numeroEixos = numeroEixos;}
+    public void setNumeroEixos(int numeroEixos) { this.numeroEixos = numeroEixos; }
 
-    public void setCargamaxima(int cargaMaxima){this.cargaMaxima = cargaMaxima;}
+    public void setCargamaxima(int cargaMaxima) { this.cargaMaxima = cargaMaxima; }
+
+    public String toString() {
+        return super.toString() + " Numero de Eixos: " + numeroEixos + " Carga maxima: " + cargaMaxima;
+    }
     
 }

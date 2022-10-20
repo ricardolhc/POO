@@ -4,25 +4,23 @@ public abstract class Veiculo {
     private int ano;
     private double diaria;
 
-    Veiculo(String placa, int ano, double diaria){
+    public Veiculo(String placa, int ano, double diaria){
         this.placa = placa;
         this.ano = ano;
         this.diaria = diaria;
     }
 
-    Veiculo(String placa, double diaria) {
+    public Veiculo(String placa, double diaria) {
         this(placa, 0, diaria);
     }
 
-    Veiculo(String placa, int ano) {
+    public Veiculo(String placa, int ano) {
         this(placa, ano, 0);
     }
 
-    Veiculo(String placa) {
+    public Veiculo(String placa) {
         this(placa, 0, 0);
     }
-
-
 
     public String getPlaca() { return placa; }
 
@@ -30,16 +28,16 @@ public abstract class Veiculo {
 
     public double getDiaria() { return diaria; }
 
-    public void setPlaca(String placa){
-        this.placa = placa;
-    }
 
-    public void setAno(int ano){
-        this.ano = ano;
-    }
 
-    public void setDiaria(double diaria){
-        this.diaria = diaria;
+    public void setPlaca(String placa){ this.placa = placa; }
+
+    public void setAno(int ano){ this.ano = ano; }
+
+    public void setDiaria(double diaria){ this.diaria = diaria; }
+
+    public String toString() {
+        return "Placa: " + placa + " Ano: " + ano + " Diaria: " + diaria;
     }
     
     

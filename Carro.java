@@ -21,12 +21,16 @@ public class Carro extends Veiculo {
 
     public boolean getArcondicionado() { return arcondicionado; }
 
-    public void setNumeroPassageiros(int numeroPassageiros){this.numeroPassageiros = numeroPassageiros;}
+    public void setNumeroPassageiros(int numeroPassageiros) { this.numeroPassageiros = numeroPassageiros; }
 
-    public void setNumeroPortas(int numeroPortas){this.numeroPortas = numeroPortas;}
+    public void setNumeroPortas(int numeroPortas) { this.numeroPortas = numeroPortas; }
 
-    public void setmediaKM(double mediaKM){this.mediaKM = mediaKM;}
+    public void setmediaKM(double mediaKM) { this.mediaKM = mediaKM; }
     
-    public void setArcondicionado(boolean arcondicionado){this.arcondicionado = arcondicionado;}
+    public void setArcondicionado(boolean arcondicionado) { this.arcondicionado = arcondicionado; }
+
+    public String toString() {
+        return super.toString() + " Numero de Passageiros: " + numeroPassageiros + " Numero Portas: " + numeroPortas + " Media km: " + mediaKM + " Ar-Condicionado: " + arcondicionado;
+    }
 
 }

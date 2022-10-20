@@ -1,4 +1,4 @@
-public class Locacao extends Veiculo {
+public class Locacao {
 
     private static int codigoUnico = 1;
 
@@ -7,9 +7,7 @@ public class Locacao extends Veiculo {
     private String dataInicial;
     private String dataFinal;
 
-
-    public Locacao(boolean seguro, String dataInicial, String dataFinal, String placa, int ano, double diaria){
-        super(placa, ano, diaria);
+    public Locacao(boolean seguro, String dataInicial, String dataFinal) {
         this.seguro = seguro;
         this.dataInicial = dataInicial;
         this.dataFinal = dataFinal;
@@ -31,5 +29,9 @@ public class Locacao extends Veiculo {
     public void setDataInicial(String dataInicial){this.dataInicial = dataInicial;}
 
     public void setDataFinal(String dataFinal){this.dataFinal = dataFinal;} 
+
+    public String toString() {
+        return "Codigo: " + codigo + " Seguro: " + seguro + " Data inicial: " + dataInicial + " Data final: " + dataFinal;
+    }
 
 }
