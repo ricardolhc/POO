@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class ListaLocacoes implements ILocacoes {
 
-    ArrayList<Locacao> locacoes;
+    private ArrayList<Locacao> locacoes;
 
     public ListaLocacoes() {
         locacoes = new ArrayList<Locacao>();

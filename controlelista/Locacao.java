@@ -1,5 +1,6 @@
 package controlelista;
-import java.util.Date;
+
+import java.util.Calendar;
 
 public class Locacao {
 
@@ -7,10 +8,10 @@ public class Locacao {
 
     private int codigo;
     private boolean seguro;
-    private Date dataInicial;
-    private Date dataFinal;
+    private Calendar dataInicial;
+    private Calendar dataFinal;
 
-    public Locacao(boolean seguro, Date dataInicial, Date dataFinal) {
+    public Locacao(boolean seguro, Calendar dataInicial, Calendar dataFinal) {
         this.seguro = seguro;
         this.dataInicial = dataInicial;
         this.dataFinal = dataFinal;
@@ -21,17 +22,17 @@ public class Locacao {
 
     public boolean getSeguro() { return seguro; }
 
-    public Date getDatainicial() { return dataInicial; }
+    public Calendar getDatainicial() { return dataInicial; }
 
-    public Date getDatafinal() { return dataFinal; }
+    public Calendar getDatafinal() { return dataFinal; }
 
     public void setCodigo(int codigo) { this.codigo = codigo; }
 
     public void setSeguro(boolean seguro) { this.seguro = seguro; }
 
-    public void setDataInicial(Date dataInicial) { this.dataInicial = dataInicial; }
+    public void setDataInicial(Calendar dataInicial) { this.dataInicial = dataInicial; }
 
-    public void setDataFinal(Date dataFinal) { this.dataFinal = dataFinal; } 
+    public void setDataFinal(Calendar dataFinal) { this.dataFinal = dataFinal; } 
 
     public String toString() {
         return "Codigo: " + codigo + 

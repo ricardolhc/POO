@@ -5,7 +5,7 @@ import veiculo.Veiculo;
 
 public class ListaVeiculos implements IVeiculos {
 
-    ArrayList<Veiculo> veiculos;
+    private ArrayList<Veiculo> veiculos;
 
     public ListaVeiculos() {
         veiculos = new ArrayList<Veiculo>();

@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class ListaClientes implements IClientes {
 
-    ArrayList<Cliente> clientes;
+    private ArrayList<Cliente> clientes;
 
     public ListaClientes() {
         clientes = new ArrayList<Cliente>();

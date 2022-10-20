@@ -22,7 +22,7 @@ public class Main {
          * divide por 60 novamente para converter em horas
          * divide por 24 para converter em dias
          */
-        System.out.println(diferencaEmMilisegundos / 24 / 60 / 60 / 1000);
+        System.out.println(diferencaEmMilisegundos / 1000 / 60 / 60 / 24);
 
 
 
