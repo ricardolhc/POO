@@ -52,7 +52,7 @@ public class ListaVeiculos implements IVeiculos {
         if(veiculos.size() >= 1) {
             String conteudo = "";
             for(int i = 0; i < veiculos.size(); i++) {
-                conteudo += veiculos.get(i).toString() + "\n";
+                conteudo += veiculos.get(i).getResumo() + "\n";
             }
             return conteudo;
         }

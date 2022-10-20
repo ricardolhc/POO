@@ -29,5 +29,9 @@ public abstract class Veiculo {
                " Ano: " + ano + 
                " Diaria: " + diaria;
     }
+
+    public String getResumo() {
+        return toString();
+    }
     
 }
