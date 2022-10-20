@@ -1,13 +1,15 @@
+import java.util.Date;
+
 public class Locacao {
 
     private static int codigoUnico = 1;
 
     private int codigo;
     private boolean seguro;
-    private String dataInicial;
-    private String dataFinal;
+    private Date dataInicial;
+    private Date dataFinal;
 
-    public Locacao(boolean seguro, String dataInicial, String dataFinal) {
+    public Locacao(boolean seguro, Date dataInicial, Date dataFinal) {
         this.seguro = seguro;
         this.dataInicial = dataInicial;
         this.dataFinal = dataFinal;
@@ -18,20 +20,23 @@ public class Locacao {
 
     public boolean getSeguro() { return seguro; }
 
-    public String getDatainicial() { return dataInicial; }
+    public Date getDatainicial() { return dataInicial; }
 
-    public String getDatafinal() { return dataFinal; }
+    public Date getDatafinal() { return dataFinal; }
 
-    public void setCodigo(int codigo){this.codigo = codigo;}
+    public void setCodigo(int codigo) { this.codigo = codigo; }
 
-    public void setSeguro(boolean seguro){this.seguro = seguro;}
+    public void setSeguro(boolean seguro) { this.seguro = seguro; }
 
-    public void setDataInicial(String dataInicial){this.dataInicial = dataInicial;}
+    public void setDataInicial(Date dataInicial) { this.dataInicial = dataInicial; }
 
-    public void setDataFinal(String dataFinal){this.dataFinal = dataFinal;} 
+    public void setDataFinal(Date dataFinal) { this.dataFinal = dataFinal; } 
 
     public String toString() {
-        return "Codigo: " + codigo + " Seguro: " + seguro + " Data inicial: " + dataInicial + " Data final: " + dataFinal;
+        return "Codigo: " + codigo + 
+               " Seguro: " + seguro + 
+               " Data inicial: " + dataInicial + 
+               " Data final: " + dataFinal;
     }
 
 }
