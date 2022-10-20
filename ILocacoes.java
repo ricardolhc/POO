@@ -3,6 +3,7 @@
  * @author Aline
  */
 public interface ILocacoes {
+    
     /**
      * Adiciona uma locação na relação de locações.
      * @param l Locação a ser inserido.
