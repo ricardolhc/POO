@@ -4,7 +4,7 @@ public class ListaClientes implements IClientes {
 
     ArrayList<Cliente> clientes;
 
-    ListaClientes() {
+    public ListaClientes() {
         clientes = new ArrayList<Cliente>();
     }
 
@@ -15,37 +15,63 @@ public class ListaClientes implements IClientes {
 
     @Override   
     public Cliente get(long CPF) {
-        // TODO Auto-generated method stub
+        for(int i = 0; i < clientes.size(); i++) {
+            if(clientes.get(i).getCpf() == CPF) {
+                return clientes.get(i);
+            }
+        }
         return null;
     }
 
     @Override
     public String getInfo(long CPF) {
-        // TODO Auto-generated method stub
+        if(existe(CPF)) {
+            Cliente cliente = get(CPF);
+            return cliente.toString(); 
+        }
         return null;
     }
 
     @Override
     public String getInfo() {
-        // TODO Auto-generated method stub
+        if(clientes.size() >= 1) {
+            String conteudo = "";
+            for(int i = 0; i < clientes.size(); i++) {
+                conteudo += clientes.get(i).toString() + "\n";
+            }
+            return conteudo;
+        }
         return null;
     }
 
     @Override
     public String getResumoInfo() {
-        // TODO Auto-generated method stub
+        if(clientes.size() >= 1) {
+            String conteudo = "";
+            for(int i = 0; i < clientes.size(); i++) {
+                conteudo += clientes.get(i).getResumo() + "\n";
+            }
+            return conteudo;
+        }
         return null;
     }
 
     @Override
     public boolean remove(long CPF) {
-        // TODO Auto-generated method stub
+        if(existe(CPF)) {
+            Cliente cliente = get(CPF);
+            clientes.remove(cliente);
+            return true;
+        }
         return false;
     }
 
     @Override
     public boolean existe(long CPF) {
-        // TODO Auto-generated method stub
+        Cliente cliente = get(CPF);
+        if(cliente != null) {
+            return true;
+        }
         return false;
     }
     
