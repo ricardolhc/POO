@@ -33,7 +33,6 @@ public class ListaVeiculos implements IVeiculos {
     }
 
     /* PERGUNTA NO ZAP ZAP BY: RICARDO */ 
-    @Override
     public String getInfo() {
         if(veiculos.size() >= 1) {
             String conteudo = "";
