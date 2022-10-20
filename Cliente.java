@@ -15,7 +15,7 @@ public class Cliente {
     }
 
     public Cliente(long cpf) {
-        this(cpf, "DEFAULT", 0, "DEFAULT", 0);
+        this(cpf, "", 0, "", 0);
     }
 
     public String getNome(){ return nome; }
@@ -31,7 +31,6 @@ public class Cliente {
     public String getResumo() {
         return "CPF: " + cpf + " Nome: " + nome;
     }
-    
 
     public void setNome(String nome) { this.nome=nome; }
 
@@ -44,7 +43,11 @@ public class Cliente {
     public void setTelefone(int telefone) { this.telefone = telefone; }
 
     public String toString() {
-        return "Nome: " + nome + " CPF: " + cpf + " Endereço: " + endereco + " Carteira de Motorista: " + numeroCarteiraMotorista + " Telefone: " + telefone;
+        return "Nome: " + nome + 
+               " CPF: " + cpf + 
+               " Endereço: " + endereco + 
+               " Carteira de Motorista: " + numeroCarteiraMotorista + 
+               " Telefone: " + telefone;
     }
 
 }
