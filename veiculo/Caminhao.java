@@ -15,7 +15,7 @@ public class Caminhao extends Veiculo {
         this(placa, 0, 0, 0, 0.0);
     }
 
-    public int getNeixos() { return numeroEixos; }
+    public int getNumeroEixos() { return numeroEixos; }
 
     public int getCargamaxima() { return cargaMaxima; }
 

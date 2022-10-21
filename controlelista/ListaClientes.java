@@ -76,5 +76,25 @@ public class ListaClientes implements IClientes {
         }
         return false;
     }
+
+    public void setNome(long CPF, String nome) {
+        Cliente cliente = get(CPF);
+        cliente.setNome(nome);
+    }
+
+    public void setNumeroCarteira(long CPF, int numeroCarteiraMotorista) {
+        Cliente cliente = get(CPF);
+        cliente.setNumeroCarteira(numeroCarteiraMotorista);
+    }
+
+    public void setEndereco(long CPF, String endereco) {
+        Cliente cliente = get(CPF);
+        cliente.setEndereco(endereco);
+    }
+
+    public void setTelefone(long CPF, int telefone) {
+        Cliente cliente = get(CPF);
+        cliente.setTelefone(telefone);
+    }
     
 }

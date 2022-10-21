@@ -2,7 +2,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import controlelista.MenuCliente;
+import menu.MenuCliente;
 
 public class Main {
     
@@ -30,8 +30,13 @@ public class Main {
         MenuCliente menuCliente = new MenuCliente();
 
         menuCliente.adicionaCliente();
-
         menuCliente.adicionaCliente();
+
+        menuCliente.getInformacaoCliente();
+
+        menuCliente.removeCliente();
+
+        menuCliente.getInformacoesClientes();
 
     }
 

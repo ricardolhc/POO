@@ -7,7 +7,7 @@ public class Carro extends Veiculo {
     private double mediaKM;
     private boolean arcondicionado;
 
-    public Carro (String placa, int numeroPassageiros, int numeroPortas, double mediaKM, boolean arcondicionado, int ano, double diaria){
+    public Carro (String placa, int ano, double diaria, int numeroPassageiros, int numeroPortas, double mediaKM, boolean arcondicionado){
         super(placa, ano, diaria);
         this.numeroPassageiros = numeroPassageiros;
         this.numeroPortas = numeroPortas;
@@ -16,7 +16,7 @@ public class Carro extends Veiculo {
     }
 
     public Carro(String placa) {
-        this(placa, 0, 0, 0.0, false, 0, 0.0);
+        this(placa, 0, 0, 0, 0, 0, false);
     }
     
     public int getNumeroPassageiros() { return numeroPassageiros; }

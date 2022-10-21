@@ -36,9 +36,7 @@ public class Cliente {
 
     public void setNome(String nome) { this.nome=nome; }
 
-    public void setCpf(long cpf) { this.cpf = cpf; }
-
-    public void setNcarteira(int numeroCarteiraMotorista) { this.numeroCarteiraMotorista = numeroCarteiraMotorista; }
+    public void setNumeroCarteira(int numeroCarteiraMotorista) { this.numeroCarteiraMotorista = numeroCarteiraMotorista; }
 
     public void setEndereco(String endereco) { this.endereco = endereco; }
 
