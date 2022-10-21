@@ -5,14 +5,14 @@ public class Caminhao extends Veiculo {
     private int numeroEixos;
     private int cargaMaxima;
 
-    public Caminhao(String placa, int numeroEixos, int cargaMaxima, int ano, double diaria){
+    public Caminhao(String placa, int ano, double diaria, int numeroEixos, int cargaMaxima){
         super(placa, ano, diaria);
         this.numeroEixos = numeroEixos;
         this.cargaMaxima = cargaMaxima;
     }
 
     public Caminhao(String placa) {
-        this(placa, 0, 0, 0, 0.0);
+        this(placa, 0, 0.0, 0, 0);
     }
 
     public int getNumeroEixos() { return numeroEixos; }
