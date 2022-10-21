@@ -1,4 +1,5 @@
 package controlelista;
+
 import java.util.ArrayList;
 
 public class ListaLocacoes implements ILocacoes {
@@ -37,8 +38,8 @@ public class ListaLocacoes implements ILocacoes {
     public String getInfo() {
         if(locacoes.size() >= 1) {
             String conteudo = "";
-            for(int i = 0; i < locacoes.size(); i++) {
-                conteudo += locacoes.get(i).toString() + "\n";
+            for(Locacao locacao : locacoes) {
+                conteudo += locacao.toString() + "\n";
             }
             return conteudo;
         }

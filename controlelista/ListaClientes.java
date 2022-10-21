@@ -1,4 +1,5 @@
 package controlelista;
+
 import java.util.ArrayList;
 
 public class ListaClientes implements IClientes {
@@ -37,8 +38,8 @@ public class ListaClientes implements IClientes {
     public String getInfo() {
         if(clientes.size() >= 1) {
             String conteudo = "";
-            for(int i = 0; i < clientes.size(); i++) {
-                conteudo += clientes.get(i).toString() + "\n";
+            for(Cliente cliente : clientes) {
+                conteudo += cliente.toString() + "\n";
             }
             return conteudo;
         }
@@ -49,8 +50,8 @@ public class ListaClientes implements IClientes {
     public String getResumoInfo() {
         if(clientes.size() >= 1) {
             String conteudo = "";
-            for(int i = 0; i < clientes.size(); i++) {
-                conteudo += clientes.get(i).getResumo() + "\n";
+            for(Cliente cliente : clientes) {
+                conteudo += cliente.getResumo() + "\n";
             }
             return conteudo;
         }

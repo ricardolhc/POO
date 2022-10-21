@@ -1,6 +1,6 @@
 package controlelista;
-import java.util.ArrayList;
 
+import java.util.ArrayList;
 import veiculo.Veiculo;
 
 public class ListaVeiculos implements IVeiculos {
@@ -35,12 +35,12 @@ public class ListaVeiculos implements IVeiculos {
         return null;
     }
 
-    /* PERGUNTA NO ZAP ZAP BY: RICARDO */ 
+    @Override
     public String getInfo() {
         if(veiculos.size() >= 1) {
             String conteudo = "";
-            for(int i = 0; i < veiculos.size(); i++) {
-                conteudo += veiculos.get(i).toString() + "\n";
+            for(Veiculo veiculo : veiculos) {
+                conteudo += veiculo.toString() + "\n";
             }
             return conteudo;
         }
@@ -51,8 +51,8 @@ public class ListaVeiculos implements IVeiculos {
     public String getResumoInfo() {
         if(veiculos.size() >= 1) {
             String conteudo = "";
-            for(int i = 0; i < veiculos.size(); i++) {
-                conteudo += veiculos.get(i).getResumo() + "\n";
+            for(Veiculo veiculo : veiculos) {
+                conteudo += veiculo.getResumo() + "\n";
             }
             return conteudo;
         }

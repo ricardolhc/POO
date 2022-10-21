@@ -36,7 +36,10 @@ public class Carro extends Veiculo {
     public void setArcondicionado(boolean arcondicionado) { this.arcondicionado = arcondicionado; }
 
     public String toString() {
-        return super.toString() + " Numero de Passageiros: " + numeroPassageiros + " Numero Portas: " + numeroPortas + " Media km: " + mediaKM + " Ar-Condicionado: " + arcondicionado;
+        return super.toString() + " Numero de Passageiros: " + numeroPassageiros + 
+        " Numero Portas: " + numeroPortas + 
+        " Media km: " + mediaKM + 
+        " Ar-Condicionado: " + arcondicionado;
     }
 
 }

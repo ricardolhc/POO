@@ -31,7 +31,7 @@ public class MenuCliente {
                     System.out.println("O CPF já está adicionado no sistema!");
                 }
             }
-        } while (cpf == 0 || listaClientes.existe(cpf));
+        } while(cpf == 0 || listaClientes.existe(cpf));
 
         input.nextLine();
 
@@ -49,20 +49,22 @@ public class MenuCliente {
 
 
         listaClientes.add(new Cliente(cpf, nome, numeroCarteiraMotorista, endereco, telefone));
-
-
     }
 
     public void removeCliente() {
-
+        
         long cpf;
         Scanner input = new Scanner(System.in);
 
         System.out.println("Digite o cpf do cliente que deseja remover: ");
         cpf = input.nextLong();
 
-        input.close();
-
+        if(listaClientes.remove(cpf)) {
+            System.out.println("Remoção concluída com sucesso");
+        } else {
+            System.out.println("A remoção não foi bem sucedida!");
+        }
+        
     }
 
 }
