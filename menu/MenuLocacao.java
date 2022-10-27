@@ -22,78 +22,13 @@ public class MenuLocacao {
 
         long cpf = 0;
         String placa = null;
+        long dias = 0;
         
         Calendar dataInicial = Calendar.getInstance();
         Calendar dataFinal = Calendar.getInstance();
 
         int escolha = 0;
         boolean seguro = false;
-
-        do {
-            
-            int dia = 0;
-            int mes = 0;
-            int ano = 0;
-
-            do {
-                System.out.print("Informe o dia inicial: ");   
-                dia = input.nextInt();
-
-                if(dia > 31 || dia < 1){
-                    System.out.println("Informe um dia válida!");
-                }
-            } while(dia > 31 || dia < 1);
-                
-               
-            do {
-                System.out.print("Informe o mês inicial: "); 
-                mes = input.nextInt();
-
-                if(mes > 12 || mes < 1){
-                    System.out.println("Informe um mês válido!");
-                }
-            }while(mes > 12 || mes <1);
-    
-            System.out.print("Informe o ano inicial: ");
-            ano = input.nextInt();
-               
-            dataInicial.set(dia, mes, ano);
-
-            do {
-                System.out.print("Informe o dia final: ");   
-                dia = input.nextInt();
-
-                if(dia > 31 || dia < 1){
-                    System.out.println("Informe um dia válida!");
-                }
-            } while(dia > 31 || dia < 1);
-                
-               
-            do {
-                System.out.print("Informe o mês final: "); 
-                mes = input.nextInt();
-
-                if(mes > 12 || mes < 1){
-                    System.out.println("Informe um mês válido!");
-                }
-            } while(mes > 12 || mes <1);
-    
-            System.out.print("Informe o ano final: ");
-            ano = input.nextInt();
-            
-            dataFinal.set(dia, mes, ano);
-
-            long dataFinalLong = dataFinal.getTimeInMillis() / 1000 / 60 / 60 / -24;
-            long InicialLong = dataInicial.getTimeInMillis() / 1000 / 60 / 60 / -24;
-
-            System.out.println("Data final long: " + dataFinalLong);
-            System.out.println("Data inicial long: " + InicialLong);
-
-            if((dataFinal.getTimeInMillis() / 1000 / 60 / 60 / 24) - (dataInicial.getTimeInMillis() / 1000 / 60 / 60 / 24) <= 0) {
-                System.out.println("Digite uma data final que seja maior que a data inicial!");
-            }
-
-        } while((dataFinal.getTimeInMillis() / 1000 / 60 / 60 / 24) - (dataInicial.getTimeInMillis() / 1000 / 60 / 60 / 24) <= 0);
 
         do {
             System.out.print("Digite uma placa para a locação: ");
@@ -126,9 +61,70 @@ public class MenuLocacao {
         
         } while (escolha < 1 || escolha > 2 );
 
-        
+        do {
+            
+            int dia = 0;
+            int mes = 0;
+            int ano = 0;
+
+            dia = cadastrarDia();
+            mes = cadastrarMes();
+            System.out.print("Informe o ano inicial: ");
+            ano = input.nextInt();
+            dataInicial.set(ano, mes, dia);
+
+            dia = cadastrarDia();
+            mes = cadastrarMes();
+            System.out.print("Informe o ano inicial: ");
+            ano = input.nextInt();
+            
+            dataFinal.set(ano, mes, dia);
+
+            dias = (dataFinal.getTimeInMillis() - dataInicial.getTimeInMillis()) / (1000 * 60 * 60 * 24);
+
+            if(dias <= 0) {
+                System.out.println("Digite uma data final que seja maior que a data inicial!");
+            }
+
+        } while(dias <= 0);
         
         listaLocacoes.add(new Locacao(seguro, dataInicial, dataFinal, listaClientes.get(cpf), listaVeiculos.get(placa)));
+    }
+
+
+
+
+    /* FACILITADORES */
+    public int cadastrarDia() {
+        Scanner input = new Scanner(System.in);
+
+        int dia;
+        do {
+            System.out.print("Informe o dia inicial: ");   
+            dia = input.nextInt();
+
+            if(dia > 31 || dia < 1){
+                System.out.println("Informe um dia válida!");
+            }
+        } while(dia > 31 || dia < 1);
+
+        return dia;
+    }
+
+    public int cadastrarMes() {
+        Scanner input = new Scanner(System.in);
+
+        int mes;
+        do {
+            System.out.print("Informe o dia inicial: ");   
+            mes = input.nextInt();
+
+            if(mes > 12 || mes < 1){
+                System.out.println("Informe um dia válida!");
+            }
+        } while(mes > 12 || mes < 1);
+
+        return mes;
     }
 
 }
