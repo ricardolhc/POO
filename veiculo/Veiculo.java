@@ -25,7 +25,7 @@ public abstract class Veiculo {
     public void setDiaria(double diaria) { this.diaria = diaria; }
 
     public String toString() {
-        return " Placa: " + placa + 
+        return "Placa: " + placa + 
                " Ano: " + ano + 
                " Diaria: " + diaria;
     }

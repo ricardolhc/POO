@@ -13,6 +13,10 @@ public class MenuCliente {
         listaClientes = new ListaClientes();
     }
 
+    public ListaClientes getListaClientes() {
+        return listaClientes;
+    }
+
     public void adicionaCliente() {
         Scanner input = new Scanner(System.in);
 
@@ -155,4 +159,5 @@ public class MenuCliente {
             System.out.println("O CPF informado não existe!");
         }
     }
+
 }

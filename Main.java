@@ -1,42 +1,34 @@
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import menu.MenuCliente;
+import menu.MenuLocadora;
 
 public class Main {
     
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) {
 
-        //String dataUm = "29/12/2003";
-        //String dataDois = "20/10/2022";
+        /*Calendar c1 = Calendar.getInstance();
+        c1.set(1995, 5, 14);
 
-        //SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy"); // dd/MM/yyyy é o formato brasileiro que você está usando, para mais formatos, veja o link de referência
+		System.out.print("Ano: "+c1.get(Calendar.YEAR));
+		System.out.print(" Mês: "+c1.get(Calendar.MONTH));
+		System.out.println(" Dia do Mês: "+c1.get(Calendar.DAY_OF_MONTH));
 
-        //Date dateUm = simpleDateFormat.parse(dataUm);
-        //Date dateDois = simpleDateFormat.parse(dataDois);
+        Calendar c2 = Calendar.getInstance();
+        c2.set(1996, 5, 14);
 
-        //long diferencaEmMilisegundos = dateDois.getTime() - dateUm.getTime();
-
-        /**
-         * divide por 1000 para converter em segundos
-         * divide por 60 para converter em minutos 
-         * divide por 60 novamente para converter em horas
-         * divide por 24 para converter em dias
-         */
-        //System.out.println(diferencaEmMilisegundos / 1000 / 60 / 60 / 24);
+        System.out.print("Ano: "+c2.get(Calendar.YEAR));
+		System.out.print(" Mês: "+c2.get(Calendar.MONTH));
+		System.out.println(" Dia do Mês: "+c2.get(Calendar.DAY_OF_MONTH));
 
 
-        MenuCliente menuCliente = new MenuCliente();
+        System.out.println((c2.getTimeInMillis() / 1000 / 60 / 60 / 24) - (c1.getTimeInMillis() / 1000 / 60 / 60 / 24));
+       */
 
-        menuCliente.adicionaCliente();
-        menuCliente.adicionaCliente();
+       MenuLocadora menuLocadora = new MenuLocadora();
+       
+       //menuLocadora.adicionaVeiculo();
+       //menuLocadora.adicionaCliente();
+       menuLocadora.adicionarLocacao();
 
-        menuCliente.getInformacaoCliente();
-
-        menuCliente.removeCliente();
-
-        menuCliente.getInformacoesClientes();
+       
 
     }
 

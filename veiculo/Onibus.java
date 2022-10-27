@@ -27,7 +27,7 @@ public class Onibus extends Veiculo {
 
     public boolean getArcondicionado() { return arcondicionado; }
 
-    public void setNumeroPassageiro(int numeroPassageiros){ this.numeroPassageiros = numeroPassageiros; }
+    public void setNumeroPassageiros(int numeroPassageiros){ this.numeroPassageiros = numeroPassageiros; }
 
     public void setCategoria(Categoria categoria) { this.categoria = categoria; }
 
