@@ -3,7 +3,6 @@ package menu;
 import java.util.Scanner;
 
 import controlelista.ListaVeiculos;
-
 import veiculo.Caminhao;
 import veiculo.Carro;
 import veiculo.Categoria;
@@ -33,7 +32,7 @@ public class MenuVeiculo {
         Scanner input = new Scanner(System.in);
         String placa = null;
 
-        System.out.print("\nDigite o CPF que se deseja pegar as informaçôes: ");
+        System.out.print("\nDigite a placa que se deseja pegar as informaçôes: ");
         placa = input.nextLine();
 
         if(listaVeiculos.existe(placa)) {

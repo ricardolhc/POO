@@ -59,7 +59,6 @@ public class MenuLocadora {
    
     // CLIENTE
     private void menuCliente() {
-
         Scanner input = new Scanner(System.in);
         int escolha = 0;
         
@@ -143,7 +142,6 @@ public class MenuLocadora {
     
     // VEICULO
     private void menuVeiculo() {
-
         int escolha = 0;
         Scanner input = new Scanner(System.in);
 
@@ -226,17 +224,14 @@ public class MenuLocadora {
                     break;
             }
         } while(escolha != 11);
-        
     }
 
 
     private void menuCarro() {
-        
         Scanner input = new Scanner(System.in);
         int escolha = 0;
 
         do {
-            
             System.out.println("\nMENU CARRO");
             System.out.println("1) Alterar número de passageiros");
             System.out.println("2) Alterar número de portas");
@@ -277,18 +272,14 @@ public class MenuLocadora {
                     System.out.println("Você digitou uma opção inválida!");
                     break;
             }
-
         } while (escolha != 5); 
-        
     }
 
     private void menuOnibus() {
-
         Scanner input = new Scanner(System.in);
         int escolha = 0;
 
         do {
-            
             System.out.println("\nMENU ÔNIBUS");
             System.out.println("1) Alterar número de passageiros");
             System.out.println("2) Alterar categoria");
@@ -329,20 +320,14 @@ public class MenuLocadora {
                     System.out.println("Você digitou uma opção inválida!");
                     break;
             }
-
-
         } while (escolha != 5); 
-        
-
     }
 
     private void menuCaminhao() {
-
         Scanner input = new Scanner(System.in);
         int escolha = 0;
 
         do {
-            
             System.out.println("\nMENU CAMINHÃO");
             System.out.println("1) Alterar número de eixos");
             System.out.println("2) Alterar carga máxima");
@@ -371,8 +356,6 @@ public class MenuLocadora {
                     System.out.println("Você digitou uma opção inválida!");
                     break;
             }
-
-
         } while (escolha != 3); 
     }
 
@@ -392,9 +375,7 @@ public class MenuLocadora {
             System.out.print("Opção: ");
             escolha = input.nextInt();
 
-
             switch(escolha) {
-
                 //Adicionar Locação
                 case 1:
                     menuLocacao.adicionarLocacao(menuCliente.getListaClientes(), menuVeiculo.getListaVeiculos());
