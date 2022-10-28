@@ -1,7 +1,6 @@
 package controlelista;
 
 import java.util.Calendar;
-
 import veiculo.Veiculo;
 
 public class Locacao {
@@ -51,8 +50,10 @@ public class Locacao {
     public String toString() {
         return "Codigo: " + codigo + 
                " Seguro: " + seguro + 
-               " Data inicial: " + dataInicial + 
-               " Data final: " + dataFinal;
+               " Data inicial: " + dataInicial.get(Calendar.DAY_OF_MONTH) + "/" + dataInicial.get(Calendar.MONTH) + "/" + dataInicial.get(Calendar.YEAR) +
+               " Data final: " + dataFinal.get(Calendar.DAY_OF_MONTH) + "/" + dataFinal.get(Calendar.MONTH) + "/" + dataFinal.get(Calendar.YEAR) +
+               " Veiculo: " + veiculo.getResumo() +
+               " Cliente: " + cliente.getResumo();
     }
 
 }

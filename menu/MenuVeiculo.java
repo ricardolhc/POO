@@ -21,12 +21,34 @@ public class MenuVeiculo {
         return listaVeiculos;
     }
 
-    public String getInfoVeiculos() {
-        return listaVeiculos.getInfo();
+    public void imprimirInfoVeiculos() {
+        if(listaVeiculos.getInfo() != null) {
+            System.out.println(listaVeiculos.getInfo());
+        } else {
+            System.out.println("\nNão existem veículos");
+        }
     }
 
-    public String getResumoVeiculos() {
-        return listaVeiculos.getResumoInfo();
+    public void getInformacaoVeiculo() {
+        Scanner input = new Scanner(System.in);
+        String placa = null;
+
+        System.out.print("\nDigite o CPF que se deseja pegar as informaçôes: ");
+        placa = input.nextLine();
+
+        if(listaVeiculos.existe(placa)) {
+            System.out.println(listaVeiculos.getInfo(placa));
+        } else {
+            System.out.println("Veiculo não existente!");
+        }
+    }
+
+    public void imprimirResumoVeiculos() {
+        if(listaVeiculos.getResumoInfo() != null) {
+           System.out.println(listaVeiculos.getResumoInfo());
+        } else {
+            System.out.println("\nNão existem veículos");
+        }   
     }
 
     public void adicionaVeiculo() {
@@ -38,7 +60,7 @@ public class MenuVeiculo {
         int modeloCarro = 0; 
 
         do {
-            System.out.print("Digite a placa do carro: ");
+            System.out.print("\nDigite a placa do veiculo: ");
             placa = input.nextLine();
 
             if(placa == null) {
@@ -50,10 +72,10 @@ public class MenuVeiculo {
             }
         } while(placa == null || listaVeiculos.existe(placa));
 
-        System.out.print("Digite o ano do carro: ");
+        System.out.print("Digite o ano do veiculo: ");
         ano = input.nextInt();
 
-        System.out.print("Digite a diaria do carro: ");
+        System.out.print("Digite a diaria do veiculo: ");
         diaria = input.nextDouble();
 
         do {
@@ -128,6 +150,7 @@ public class MenuVeiculo {
         } while(escolha < 1 || escolha > 2);
 
         listaVeiculos.add(new Carro(placa, ano, diaria, numeroPassageiros, numeroPortas, mediaKM, arcondicionado));
+        System.out.println("Carro adicionado com sucesso");
     }
 
     public void cadastrarCaminhao(String placa, int ano, double diaria) {
@@ -143,6 +166,7 @@ public class MenuVeiculo {
         cargaMaxima = input.nextInt();
 
         listaVeiculos.add(new Caminhao(placa, ano, diaria, numeroEixos, cargaMaxima));
+        System.out.println("Caminhão adicionado com sucesso");
     }
 
     public void cadastrarOnibus(String placa, int ano, double diaria) {
@@ -216,6 +240,9 @@ public class MenuVeiculo {
         } while(escolha < 1 || escolha > 3);
 
         listaVeiculos.add(new Onibus(placa, ano, diaria, numeroPassageiros, categoria, wifi, arcondicionado));
+
+        System.out.println("Ônibus adicionado com sucesso");
+
     }
 
     public void alteraAno() {
@@ -224,11 +251,12 @@ public class MenuVeiculo {
         String placa = null;
         int ano = 0;
 
-        System.out.print("Digite a placa que deseja alterar o ano: ");
+        System.out.print("\nDigite a placa que deseja alterar o ano: ");
         placa = input.nextLine();
 
         if(listaVeiculos.existe(placa)) {
             System.out.print("Digite o novo ano: ");
+            ano = input.nextInt();
             listaVeiculos.setAno(placa, ano);
         } else {
             System.out.println("A placa informada!");
@@ -241,11 +269,12 @@ public class MenuVeiculo {
         String placa = null;
         double diaria = 0.0;
 
-        System.out.print("Digite a placa do carro que deseja alterar o ano: ");
+        System.out.print("\nDigite a placa do carro que deseja alterar a diaria: ");
         placa = input.nextLine();
 
         if(listaVeiculos.existe(placa)) {
-            System.out.print("Digite o novo ano: ");
+            System.out.print("Digite a nova diaria: ");
+            diaria = input.nextDouble();
             listaVeiculos.setDiaria(placa, diaria);
         } else {
             System.out.println("A placa informada não existe!");
@@ -260,7 +289,7 @@ public class MenuVeiculo {
 
         String placa = null;
         
-        System.out.print("Digite a placa do carro que deseja alterar o número de passageiros: ");
+        System.out.print("\nDigite a placa do carro que deseja alterar o número de passageiros: ");
         placa = input.nextLine();
 
         if(listaVeiculos.existe(placa)) {
@@ -280,7 +309,7 @@ public class MenuVeiculo {
 
         String placa = null;
         
-        System.out.print("Digite a placa do carro que deseja alterar o número de portas: ");
+        System.out.print("\nDigite a placa do carro que deseja alterar o número de portas: ");
         placa = input.nextLine();
 
         if(listaVeiculos.existe(placa)) {
@@ -300,7 +329,7 @@ public class MenuVeiculo {
 
         String placa = null;
         
-        System.out.print("Digite a placa do carro que deseja alterar a media de km: ");
+        System.out.print("\nDigite a placa do carro que deseja alterar a media de km: ");
         placa = input.nextLine();
 
         if(listaVeiculos.existe(placa)) {
@@ -322,7 +351,7 @@ public class MenuVeiculo {
         int escolha = 0;
         boolean arcondicionado = false;
         
-        System.out.print("Digite a placa do carro que deseja alterar a existência do ar-condicionado: ");
+        System.out.print("\nDigite a placa do carro que deseja alterar a existência do ar-condicionado: ");
         placa = input.nextLine();
 
         if(listaVeiculos.existe(placa)) {
@@ -361,7 +390,7 @@ public class MenuVeiculo {
 
         String placa = null;
         
-        System.out.print("Digite a placa do ônibus que deseja alterar o número de passageiros: ");
+        System.out.print("\nDigite a placa do ônibus que deseja alterar o número de passageiros: ");
         placa = input.nextLine();
         
          if(listaVeiculos.existe(placa)) {
@@ -383,7 +412,7 @@ public class MenuVeiculo {
         int escolha = 0;
         Categoria categoria = Categoria.CONVENCIONAL;
         
-        System.out.print("Digite a placa do ônibus que deseja alterar a categoria: ");
+        System.out.print("\nDigite a placa do ônibus que deseja alterar a categoria: ");
         placa = input.nextLine();
         
         if(listaVeiculos.existe(placa)) {
@@ -406,6 +435,7 @@ public class MenuVeiculo {
                         } else if(escolha == 3) {
                             categoria = Categoria.EXECUTIVO;
                         }
+                        listaVeiculos.setCategoriaOnibus(placa, categoria);
                     }
                 } while(escolha < 1 || escolha > 2);
             } else {
@@ -423,7 +453,7 @@ public class MenuVeiculo {
         int escolha = 0;
         boolean wifi = false;
 
-        System.out.print("Digite a placa do ônibus que deseja alterar a existência do wifi: ");
+        System.out.print("\n Digite a placa do ônibus que deseja alterar a existência do wifi: ");
         placa = input.nextLine();
 
         if(listaVeiculos.existe(placa)) {
@@ -443,6 +473,7 @@ public class MenuVeiculo {
                         } else {
                             wifi = false;
                         }
+                        listaVeiculos.setWifiOnibus(placa, wifi);
                     }
                 } while(escolha < 1 || escolha > 2);
 
@@ -461,7 +492,7 @@ public class MenuVeiculo {
         int escolha = 0;
         boolean arcondicionado = false;
 
-        System.out.print("Digite a placa do ônibus que deseja alterar a existência do arcondicionado: ");
+        System.out.print("\nDigite a placa do ônibus que deseja alterar a existência do arcondicionado: ");
         placa = input.nextLine();
 
         if(listaVeiculos.existe(placa)) {
@@ -481,6 +512,7 @@ public class MenuVeiculo {
                         } else {
                             arcondicionado = false;
                         }
+                        listaVeiculos.setArcondicionadoOnibus(placa, arcondicionado);
                     }
                 } while(escolha < 1 || escolha > 2);
 
@@ -499,7 +531,7 @@ public class MenuVeiculo {
 
         String placa = null;
         
-        System.out.print("Digite a placa do caminhão que deseja alterar o número de eixos: ");
+        System.out.print("\nDigite a placa do caminhão que deseja alterar o número de eixos: ");
         placa = input.nextLine();
         
          if(listaVeiculos.existe(placa)) {
@@ -519,7 +551,7 @@ public class MenuVeiculo {
 
         String placa = null;
         
-        System.out.print("Digite a placa do caminhão que deseja alterar a carga máxima: ");
+        System.out.print("\n Digite a placa do caminhão que deseja alterar a carga máxima: ");
         placa = input.nextLine();
         
         if(listaVeiculos.existe(placa)) {
@@ -531,6 +563,18 @@ public class MenuVeiculo {
             }
         } else {
             System.out.println("A placa informada não existe!");
+        }
+    }
+
+    public void removerVeiculo() {
+        Scanner input = new Scanner(System.in);
+        String placa = null;
+
+        System.out.print("\n A placa do veiculo que deseja remover: ");
+        placa = input.nextLine();
+
+        if(!listaVeiculos.remove(placa)) {
+            System.out.println("A placa do veículo não existe");
         }
     }
 

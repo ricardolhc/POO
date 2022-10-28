@@ -27,7 +27,7 @@ public class MenuCliente {
         int telefone = 0;
 
         do {
-            System.out.print("Digite o CPF do cliente: ");
+            System.out.print("\nDigite o CPF do cliente: ");
             cpf = input.nextLong();
 
             if (cpf == 0) {
@@ -53,14 +53,18 @@ public class MenuCliente {
         System.out.print("Digite o telefone: ");
         telefone = input.nextInt();
 
+
         listaClientes.add(new Cliente(cpf, nome, numeroCarteiraMotorista, endereco, telefone));
+
+        System.out.println("Cliente adicionado com sucesso!");
+
     }
 
     public void removeCliente() {
         Scanner input = new Scanner(System.in);
         long cpf = 0;
         
-        System.out.print("Digite o CPF do cliente que deseja remover: ");
+        System.out.print("\nDigite o CPF do cliente que deseja remover: ");
         cpf = input.nextLong();
 
         if(listaClientes.remove(cpf)) {
@@ -74,7 +78,7 @@ public class MenuCliente {
         Scanner input = new Scanner(System.in);
         long cpf = 0;
 
-        System.out.print("Digite o CPF que se deseja pegar as informaçôes: ");
+        System.out.print("\nDigite o CPF que se deseja pegar as informaçôes: ");
         cpf = input.nextLong();
 
         if(listaClientes.existe(cpf)) {
@@ -92,7 +96,7 @@ public class MenuCliente {
         } 
     }
 
-    public void getInformacoesClientesResumido() {
+    public void getInformacoesClientesResumo() {
         if(listaClientes.getResumoInfo() != null) {
             System.out.println(listaClientes.getResumoInfo());
         } else {
@@ -104,10 +108,11 @@ public class MenuCliente {
         Scanner input = new Scanner(System.in);
         long cpf = 0;
         
-        System.out.print("Digite o CPF que se deseja alterar o nome: ");
+        System.out.print("\nDigite o CPF que se deseja alterar o nome: ");
         cpf = input.nextLong();
 
         if(listaClientes.existe(cpf)) {
+            input.nextLine();
             System.out.print("Digite o novo nome: ");
             listaClientes.setNome(cpf, input.nextLine());
         } else {
@@ -119,7 +124,7 @@ public class MenuCliente {
         Scanner input = new Scanner(System.in);
         long cpf = 0;
         
-        System.out.print("Digite o CPF que se deseja alterar o nome: ");
+        System.out.print("\nDigite o CPF que se deseja alterar o numero da carteira: ");
         cpf = input.nextLong();
 
         if(listaClientes.existe(cpf)) {
@@ -134,10 +139,11 @@ public class MenuCliente {
         Scanner input = new Scanner(System.in);
         long cpf = 0;
         
-        System.out.print("Digite o CPF que se deseja alterar o nome: ");
+        System.out.print("\nDigite o CPF que se deseja alterar o endereço: ");
         cpf = input.nextLong();
 
         if(listaClientes.existe(cpf)) {
+            input.nextLine();
             System.out.print("Digite o novo endereco: ");
             listaClientes.setEndereco(cpf, input.nextLine());
         } else {
@@ -149,11 +155,11 @@ public class MenuCliente {
         Scanner input = new Scanner(System.in);
         long cpf = 0;
         
-        System.out.print("Digite o CPF que se deseja alterar o nome: ");
+        System.out.print("\nDigite o CPF que se deseja alterar o telefone: ");
         cpf = input.nextLong();
 
         if(listaClientes.existe(cpf)) {
-            System.out.print("Digite o novo endereco: ");
+            System.out.print("Digite o novo telefone: ");
             listaClientes.setTelefone(cpf, input.nextInt());
         } else {
             System.out.println("O CPF informado não existe!");

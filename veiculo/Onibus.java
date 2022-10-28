@@ -37,7 +37,7 @@ public class Onibus extends Veiculo {
 
     public String toString() {
         return super.toString() + " Numero de Passageiros: " + numeroPassageiros + 
-                                  " Categoria: " + categoria + 
+                                  " Categoria: " + categoria.getCategoria() + 
                                   " Wifi: " + wifi + 
                                   " Ar-Condicionado: " + arcondicionado;
     }

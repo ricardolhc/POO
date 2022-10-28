@@ -40,11 +40,11 @@ public class MenuLocacao {
         } while(!listaVeiculos.existe(placa));
 
         do {
-            System.out.print("Digite um cpf para a locação: ");
+            System.out.print(" Digite um cpf para a locação: ");
             cpf = input.nextLong();
 
             if(!listaClientes.existe(cpf)) {
-                System.out.println("Digite um cpf válido!");
+                System.out.println(" Digite um cpf válido!");
             }
         } while(!listaClientes.existe(cpf));
 
@@ -83,7 +83,7 @@ public class MenuLocacao {
             dias = (dataFinal.getTimeInMillis() - dataInicial.getTimeInMillis()) / (1000 * 60 * 60 * 24);
 
             if(dias <= 0) {
-                System.out.println("Digite uma data final que seja maior que a data inicial!");
+                System.out.println("\n Digite uma data final que seja maior que a data inicial!");
             }
 
         } while(dias <= 0);
@@ -92,7 +92,42 @@ public class MenuLocacao {
     }
 
 
+    public void mostrarInfoLocacao(){
+        Scanner input = new Scanner(System.in);
+        int codigo = 0;
 
+        System.out.print("\nDigite o código da locação que deseja obter as informações:");
+        codigo = input.nextInt();
+
+        if(listaLocacoes.existe(codigo)) {
+            System.out.println(listaLocacoes.getInfo(codigo));
+        } else {
+            System.out.println("Código da locação não existe");
+        }
+
+    }
+
+    
+    public void mostrarInfoLocacoes() {
+        if(listaLocacoes.getInfo() != null) {
+            System.out.println(listaLocacoes.getInfo());
+        } else {
+            System.out.println("Não existem locações");
+        }
+    }
+
+    public void removerLocacao() {
+        Scanner input = new Scanner(System.in);
+        int codigo = 0;
+
+        System.out.print("\n Digite o código da locação que deseja remover:");
+        codigo = input.nextInt();
+
+        if(!listaLocacoes.remove(codigo)) {
+            System.out.println("Código da locação não existe");
+        }
+    }
+    
 
     /* FACILITADORES */
     public int cadastrarDia() {
@@ -100,11 +135,11 @@ public class MenuLocacao {
 
         int dia;
         do {
-            System.out.print("Informe o dia inicial: ");   
+            System.out.print("\nInforme o dia inicial: ");   
             dia = input.nextInt();
 
             if(dia > 31 || dia < 1){
-                System.out.println("Informe um dia válida!");
+                System.out.println("Informe um dia válido!");
             }
         } while(dia > 31 || dia < 1);
 
@@ -116,11 +151,11 @@ public class MenuLocacao {
 
         int mes;
         do {
-            System.out.print("Informe o dia inicial: ");   
+            System.out.print("\nInforme o mes inicial: ");   
             mes = input.nextInt();
 
             if(mes > 12 || mes < 1){
-                System.out.println("Informe um dia válida!");
+                System.out.println("Informe um mes válido!");
             }
         } while(mes > 12 || mes < 1);
 
