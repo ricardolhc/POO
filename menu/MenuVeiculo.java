@@ -287,6 +287,7 @@ public class MenuVeiculo {
         Scanner input = new Scanner(System.in);
 
         String placa = null;
+        int numeroPasseiros = 0;
         
         System.out.print("\nDigite a placa do carro que deseja alterar o número de passageiros: ");
         placa = input.nextLine();
@@ -294,7 +295,13 @@ public class MenuVeiculo {
         if(listaVeiculos.existe(placa)) {
             if(listaVeiculos.get(placa) instanceof Carro) {
                 System.out.print("Digite o novo número de passageiros: ");
-                listaVeiculos.setNumeroPassageiroCarro(placa, input.nextInt());
+                numeroPasseiros = input.nextInt();
+
+                if(numeroPasseiros <= 0) {
+                    System.out.println("O número de passageiros não pode ser negativo!");
+                } else {
+                    listaVeiculos.setNumeroPassageiroCarro(placa, numeroPasseiros);
+                }             
             } else {
                 System.out.println("A placa informada não é de um carro!");
             }
@@ -305,6 +312,7 @@ public class MenuVeiculo {
 
     public void alteraNumeroPortaCarro() {
         Scanner input = new Scanner(System.in);
+        int numeroPortas = 0;
 
         String placa = null;
         
@@ -314,7 +322,14 @@ public class MenuVeiculo {
         if(listaVeiculos.existe(placa)) {
             if(listaVeiculos.get(placa) instanceof Carro) {
                 System.out.print("Digite o novo número de portas: ");
-                listaVeiculos.setNumeroPortaCarro(placa, input.nextInt());
+                numeroPortas = input.nextInt();
+                
+                if(numeroPortas <= 0) {
+                    System.out.println("O número de portas não pode ser negativo!");
+                } else {
+                    listaVeiculos.setNumeroPortaCarro(placa, numeroPortas);
+                }
+                    
             } else {
                 System.out.println("A placa informada não é de um carro!");
             }
@@ -325,6 +340,7 @@ public class MenuVeiculo {
 
     public void alteraMediaKmCarro() {
         Scanner input = new Scanner(System.in);
+        double mediaKm = 0.0;
 
         String placa = null;
         
@@ -334,7 +350,13 @@ public class MenuVeiculo {
         if(listaVeiculos.existe(placa)) {
             if(listaVeiculos.get(placa) instanceof Carro) {
                 System.out.print("Digite a nova media de km: ");
-                listaVeiculos.setMediaKMCarro(placa, input.nextDouble());
+                mediaKm = input.nextDouble();
+
+                if(mediaKm <= 0){
+                    System.out.println("A media de km não pode ser negativa!");
+                }else{
+                    listaVeiculos.setMediaKMCarro(placa, mediaKm);           
+                }
             } else {
                 System.out.println("A placa informada não é de um carro!");
             }

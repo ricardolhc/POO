@@ -36,10 +36,23 @@ public class Onibus extends Veiculo {
     public void setArcondicionado(boolean arcondicionado) { this.arcondicionado = arcondicionado; }
 
     public String toString() {
+        String arcondicionadoStr = null;
+        String wifiStr = null;
+        if(arcondicionado) {
+            arcondicionadoStr = "Sim";
+        } else {
+            arcondicionadoStr = "Não";
+        }
+        if(wifi) {
+            wifiStr = "Sim";
+        } else {
+            wifiStr = "Não";
+        }
+
         return super.toString() + " Numero de Passageiros: " + numeroPassageiros + 
                                   " Categoria: " + categoria.getCategoria() + 
-                                  " Wifi: " + wifi + 
-                                  " Ar-Condicionado: " + arcondicionado;
+                                  " Wifi: " + wifiStr + 
+                                  " Ar-Condicionado: " + arcondicionadoStr;
     }
 
 }

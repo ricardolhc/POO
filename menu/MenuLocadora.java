@@ -296,7 +296,7 @@ public class MenuLocadora {
                     break;
 
                 //Alterar categoria
-                case 2:
+                case 2:                                            
                     menuVeiculo.alteraCategoriaOnibus();
                     break;
 
@@ -355,6 +355,7 @@ public class MenuLocadora {
                 default:
                     System.out.println("Você digitou uma opção inválida!");
                     break;
+                    
             }
         } while (escolha != 3); 
     }
