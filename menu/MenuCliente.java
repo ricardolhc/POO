@@ -24,7 +24,7 @@ public class MenuCliente {
         long cpf = 0;
         int numeroCarteiraMotorista = 0;
         String endereco = null;
-        int telefone = 0;
+        long telefone = 0;
 
         do {
             System.out.print("\nDigite o CPF do cliente: ");
@@ -51,7 +51,7 @@ public class MenuCliente {
         numeroCarteiraMotorista = input.nextInt();
 
         System.out.print("Digite o telefone: ");
-        telefone = input.nextInt();
+        telefone = input.nextLong();
 
 
         listaClientes.add(new Cliente(cpf, nome, numeroCarteiraMotorista, endereco, telefone));
@@ -167,7 +167,7 @@ public class MenuCliente {
         if(listaClientes.existe(cpf)) {
             System.out.print("Digite o novo telefone: ");
             System.out.println("Telefone alterado com sucesso!");
-            listaClientes.setTelefone(cpf, input.nextInt());
+            listaClientes.setTelefone(cpf, input.nextLong());
         } else {
             System.out.println("O CPF informado não existe!");
         }

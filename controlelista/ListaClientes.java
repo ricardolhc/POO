@@ -92,7 +92,7 @@ public class ListaClientes implements IClientes {
         cliente.setEndereco(endereco);
     }
 
-    public void setTelefone(long CPF, int telefone) {
+    public void setTelefone(long CPF, long telefone) {
         Cliente cliente = get(CPF);
         cliente.setTelefone(telefone);
     }

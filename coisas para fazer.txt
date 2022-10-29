@@ -52,4 +52,4 @@ VERIFICAR SE A CARGA MAXIMA/NUMERO DE EIXOS DO CAMINHAO QUE O USUARIO DIGITOU FO
 
 feedback alterar numero de eixos/alterar carga maxima ok 
 
-
+feedback remoção veiculo
