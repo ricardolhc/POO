@@ -33,7 +33,7 @@ public class MenuVeiculo {
         Scanner input = new Scanner(System.in);
         String placa = null;
 
-        System.out.print("\nDigite a placa que se deseja pegar as informaçôes: ");
+        System.out.print("\nDigite a placa que se deseja obter as informaçôes: ");
         placa = input.nextLine();
 
         if(listaVeiculos.existe(placa)) {
@@ -74,11 +74,23 @@ public class MenuVeiculo {
             }
         } while(placa == null || listaVeiculos.existe(placa));
 
-        System.out.print("Digite o ano do veiculo: ");
-        ano = input.nextInt();
+        do {
+            System.out.print("Digite o ano do veiculo: ");
+            ano = input.nextInt();
 
-        System.out.print("Digite a diaria do veiculo: ");
-        diaria = input.nextDouble();
+            if (ano <= 0){
+                System.out.println("Ano inválido!");
+            }
+        } while (ano <= 0);
+
+        do {
+            System.out.print("Digite a diaria do veiculo: ");
+            diaria = input.nextDouble();
+
+            if (diaria <= 0){
+                System.out.println("Valor da diária inválido");
+            }
+        } while (diaria <= 0);
 
         do {
             System.out.println("1) Ônibus");
@@ -124,11 +136,23 @@ public class MenuVeiculo {
 
         int escolha = 0;
 
-        System.out.print("Digite a quantidade de passageiros: ");
-        numeroPassageiros = input.nextInt();
+        do {
+            System.out.print("Digite a quantidade de passageiros: ");
+            numeroPassageiros = input.nextInt();
 
-        System.out.print("Digite a quantidade de portas: ");
-        numeroPortas = input.nextInt();
+            if (numeroPassageiros <=0 || numeroPassageiros > 5){
+                System.out.println("Número de passageiros inválido!");
+            }
+        } while (numeroPassageiros <= 0 || numeroPassageiros > 5);
+
+        do {
+            System.out.print("Digite a quantidade de portas: ");
+            numeroPortas = input.nextInt();
+
+            if(numeroPortas <=0 || numeroPortas > 4){
+                System.out.println("Número de portas inválido!");
+            }
+        } while (numeroPortas <=0 || numeroPortas > 4);
 
         System.out.print("Digite a media de KM por litro: ");
         mediaKM = input.nextDouble();
@@ -314,8 +338,8 @@ public class MenuVeiculo {
                 System.out.print("Digite o novo número de passageiros: ");
                 numeroPasseiros = input.nextInt();
 
-                if(numeroPasseiros <= 0) {
-                    System.out.println("O número de passageiros não pode ser negativo!");
+                if(numeroPasseiros <= 0 || numeroPasseiros > 5) {
+                    System.out.println("Número de passageiros inválido!");
                 } else {
                     listaVeiculos.setNumeroPassageiroCarro(placa, numeroPasseiros);
                     System.out.println("Número de passageiros alterado com sucesso!");
@@ -342,8 +366,8 @@ public class MenuVeiculo {
                 System.out.print("Digite o novo número de portas: ");
                 numeroPortas = input.nextInt();
                 
-                if(numeroPortas <= 0) {
-                    System.out.println("O número de portas não pode ser negativo!");
+                if(numeroPortas <= 0 || numeroPortas > 5) {
+                    System.out.println("Número de portas inválido!");
                 } else {
                     listaVeiculos.setNumeroPortaCarro(placa, numeroPortas);
                     System.out.print("Número de portas alterado com sucesso!");
@@ -626,6 +650,7 @@ public class MenuVeiculo {
 
         System.out.print("\nA placa do veiculo que deseja remover: ");
         placa = input.nextLine();
+        System.out.println("Veículo removido com sucesso!");
 
         if(!listaVeiculos.remove(placa)) {
             System.out.println("A placa do veículo não existe");
