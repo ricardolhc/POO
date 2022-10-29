@@ -26,8 +26,8 @@ public abstract class Veiculo {
 
     public String toString() {
         return "Placa: " + placa + 
-               " Ano: " + ano + 
-               " Diaria: " + diaria;
+               "; Ano: " + ano + 
+               "; Diaria: " + diaria;
     }
 
     public String getResumo() {

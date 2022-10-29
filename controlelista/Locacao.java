@@ -48,12 +48,37 @@ public class Locacao {
     public void setVeiculo(Veiculo veiculo) { this.veiculo = veiculo; }
 
     public String toString() {
+        String seguroStr = null;
+        String menorQueDezInicialDia = "";
+        String menorQueDezInicialMes = "";
+        String menorQueDezFinalDia = "";
+        String menorQueDezFinalMes = "";
+
+        if(seguro) {
+            seguroStr = "Sim";
+        } else {
+            seguroStr = "Não";
+        }
+
+        if(dataInicial.get(Calendar.DAY_OF_MONTH) < 10) {
+            menorQueDezInicialDia = "0";
+        }
+        if((dataInicial.get(Calendar.MONTH) + 1) < 10){
+            menorQueDezInicialMes = "0";
+        }
+        if(dataFinal.get(Calendar.DAY_OF_MONTH) < 10) {
+            menorQueDezFinalDia = "0";
+        }
+        if((dataFinal.get(Calendar.MONTH) + 1) < 10){
+            menorQueDezFinalMes = "0";
+        }
+
         return "Codigo: " + codigo + 
-               " Seguro: " + seguro + 
-               " Data inicial: " + dataInicial.get(Calendar.DAY_OF_MONTH) + "/" + dataInicial.get(Calendar.MONTH) + "/" + dataInicial.get(Calendar.YEAR) +
-               " Data final: " + dataFinal.get(Calendar.DAY_OF_MONTH) + "/" + dataFinal.get(Calendar.MONTH) + "/" + dataFinal.get(Calendar.YEAR) +
-               " Veiculo: " + veiculo.getResumo() +
-               " Cliente: " + cliente.getResumo();
+               "; Seguro: " + seguroStr + 
+               "; Data inicial: " + menorQueDezInicialDia + dataInicial.get(Calendar.DAY_OF_MONTH) + "/" + menorQueDezInicialMes + (dataInicial.get(Calendar.MONTH) + 1) + "/" + dataInicial.get(Calendar.YEAR) +
+               "; Data final: " + menorQueDezFinalDia + dataFinal.get(Calendar.DAY_OF_MONTH) + "/" + menorQueDezFinalMes + (dataFinal.get(Calendar.MONTH) + 1) + "/" + dataFinal.get(Calendar.YEAR) +
+               "; Veiculo: " + veiculo.getResumo() +
+               "; Cliente: " + cliente.getResumo();
     }
 
 }

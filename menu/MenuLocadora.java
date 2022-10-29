@@ -18,7 +18,7 @@ public class MenuLocadora {
         int escolha = 0;
 
         do {
-            System.out.println("\nMENU PRINCIPAL");
+            System.out.println("\n====== MENU PRINCIPAL ======");
             System.out.println("1) Menu Cliente");
             System.out.println("2) Menu Veiculo");
             System.out.println("3) Menu Locação");
@@ -63,7 +63,7 @@ public class MenuLocadora {
         int escolha = 0;
         
         do {
-            System.out.println("\nMENU CLIENTE");
+            System.out.println("\n====== MENU CLIENTE ======");
             System.out.println("1) Adicionar cliente");
             System.out.println("2) Remover cliente");
             System.out.println("3) Visualizar informações de um cliente específico");
@@ -73,7 +73,7 @@ public class MenuLocadora {
             System.out.println("7) Alterar número da carteira de motorista do cliente");
             System.out.println("8) Alterar endereço do cliente");
             System.out.println("9) Alterar telefone do cliente");
-            System.out.println("10) Sair");
+            System.out.println("10) Voltar");
             System.out.print("Opção: ");
 
             escolha = input.nextInt();
@@ -146,7 +146,7 @@ public class MenuLocadora {
         Scanner input = new Scanner(System.in);
 
         do {
-            System.out.println("\nMENU VEICULO");
+            System.out.println("\n====== MENU VEICULO ======");
             System.out.println("1) Adicionar Veículo");
             System.out.println("2) Excluir Veículo");
             System.out.println("3) Visualizar um veículo específico");
@@ -157,7 +157,7 @@ public class MenuLocadora {
             System.out.println("8) Editar Caminhão");
             System.out.println("9) Editar ano do veículo");
             System.out.println("10) Editar diaria do veículo");
-            System.out.println("11) Sair");
+            System.out.println("11) Voltar");
             System.out.print("Opção: ");
             escolha = input.nextInt();
 
@@ -224,6 +224,8 @@ public class MenuLocadora {
                     break;
             }
         } while(escolha != 11);
+
+
     }
 
 
@@ -232,12 +234,13 @@ public class MenuLocadora {
         int escolha = 0;
 
         do {
-            System.out.println("\nMENU CARRO");
+            System.out.println("\n====== MENU CARRO ======");
             System.out.println("1) Alterar número de passageiros");
             System.out.println("2) Alterar número de portas");
             System.out.println("3) Alterar média de KM'S");
             System.out.println("4) Alterar ar-condicionado");
-            System.out.println("5) Sair");
+            System.out.println("5) Voltar");
+            System.out.print("Opção: ");
             escolha = input.nextInt();
 
             switch (escolha) {
@@ -280,12 +283,13 @@ public class MenuLocadora {
         int escolha = 0;
 
         do {
-            System.out.println("\nMENU ÔNIBUS");
+            System.out.println("\n====== MENU ÔNIBUS ======");
             System.out.println("1) Alterar número de passageiros");
             System.out.println("2) Alterar categoria");
             System.out.println("3) Alterar wifi");
             System.out.println("4) Alterar ar-condicionado");
-            System.out.println("5) Sair");
+            System.out.println("5) Voltar");
+            System.out.print("Opção: ");
             escolha = input.nextInt();
 
             switch (escolha) {
@@ -328,11 +332,13 @@ public class MenuLocadora {
         int escolha = 0;
 
         do {
-            System.out.println("\nMENU CAMINHÃO");
+            System.out.println("\n====== MENU CAMINHÃO ======");
             System.out.println("1) Alterar número de eixos");
             System.out.println("2) Alterar carga máxima");
-            System.out.println("3) Sair");
+            System.out.println("3) Voltar");
+            System.out.print("Opção: ");
             escolha = input.nextInt();
+            
 
             switch (escolha) {
 
@@ -357,7 +363,7 @@ public class MenuLocadora {
                     break;
                     
             }
-        } while (escolha != 3); 
+        } while (escolha != 3);
     }
 
 
@@ -367,12 +373,12 @@ public class MenuLocadora {
         int escolha = 0;
         
         do {
-            System.out.println("\nMENU LOCAÇÃO");
+            System.out.println("\n====== MENU LOCAÇÃO ======");
             System.out.println("1) Adicionar Locação");
             System.out.println("2) Remover Locação");
             System.out.println("3) Visualizar Locações");
             System.out.println("4) Visualizar uma Locação específica");
-            System.out.println("5) Sair");
+            System.out.println("5) Voltar");
             System.out.print("Opção: ");
             escolha = input.nextInt();
 

@@ -43,10 +43,10 @@ public class Carro extends Veiculo {
             arcondicionadoStr = "Não";
         }
 
-        return super.toString() + " Numero de Passageiros: " + numeroPassageiros + 
-                                  " Numero Portas: " + numeroPortas + 
-                                  " Media km: " + mediaKM + 
-                                  " Ar-Condicionado: " + arcondicionadoStr;
+        return super.toString() + "; Numero de Passageiros: " + numeroPassageiros + 
+                                  "; Numero Portas: " + numeroPortas + 
+                                  "; Media km: " + mediaKM + 
+                                  "; Ar-Condicionado: " + arcondicionadoStr;
     }
 
 }

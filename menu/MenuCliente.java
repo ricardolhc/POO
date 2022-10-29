@@ -82,6 +82,7 @@ public class MenuCliente {
         cpf = input.nextLong();
 
         if(listaClientes.existe(cpf)) {
+            System.out.println("\n====== INFORMAÇÕES DO CLIENTE ======");
             System.out.println(listaClientes.getInfo(cpf));
         } else {
             System.out.println("CPF não existente!");
@@ -90,6 +91,7 @@ public class MenuCliente {
 
     public void getInformacoesClientes() {
         if(listaClientes.getInfo() != null) {
+            System.out.println("\n====== INFORMAÇÕES DE TODOS OS CLIENTES ======");
             System.out.println(listaClientes.getInfo());
         } else {
             System.out.println("Não foi possível imprimir as informações");
@@ -98,6 +100,7 @@ public class MenuCliente {
 
     public void getInformacoesClientesResumo() {
         if(listaClientes.getResumoInfo() != null) {
+            System.out.println("\n====== RESUMO DAS INFORMAÇÕES DE TODOS OS CLIENTES ======");
             System.out.println(listaClientes.getResumoInfo());
         } else {
             System.out.println("Não foi possível imprimir as informações");
@@ -115,6 +118,7 @@ public class MenuCliente {
             input.nextLine();
             System.out.print("Digite o novo nome: ");
             listaClientes.setNome(cpf, input.nextLine());
+            System.out.println("Nome alterado com sucesso!");
         } else {
             System.out.println("O CPF informado não existe!");
         }
@@ -130,6 +134,7 @@ public class MenuCliente {
         if(listaClientes.existe(cpf)) {
             System.out.print("Digite o novo numero: ");
             listaClientes.setNumeroCarteira(cpf, input.nextInt());
+            System.out.println("Numero da carteira de motorista alterado com sucesso!");
         } else {
             System.out.println("O CPF informado não existe!");
         }
@@ -146,6 +151,7 @@ public class MenuCliente {
             input.nextLine();
             System.out.print("Digite o novo endereco: ");
             listaClientes.setEndereco(cpf, input.nextLine());
+            System.out.println("Endereço alterado com sucesso!");            
         } else {
             System.out.println("O CPF informado não existe!");
         }
@@ -160,6 +166,7 @@ public class MenuCliente {
 
         if(listaClientes.existe(cpf)) {
             System.out.print("Digite o novo telefone: ");
+            System.out.println("Telefone alterado com sucesso!");
             listaClientes.setTelefone(cpf, input.nextInt());
         } else {
             System.out.println("O CPF informado não existe!");

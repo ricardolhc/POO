@@ -49,10 +49,10 @@ public class Onibus extends Veiculo {
             wifiStr = "Não";
         }
 
-        return super.toString() + " Numero de Passageiros: " + numeroPassageiros + 
-                                  " Categoria: " + categoria.getCategoria() + 
-                                  " Wifi: " + wifiStr + 
-                                  " Ar-Condicionado: " + arcondicionadoStr;
+        return super.toString() + "; Numero de Passageiros: " + numeroPassageiros + 
+                                  "; Categoria: " + categoria.getCategoria() + 
+                                  "; Wifi: " + wifiStr + 
+                                  "; Ar-Condicionado: " + arcondicionadoStr;
     }
 
 }

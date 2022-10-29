@@ -31,7 +31,7 @@ public class Cliente {
     public int getTelefone() { return telefone; }
 
     public String getResumo() {
-        return "CPF: " + cpf + " Nome: " + nome;
+        return "Nome: " + nome + " CPF: " + cpf;
     }
 
     public void setNome(String nome) { this.nome=nome; }
@@ -44,10 +44,10 @@ public class Cliente {
 
     public String toString() {
         return "Nome: " + nome + 
-               " CPF: " + cpf + 
-               " Endereço: " + endereco + 
-               " Carteira de Motorista: " + numeroCarteiraMotorista + 
-               " Telefone: " + telefone;
+               "; CPF: " + cpf + 
+               "; Endereço: " + endereco + 
+               "; Carteira de Motorista: " + numeroCarteiraMotorista + 
+               "; Telefone: " + telefone;
     }
 
 }
