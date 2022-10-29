@@ -154,8 +154,14 @@ public class MenuVeiculo {
             }
         } while (numeroPortas <=0 || numeroPortas > 4);
 
-        System.out.print("Digite a media de KM por litro: ");
-        mediaKM = input.nextDouble();
+        do{
+            System.out.print("Digite a media de KM por litro: ");
+            mediaKM = input.nextDouble();
+
+            if (mediaKM <=0){
+                System.out.println("Média de KM inválida!");
+            }
+        } while (mediaKM <= 0);
 
         do {
             System.out.println("Possui Ar-Condicionado?");
@@ -218,8 +224,14 @@ public class MenuVeiculo {
 
         int escolha = 0;
 
-        System.out.print("Digite a quantidade de passageiros: ");
-        numeroPassageiros = input.nextInt();
+        do{
+            System.out.print("Digite a quantidade de passageiros: ");
+            numeroPassageiros = input.nextInt();
+
+            if (numeroPassageiros <=0 || numeroPassageiros > 61){
+                System.out.println("Número de passageiros inválido!");
+            }
+        } while (numeroPassageiros <=0 || numeroPassageiros > 61);
 
         do {
             System.out.println("Possui wifi?");
