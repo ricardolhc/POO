@@ -155,6 +155,7 @@ public class MenuLocadora {
     private void menuVeiculo() {
         int escolha = 0;
         Scanner input = new Scanner(System.in);
+        String placa = null;
 
         do {
             System.out.println("\n====== MENU VEICULO ======");
@@ -163,12 +164,8 @@ public class MenuLocadora {
             System.out.println("3) Visualizar um veículo específico");
             System.out.println("4) Visualizar todos os veículos");
             System.out.println("5) Visualizar o resumo de todos os veículos");
-            System.out.println("6) Editar Carro");
-            System.out.println("7) Editar Ônibus");
-            System.out.println("8) Editar Caminhão");
-            System.out.println("9) Editar ano do veículo");
-            System.out.println("10) Editar diaria do veículo");
-            System.out.println("11) Voltar");
+            System.out.println("6) Editar Veículo");
+            System.out.println("7) Voltar");
             System.out.print("Opção: ");
             escolha = input.nextInt();
 
@@ -201,31 +198,12 @@ public class MenuLocadora {
 
                 //Editar carro
                 case 6:
-                    menuCarro();
+                    placa = menuVeiculo.receberPlaca();
+                    selecionarMenu(placa);
                     break;
 
-                //Editar ônibus
+                //Voltar
                 case 7:
-                    menuOnibus();
-                    break;
-
-                //Editar caminhão
-                case 8:
-                    menuCaminhao();
-                    break;
-
-                //Editar ano do veículo
-                case 9:
-                    menuVeiculo.alteraAno();
-                    break;
-
-                //Editar diaria do veículo
-                case 10:
-                    menuVeiculo.alteraDiaria();
-                    break;
-
-                //Sair
-                case 11:
                     System.out.println("Você escolheu sair do menu veiculo!");
                     break;
 
@@ -235,12 +213,40 @@ public class MenuLocadora {
                     break;
             }
         } while(escolha != 11);
+    }
 
+    private void selecionarMenu(String placa) {
+        int tipoVeiculo = menuVeiculo.receberTipo(placa);
 
+        if(placa != null) {
+            switch(tipoVeiculo) {
+                //Erro
+                case 0:
+                    System.out.println("ERRO INESPERADO!");
+                    break;
+
+                //Carro
+                case 1:
+                    menuCarro(placa);
+                    break;
+
+                //Caminhao
+                case 2:
+                    menuCaminhao(placa);
+                    break;
+
+                //Onibus
+                case 3:
+                    menuOnibus(placa);
+                    break;
+            }
+        } else {
+            System.out.println("Placa não encontrada no sistema!");
+        }
     }
 
 
-    private void menuCarro() {
+    private void menuCarro(String placa) {
         Scanner input = new Scanner(System.in);
         int escolha = 0;
 
@@ -250,7 +256,8 @@ public class MenuLocadora {
             System.out.println("2) Alterar número de portas");
             System.out.println("3) Alterar média de KM'S");
             System.out.println("4) Alterar ar-condicionado");
-            System.out.println("5) Voltar");
+            imprimirOpcoesDefault(5);
+            System.out.println("7) Voltar");
             System.out.print("Opção: ");
             escolha = input.nextInt();
 
@@ -258,26 +265,36 @@ public class MenuLocadora {
 
                 //Alterar número de passageiros
                 case 1:
-                    menuVeiculo.alteraNumeroPassageiroCarro();
+                    menuVeiculo.alteraNumeroPassageiroCarro(placa);
                     break;
 
                 //Alterar número de portas
                 case 2:
-                    menuVeiculo.alteraNumeroPortaCarro();
+                    menuVeiculo.alteraNumeroPortaCarro(placa);
                     break;
 
                 //Alterar média de KM
                 case 3:
-                    menuVeiculo.alteraMediaKmCarro();
+                    menuVeiculo.alteraMediaKmCarro(placa);
                     break;
                 
                 //Alterar ar-condicionado
                 case 4:
-                    menuVeiculo.alteraArCondicionadoCarro();
+                    menuVeiculo.alteraArCondicionadoCarro(placa);
+                    break;
+
+                //Alterar ano
+                case 5:
+                    menuVeiculo.alteraAno(placa);
+                    break;
+
+                //Alterar diaria
+                case 6:
+                    menuVeiculo.alteraDiaria(placa);
                     break;
 
                 //Sair
-                case 5:
+                case 7:
                     System.out.println("Você escolheu sair do menu carro!");
                     break;
 
@@ -286,10 +303,10 @@ public class MenuLocadora {
                     System.out.println("Você digitou uma opção inválida!");
                     break;
             }
-        } while (escolha != 5); 
+        } while (escolha != 7); 
     }
 
-    private void menuOnibus() {
+    private void menuOnibus(String placa) {
         Scanner input = new Scanner(System.in);
         int escolha = 0;
 
@@ -299,7 +316,8 @@ public class MenuLocadora {
             System.out.println("2) Alterar categoria");
             System.out.println("3) Alterar wifi");
             System.out.println("4) Alterar ar-condicionado");
-            System.out.println("5) Voltar");
+            imprimirOpcoesDefault(5);
+            System.out.println("7) Voltar");
             System.out.print("Opção: ");
             escolha = input.nextInt();
 
@@ -307,26 +325,36 @@ public class MenuLocadora {
 
                 //Alterar número de passageiros
                 case 1:
-                    menuVeiculo.alteraNumeroPassageiroOnibus();
+                    menuVeiculo.alteraNumeroPassageiroOnibus(placa);
                     break;
 
                 //Alterar categoria
                 case 2:                                            
-                    menuVeiculo.alteraCategoriaOnibus();
+                    menuVeiculo.alteraCategoriaOnibus(placa);
                     break;
 
                 //Alterar wifi
                 case 3:
-                    menuVeiculo.alteraWifiOnibus();
+                    menuVeiculo.alteraWifiOnibus(placa);
                     break;
                 
                 //Alterar ar-condicionado
                 case 4:
-                    menuVeiculo.alteraArCondicionadoOnibus();
+                    menuVeiculo.alteraArCondicionadoOnibus(placa);
+                    break;
+
+                //Alterar ano
+                case 5:
+                    menuVeiculo.alteraAno(placa);
+                    break;
+
+                //Alterar diaria
+                case 6:
+                    menuVeiculo.alteraDiaria(placa);
                     break;
 
                 //Sair
-                case 5:
+                case 7:
                     System.out.println("Você escolheu sair do menu ônibus!");
                     break;
 
@@ -335,10 +363,10 @@ public class MenuLocadora {
                     System.out.println("Você digitou uma opção inválida!");
                     break;
             }
-        } while (escolha != 5); 
+        } while (escolha != 7); 
     }
 
-    private void menuCaminhao() {
+    private void menuCaminhao(String placa) {
         Scanner input = new Scanner(System.in);
         int escolha = 0;
 
@@ -346,25 +374,35 @@ public class MenuLocadora {
             System.out.println("\n====== MENU CAMINHÃO ======");
             System.out.println("1) Alterar número de eixos");
             System.out.println("2) Alterar carga máxima");
-            System.out.println("3) Voltar");
+            imprimirOpcoesDefault(3);
+            System.out.println("5) Voltar");
             System.out.print("Opção: ");
             escolha = input.nextInt();
             
-
             switch (escolha) {
 
                 //Alterar número de eixos
                 case 1:
-                    menuVeiculo.alteraEixoCaminhao();
+                    menuVeiculo.alteraEixoCaminhao(placa);
                     break;
 
                 //Alterar carga máxima
                 case 2:
-                    menuVeiculo.alteraCargaMaximaCaminhao();
+                    menuVeiculo.alteraCargaMaximaCaminhao(placa);
+                    break;
+
+                //Alterar ano
+                case 3:
+                    menuVeiculo.alteraAno(placa);
+                    break;
+
+                //Alterar diaria
+                case 4:
+                    menuVeiculo.alteraDiaria(placa);
                     break;
 
                 //Sair
-                case 3:
+                case 5:
                     System.out.println("Você escolheu sair do menu caminhão!");
                     break;
 
@@ -374,7 +412,7 @@ public class MenuLocadora {
                     break;
                     
             }
-        } while (escolha != 3);
+        } while (escolha != 5);
     }
 
 
@@ -426,7 +464,11 @@ public class MenuLocadora {
 
             }
         } while(escolha != 5);
-        
-        
     }
+
+    private void imprimirOpcoesDefault(int inicio) {
+        System.out.println(inicio + ") Editar ano do veículo");
+        System.out.println((inicio + 1) + ") Editar diaria do veículo");
+    }
+
 }
