@@ -1,16 +1,27 @@
 package menu;
 import java.util.Scanner;
 
+import controlelista.ListaClientes;
+import controlelista.ListaLocacoes;
+import controlelista.ListaVeiculos;
+
 public class MenuLocadora {
     
     private MenuLocacao menuLocacao;
     private MenuCliente menuCliente;
     private MenuVeiculo menuVeiculo;
 
-    public MenuLocadora() {
-        menuLocacao = new MenuLocacao();
-        menuCliente = new MenuCliente();
-        menuVeiculo = new MenuVeiculo();
+    private ListaClientes listaClientes;
+    private ListaLocacoes listaLocacoes;
+    private ListaVeiculos listaVeiculos;
+
+    public MenuLocadora(ListaClientes listaClientes, ListaLocacoes listaLocacoes, ListaVeiculos listaVeiculos) {
+        this.listaClientes = listaClientes;
+        this.listaLocacoes = listaLocacoes;
+        this.listaVeiculos = listaVeiculos;
+        menuLocacao = new MenuLocacao(listaLocacoes, listaClientes, listaVeiculos);
+        menuCliente = new MenuCliente(listaClientes);
+        menuVeiculo = new MenuVeiculo(listaVeiculos);
     }
 
     public void menu() {
@@ -385,7 +396,7 @@ public class MenuLocadora {
             switch(escolha) {
                 //Adicionar Locação
                 case 1:
-                    menuLocacao.adicionarLocacao(menuCliente.getListaClientes(), menuVeiculo.getListaVeiculos());
+                    menuLocacao.adicionarLocacao();
                     break;
 
                 //Remover Locação

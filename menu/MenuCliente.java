@@ -9,8 +9,8 @@ public class MenuCliente {
 
     private ListaClientes listaClientes;
 
-    public MenuCliente() {
-        listaClientes = new ListaClientes();
+    public MenuCliente(ListaClientes listaClientes) {
+        this.listaClientes = listaClientes;
     }
 
     public ListaClientes getListaClientes() {
@@ -33,7 +33,7 @@ public class MenuCliente {
             if (cpf < 10000000000L || cpf > 99999999999L) {
                 System.out.println("CPF inválido!");
             } else {
-                if (listaClientes.existe(cpf)) {
+                if(listaClientes.existe(cpf)) {
                     System.out.print("O CPF já está adicionado no sistema!");
                 }
             }

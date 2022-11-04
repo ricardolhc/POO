@@ -11,12 +11,16 @@ import java.util.Scanner;
 public class MenuLocacao {
     
     private ListaLocacoes listaLocacoes;
+    private ListaClientes listaClientes;
+    private ListaVeiculos listaVeiculos;
 
-    public MenuLocacao() {
-        listaLocacoes = new ListaLocacoes();
+    public MenuLocacao(ListaLocacoes listaLocacoes, ListaClientes listaClientes, ListaVeiculos listaVeiculos) {
+        this.listaLocacoes = listaLocacoes;
+        this.listaClientes = listaClientes;
+        this.listaVeiculos = listaVeiculos;
     }
 
-    public void adicionarLocacao(ListaClientes listaClientes, ListaVeiculos listaVeiculos) {
+    public void adicionarLocacao() {
 
         Scanner input = new Scanner(System.in);
 

@@ -12,8 +12,8 @@ public class MenuVeiculo {
     
     private ListaVeiculos listaVeiculos;
 
-    public MenuVeiculo() {
-        listaVeiculos = new ListaVeiculos();
+    public MenuVeiculo(ListaVeiculos listaVeiculos) {
+        this.listaVeiculos = listaVeiculos;
     }
 
     public ListaVeiculos getListaVeiculos() {
@@ -140,7 +140,7 @@ public class MenuVeiculo {
             System.out.print("Digite a quantidade de passageiros: ");
             numeroPassageiros = input.nextInt();
 
-            if (numeroPassageiros <=0 || numeroPassageiros > 5){
+            if (numeroPassageiros <= 0 || numeroPassageiros > 5){
                 System.out.println("Número de passageiros inválido!");
             }
         } while (numeroPassageiros <= 0 || numeroPassageiros > 5);
@@ -149,7 +149,7 @@ public class MenuVeiculo {
             System.out.print("Digite a quantidade de portas: ");
             numeroPortas = input.nextInt();
 
-            if(numeroPortas <=0 || numeroPortas > 4){
+            if(numeroPortas <= 0 || numeroPortas > 4){
                 System.out.println("Número de portas inválido!");
             }
         } while (numeroPortas <=0 || numeroPortas > 4);
