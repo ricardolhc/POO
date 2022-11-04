@@ -194,21 +194,19 @@ public class MenuVeiculo {
         do {
             System.out.print("Digite o numero de eixos: ");
             numeroEixos = input.nextInt();
-
-            if(numeroEixos <= 0) {
-                System.out.println("Digite um número não negativo e diferente de zero");
+            if(numeroEixos <= 0 || numeroEixos > 10) {
+                System.out.println("Número de eixos inválido!");
             }
-        } while(numeroEixos <= 0);
-        
+        } while(numeroEixos <= 0 || numeroEixos > 10);
 
         do {
             System.out.print("Digite a carga máxima: ");
             cargaMaxima = input.nextInt();
 
-            if(cargaMaxima <= 0) {
-                System.out.println("Digite um número não negativo e diferente de zero");
+            if(cargaMaxima <= 0 || cargaMaxima > 100000) {
+                System.out.println("Carga máxima inválida!");
             }
-        } while(cargaMaxima <= 0);
+        } while(cargaMaxima <= 0 || cargaMaxima > 100000);
         
         listaVeiculos.add(new Caminhao(placa, ano, diaria, numeroEixos, cargaMaxima));
         System.out.println("Caminhão adicionado com sucesso");
@@ -622,9 +620,15 @@ public class MenuVeiculo {
          if(listaVeiculos.existe(placa)) {
             if(listaVeiculos.get(placa) instanceof Caminhao) {
                 System.out.print("Digite o novo número de eixos: ");
+                
                 numeroEixos = input.nextInt();
-                listaVeiculos.setNumeroEixoCaminhao(placa, numeroEixos);
-                System.out.println("Número de eixos alterado com sucesso");
+
+                if (numeroEixos > 1 || numeroEixos > 10) {
+                    listaVeiculos.setNumeroEixoCaminhao(placa, numeroEixos);
+                    System.out.println("Número de eixos alterado com sucesso");
+                } else {
+                    System.out.println("Número de eixos inválido!");
+                }
             } else {
                 System.out.println("A placa informada não é de um caminhão!");
             }
@@ -644,10 +648,12 @@ public class MenuVeiculo {
         
         if(listaVeiculos.existe(placa)) {
             if(listaVeiculos.get(placa) instanceof Caminhao) {
-                System.out.print("Digite a nova carga máxima: ");
+                System.out.print("Digite a carga máxima: ");
                 cargaMaxima = input.nextInt();
-                listaVeiculos.setCargaMaximaCaminhao(placa, cargaMaxima);
-                System.out.println("Carga máxima alterada com sucesso!");
+
+                if(cargaMaxima <= 0 || cargaMaxima > 100000) {
+                    System.out.println("Carga máxima inválida!");
+                }
             } else {
                 System.out.println("A placa informada não é de um caminhão!");
             }
