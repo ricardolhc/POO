@@ -1,4 +1,9 @@
-
+/**
+ * A classe Main é responsável por executar o programa.
+ * @author Mateus, Maurício, Ricardo, Tales
+ * @since nov 2022
+ * @version 1.0
+ */
 
 import controlelista.ListaClientes;
 import controlelista.ListaLocacoes;

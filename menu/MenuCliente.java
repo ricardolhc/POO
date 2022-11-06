@@ -5,18 +5,34 @@ import java.util.Scanner;
 import controlelista.Cliente;
 import controlelista.ListaClientes;
 
+
+
 public class MenuCliente {
 
+    /**
+     * O atributo listaClientes, do tipo ListaClientes, e utilizado para armazenar os clientes
+     */
     private ListaClientes listaClientes;
 
     public MenuCliente(ListaClientes listaClientes) {
         this.listaClientes = listaClientes;
     }
 
+    
+    /** 
+     * Retorna a lista de clientes
+     * @return ListaClientes
+     */
     public ListaClientes getListaClientes() {
         return listaClientes;
     }
 
+
+    /**
+     * captura as informãoes e adiciona um cliente 
+     * valida cpf e verifica se já existe
+     * retorna uma mensagem se o cliente foi adicionado com sucesso
+     */
     public void adicionaCliente() {
         Scanner input = new Scanner(System.in);
 
@@ -60,6 +76,11 @@ public class MenuCliente {
 
     }
 
+    
+    /**
+     * Imprime uma mensagem pedindo o cpf para a remoção, 
+     * caso não exista o cpf ele imprimirá uma mensagem de erro
+     */
     public void removeCliente() {
         Scanner input = new Scanner(System.in);
         long cpf = 0;
@@ -74,6 +95,10 @@ public class MenuCliente {
         }
     }
 
+    /**
+     * imprime uma mensagem pedindo o cpf para a remoção de informações,
+     * caso não exista o cpf imprime uma mensagem de erro.
+     */
     public void getInformacaoCliente() {
         Scanner input = new Scanner(System.in);
         long cpf = 0;
@@ -89,6 +114,9 @@ public class MenuCliente {
         }
     }
 
+    /**
+     * imprime as informações de todos os clientes
+     */
     public void getInformacoesClientes() {
         if(listaClientes.getInfo() != null) {
             System.out.println("\n====== INFORMAÇÕES DE TODOS OS CLIENTES ======");
@@ -98,6 +126,9 @@ public class MenuCliente {
         } 
     }
 
+    /**
+     * imprime um resumo das informações dos clientes
+     */
     public void getInformacoesClientesResumo() {
         if(listaClientes.getResumoInfo() != null) {
             System.out.println("\n====== RESUMO DAS INFORMAÇÕES DE TODOS OS CLIENTES ======");
@@ -107,6 +138,10 @@ public class MenuCliente {
         }
     }
 
+    /**
+     * imprime uma mensagem pedindo o cpf para a alteração do nome do cliente,
+     * caso não exista o cpf imprime uma mensagem de erro.
+     */
     public void alteraNome() {
         Scanner input = new Scanner(System.in);
         long cpf = 0;
@@ -124,6 +159,10 @@ public class MenuCliente {
         }
     }
 
+    /**
+     * imprime uma mensagem pedindo o cpf para a alteração do número da carteira,
+     * caso não exista o cpf imprime uma mensagem de erro.
+     */
     public void alteraNumeroCarteira() {
         Scanner input = new Scanner(System.in);
         long cpf = 0;
@@ -140,6 +179,10 @@ public class MenuCliente {
         }
     }
 
+    /**
+     * imprime uma mensagem pedindo o cpf para a alteração do endereço do cliente,
+     * caso não exista o cpf imprime uma mensagem de erro.
+     */
     public void alteraEndereco() {
         Scanner input = new Scanner(System.in);
         long cpf = 0;
@@ -157,6 +200,10 @@ public class MenuCliente {
         }
     }
 
+    /**
+     * imprime uma mensagem pedindo o cpf para a alteração do telefone do cliente,
+     * caso não exista o cpf imprime uma mensagem de erro.
+     */
     public void alteraTelefone() {
         Scanner input = new Scanner(System.in);
         long cpf = 0;

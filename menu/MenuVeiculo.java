@@ -7,16 +7,31 @@ import veiculo.*;
 
 public class MenuVeiculo {
     
+    /**
+     * O atributo listaVeiculos, do tipo ListaVeiculos, e utilizado para indentificar a lista de veiculos
+     */
     private ListaVeiculos listaVeiculos;
 
+    /**
+     * Construtor default da classe MenuVeiculo<br>
+     * <b>Uso: </b>
+     * MenuVeiculo menuVeiculo = new MenuVeiculo(listaVeiculos);<br><br>
+     * @param listaVeiculos ListaVeiculos que identifica a lista de veiculos
+     */
     public MenuVeiculo(ListaVeiculos listaVeiculos) {
         this.listaVeiculos = listaVeiculos;
     }
 
+    /**
+     * @return ListaVeiculos que identifica a lista de veiculos
+     */
     public ListaVeiculos getListaVeiculos() {
         return listaVeiculos;
     }
 
+    /** 
+     * Verifica se possui veículos na listaVeiculos, caso possua imprime uma lista com as informações de todos os veículos.
+     */
     public void imprimirInfoVeiculos() {
         if(listaVeiculos.getInfo() != null) {
             System.out.println("\n====== INFORMAÇÕES DE TODOS OS VEICULOS ======");
@@ -26,6 +41,9 @@ public class MenuVeiculo {
         }
     }
 
+    /** 
+     * Recebe uma placa, verifica se ela existe na listaVeiculos e caso possua imprime as informações do veículo.
+     */
     public void getInformacaoVeiculo() {
         Scanner input = new Scanner(System.in);
         String placa = null;
@@ -41,6 +59,9 @@ public class MenuVeiculo {
         }
     }
 
+    /** 
+     * Verifica se possui veículos na listaVeiculos, caso possua imprime uma lista com as informções da placa, diária e ano.
+     */
     public void imprimirResumoVeiculos() {
         if(listaVeiculos.getResumoInfo() != null) {
            System.out.println("\n====== RESUMO DAS INFORMAÇÕES DE TODOS OS VEICULOS ======");
@@ -50,6 +71,12 @@ public class MenuVeiculo {
         }   
     }
 
+    /** 
+     * Recebe uma placa e verifica se a placa já existe no sistema;
+     * Recebe um ano e verifica se o ano é válido;
+     * Recebe uma diária e verifica se a diária é valida;
+     * Logo em seguida, pede qual veículo será adicionado e encaminha para o menu de sua escolha.
+     */
     public void adicionaVeiculo() {
         Scanner input = new Scanner(System.in);
 
@@ -123,6 +150,15 @@ public class MenuVeiculo {
 
     }
 
+     /** 
+     * Recebe uma quantidade de passageiros e verifica se a quantidade é válida;
+     * Recebe uma quantidade de portas e verifica se a quantidade é válida;
+     * Recebe uma média de KM'S e verifica se a média é válida;
+     * Recebe se o carro possui ar-condicionado e verifica se a resposta é válida;
+     * @param placa 
+     * @param ano
+     * @param diaria 
+     */
     public void cadastrarCarro(String placa, int ano, double diaria) {
         Scanner input = new Scanner(System.in);
         
@@ -182,6 +218,14 @@ public class MenuVeiculo {
         System.out.println("Carro adicionado com sucesso");
     }
 
+
+    /** 
+     * Recebe uma quantidade de eixos e verifica se a quantidade é válida;
+     * Recebe uma carga máxima e verifica se a carga é válida.
+     * @param placa 
+     * @param ano
+     * @param diaria 
+     */
     public void cadastrarCaminhao(String placa, int ano, double diaria) {
         Scanner input = new Scanner(System.in);
 
@@ -209,6 +253,16 @@ public class MenuVeiculo {
         System.out.println("Caminhão adicionado com sucesso");
     }
 
+    /** 
+     * Recebe uma quantidade de passageiros e verifica se a quantidade é válida;
+     * Recebe se o ônibus possui wifi e verifica se a resposta é válida;
+     * Recebe se o ônibus possui ar-condicionado e verifica se a resposta é válida;
+     * Recebe a categoria do assento e verifica se a resposta é válida;
+     * Caso passar por todos verificações adiciona um ônibus.
+     * @param placa 
+     * @param ano
+     * @param diaria 
+     */
     public void cadastrarOnibus(String placa, int ano, double diaria) {
         Scanner input = new Scanner(System.in);
 
@@ -289,7 +343,10 @@ public class MenuVeiculo {
         System.out.println("Ônibus adicionado com sucesso");
 
     }
-
+    /** 
+     * Recebe um novo ano e altera;
+     * @param placa 
+     */
     public void alteraAno(String placa) {
         Scanner input = new Scanner(System.in);
         int ano = 0;
@@ -300,6 +357,10 @@ public class MenuVeiculo {
         System.out.println("Ano alterado com sucesso!");
     }
 
+    /** 
+     * Recebe uma nova diária e altera;
+     * @param placa 
+     */
     public void alteraDiaria(String placa) {
         Scanner input = new Scanner(System.in);
         double diaria = 0.0;
@@ -313,6 +374,11 @@ public class MenuVeiculo {
     /* FAZER OS SETS DE CADA CATEGORIA DE VEICULO */
 
     /* ALTERA DO CARRO */
+
+    /** 
+     * Recebe um novo número de passageiros e altera;
+     * @param placa 
+     */
     public void alteraNumeroPassageiroCarro(String placa) {
         Scanner input = new Scanner(System.in);
         int numeroPasseiros = 0;
@@ -329,6 +395,10 @@ public class MenuVeiculo {
             
     }
 
+    /** 
+     * Recebe um novo número de portas e altera;
+     * @param placa 
+     */
     public void alteraNumeroPortaCarro(String placa) {
         Scanner input = new Scanner(System.in);
         int numeroPortas = 0;
@@ -346,6 +416,10 @@ public class MenuVeiculo {
             
     }
 
+    /** 
+     * Recebe uma nova média de KM's e altera;
+     * @param placa 
+     */
     public void alteraMediaKmCarro(String placa) {
         Scanner input = new Scanner(System.in);
 
@@ -362,6 +436,10 @@ public class MenuVeiculo {
         }
     }
 
+    /** 
+     * Recebe uma nova atribuição para o ar-condicionado e altera;
+     * @param placa 
+     */
     public void alteraArCondicionadoCarro(String placa) {
         Scanner input = new Scanner(System.in);
         int escolha = 0;
@@ -392,6 +470,11 @@ public class MenuVeiculo {
     }
 
     /* ALTERA DO ONIBUS  */
+    
+    /** 
+     * Recebe um novo número de passageiros e altera;
+     * @param placa 
+     */
     public void alteraNumeroPassageiroOnibus(String placa) {
         Scanner input = new Scanner(System.in);
         int numeroPassageiros = 0;
@@ -402,7 +485,10 @@ public class MenuVeiculo {
         System.out.println("Número de passageiros alterado com sucesso!");
             
     }
-
+     /** 
+     * Recebe uma nova categoria de assento e altera;
+     * @param placa 
+     */
     public void alteraCategoriaOnibus(String placa) {
         Scanner input = new Scanner(System.in);
 
@@ -434,6 +520,11 @@ public class MenuVeiculo {
             
     }
 
+   
+    /** 
+     * Recebe uma nova atribuição para o wifi e altera;
+     * @param placa 
+     */
     public void alteraWifiOnibus(String placa) {
         Scanner input = new Scanner(System.in);
         int escolha = 0;
@@ -462,6 +553,10 @@ public class MenuVeiculo {
             
     }
         
+    /** 
+     * Recebe uma nova atribuição para o ar-condicionado e altera;
+     * @param placa 
+     */
     public void alteraArCondicionadoOnibus(String placa) {
         Scanner input = new Scanner(System.in);
         int escolha = 0;

@@ -7,14 +7,51 @@ import controlelista.ListaVeiculos;
 
 public class MenuLocadora {
     
+    /**
+     * O atributo MenuLocacao é uma instancia da classe MenuLocacao
+     */
+     
     private MenuLocacao menuLocacao;
+    /**
+    * O atributo MenuCliente é uma instancia da classe MenuCliente 
+    */
+
     private MenuCliente menuCliente;
+
+    /**
+    * O atributo MenuVeiculo é uma instancia da classe MenuVeiculo  
+    */
+
     private MenuVeiculo menuVeiculo;
 
+    /**
+    * O atributo listaClientes é uma instancia da classe ListaClientes   
+    */
+
+
     private ListaClientes listaClientes;
+
+    /**
+    * O atributo listaVeiculos é uma instancia da classe ListaVeiculos   
+    */ 
+
     private ListaLocacoes listaLocacoes;
+
+    /**
+    * O atributo listaLocacoes é uma instancia da classe ListaLocacoes    
+    */
+
     private ListaVeiculos listaVeiculos;
 
+
+    /**
+     * Construtor default da classe MenuLocadora<br>
+     * <b>Uso: </b>
+     * MenuLocadora menuLocadora = new MenuLocadora(listaClientes, listaLocacoes, listaVeiculos);<br><br>
+     * @param listaClientes ListaClientes que identifica a lista de clientes
+     * @param listaLocacoes ListaLocacoes que identifica a lista de locacoes
+     * @param listaVeiculos ListaVeiculos que identifica a lista de veiculos
+     */
     public MenuLocadora(ListaClientes listaClientes, ListaLocacoes listaLocacoes, ListaVeiculos listaVeiculos) {
         this.listaClientes = listaClientes;
         this.listaLocacoes = listaLocacoes;
@@ -24,6 +61,11 @@ public class MenuLocadora {
         menuVeiculo = new MenuVeiculo(listaVeiculos);
     }
 
+    /**
+     * Método que exibe o menu principal da locadora<br>
+     * <b>Uso: </b>
+     * menuLocadora.exibirMenu();<br><br>
+     */
     public void menu() {
         Scanner input = new Scanner(System.in);
         int escolha = 0;
@@ -68,7 +110,11 @@ public class MenuLocadora {
         } while(escolha != 4);
     }
    
-    // CLIENTE
+    /**
+     * Método que exibe o menu de clientes<br>
+     * <b>Uso: </b>
+     * menuLocadora.menuCliente();<br><br>
+     */
     private void menuCliente() {
         Scanner input = new Scanner(System.in);
         int escolha = 0;
@@ -149,9 +195,12 @@ public class MenuLocadora {
         } while(escolha != 10);
     }
 
- 
+    /* 
+    * 
+    *
+    */
     
-    // VEICULO
+    /
     private void menuVeiculo() {
         int escolha = 0;
         Scanner input = new Scanner(System.in);
@@ -212,9 +261,13 @@ public class MenuLocadora {
                     System.out.println("Você digitou uma opção inválida!");
                     break;
             }
-        } while(escolha != 11);
+        } while(escolha != 7);
     }
 
+    
+    /** 
+     * @param placa
+     */
     private void selecionarMenu(String placa) {
         int tipoVeiculo = menuVeiculo.receberTipo(placa);
 
@@ -246,6 +299,10 @@ public class MenuLocadora {
     }
 
 
+    
+    /** 
+     * @param placa
+     */
     private void menuCarro(String placa) {
         Scanner input = new Scanner(System.in);
         int escolha = 0;
@@ -306,6 +363,10 @@ public class MenuLocadora {
         } while (escolha != 7); 
     }
 
+    
+    /** 
+     * @param placa
+     */
     private void menuOnibus(String placa) {
         Scanner input = new Scanner(System.in);
         int escolha = 0;
@@ -366,6 +427,10 @@ public class MenuLocadora {
         } while (escolha != 7); 
     }
 
+    
+    /** 
+     * @param placa
+     */
     private void menuCaminhao(String placa) {
         Scanner input = new Scanner(System.in);
         int escolha = 0;
@@ -466,6 +531,10 @@ public class MenuLocadora {
         } while(escolha != 5);
     }
 
+    
+    /** 
+     * @param inicio
+     */
     private void imprimirOpcoesDefault(int inicio) {
         System.out.println(inicio + ") Editar ano do veículo");
         System.out.println((inicio + 1) + ") Editar diaria do veículo");

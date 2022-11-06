@@ -10,9 +10,20 @@ import java.util.Scanner;
 
 public class MenuLocacao {
     
+    /**
+     *
+     */
     private ListaLocacoes listaLocacoes;
+    /**
+     *
+     */
     private ListaClientes listaClientes;
+    /**
+     *
+     */
     private ListaVeiculos listaVeiculos;
+
+
 
     public MenuLocacao(ListaLocacoes listaLocacoes, ListaClientes listaClientes, ListaVeiculos listaVeiculos) {
         this.listaLocacoes = listaLocacoes;
@@ -20,6 +31,11 @@ public class MenuLocacao {
         this.listaVeiculos = listaVeiculos;
     }
 
+
+    /** 
+     * @param inicioFim
+     * @return int
+     */
     public void adicionarLocacao() {
 
         Scanner input = new Scanner(System.in);
@@ -96,6 +112,7 @@ public class MenuLocacao {
     }
 
 
+
     public void mostrarInfoLocacao(){
         Scanner input = new Scanner(System.in);
         int codigo = 0;
@@ -112,6 +129,7 @@ public class MenuLocacao {
     }
 
     
+
     public void mostrarInfoLocacoes() {
         if(listaLocacoes.getInfo() != null) {
             System.out.println(listaLocacoes.getInfo());
@@ -119,6 +137,7 @@ public class MenuLocacao {
             System.out.println("Não existem locações");
         }
     }
+
 
     public void removerLocacao() {
         Scanner input = new Scanner(System.in);
@@ -135,6 +154,11 @@ public class MenuLocacao {
     }
     
 
+    
+    /** 
+     * @param inicioFim
+     * @return int
+     */
     /* FACILITADORES */
     public int cadastrarDia(String inicioFim) {
         Scanner input = new Scanner(System.in);
@@ -152,6 +176,11 @@ public class MenuLocacao {
         return dia;
     }
 
+    
+    /** 
+     * @param inicioFim
+     * @return int
+     */
     public int cadastrarMes(String inicioFim) {
         Scanner input = new Scanner(System.in);
 

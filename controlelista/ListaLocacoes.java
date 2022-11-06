@@ -4,17 +4,33 @@ import java.util.ArrayList;
 
 public class ListaLocacoes implements ILocacoes {
 
+    /**
+     * Arraylist do tipo Locacao para armazenar as locações
+     */
     private ArrayList<Locacao> locacoes;
 
+
+    /**
+     * Construtor default da classe ListaLocacoes<br>
+     */
     public ListaLocacoes() {
         locacoes = new ArrayList<Locacao>();
     }
 
+    
+    /** 
+     * @param l do tipo Locacao que adiciona a locacao no arraylist
+     */
     @Override
     public void add(Locacao l) {
         locacoes.add(l);
     }
 
+    
+    /** 
+     * @param codigo do tipo int que é usado para procurar a locacao
+     * @return Locacao que tem o codigo informado
+     */
     @Override
     public Locacao get(int codigo) {
         for(int i = 0; i < locacoes.size(); i++) {
@@ -25,6 +41,11 @@ public class ListaLocacoes implements ILocacoes {
         return null;
     }
 
+    
+    /** 
+     * @param codigo do tipo int que é usado para procurar a locacao
+     * @return String com as informações da locacao
+     */
     @Override
     public String getInfo(int codigo) {
         if(existe(codigo)) {
@@ -34,6 +55,10 @@ public class ListaLocacoes implements ILocacoes {
         return null;
     }
 
+    
+    /** 
+     * @return String com as informações de todas as locacoes
+     */
     @Override
     public String getInfo() {
         if(locacoes.size() >= 1) {
@@ -46,6 +71,11 @@ public class ListaLocacoes implements ILocacoes {
         return null;
     }
 
+    
+    /** 
+     * @param codigo do tipo int que é usado para procurar a locacao
+     * @return boolean se a remoção foi feita com sucesso
+     */
     @Override
     public boolean remove(int codigo) {
         if(existe(codigo)) {
@@ -56,6 +86,11 @@ public class ListaLocacoes implements ILocacoes {
         return false;
     }
 
+    
+    /** 
+     * @param codigo do tipo int que é usado para procurar a locacao
+     * @return boolean se a locacao existe
+     */
     @Override
     public boolean existe(int codigo) {
         Locacao locacao = get(codigo);
