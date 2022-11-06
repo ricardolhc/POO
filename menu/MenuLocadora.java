@@ -1,3 +1,10 @@
+/**
+ * A classe MenuLocadora modela e integra os outros menus para a gerencia.
+ * @author Mateus, Maurício, Ricardo, Tales
+ * @since nov 2022
+ * @version 1.0
+ */
+
 package menu;
 import java.util.Scanner;
 
@@ -200,7 +207,11 @@ public class MenuLocadora {
     *
     */
     
-    /
+    /**
+     * Método que exibe o menu de veiculos<br>
+     * <b>Uso: </b>
+     * menuLocadora.menuVeiculo();<br><br>
+     */
     private void menuVeiculo() {
         int escolha = 0;
         Scanner input = new Scanner(System.in);
@@ -265,8 +276,9 @@ public class MenuLocadora {
     }
 
     
-    /** 
-     * @param placa
+    /**
+     * Método que exibe o menu de acordo com o veículo
+     * @param placa placa do veículo que será buscado
      */
     private void selecionarMenu(String placa) {
         int tipoVeiculo = menuVeiculo.receberTipo(placa);
@@ -300,8 +312,9 @@ public class MenuLocadora {
 
 
     
-    /** 
-     * @param placa
+    /**
+     * Método que exibe o menu de carros<br>
+     * @param placa placa do carro que será buscado
      */
     private void menuCarro(String placa) {
         Scanner input = new Scanner(System.in);
@@ -364,8 +377,9 @@ public class MenuLocadora {
     }
 
     
-    /** 
-     * @param placa
+    /**
+     * Método que exibe o menu de Onibus<br>
+     * @param placa placa do onibus que será buscado
      */
     private void menuOnibus(String placa) {
         Scanner input = new Scanner(System.in);
@@ -429,7 +443,8 @@ public class MenuLocadora {
 
     
     /** 
-     * @param placa
+     * Método que exibe o menu de caminhões<br>
+     * @param placa placa do caminhão que será buscado
      */
     private void menuCaminhao(String placa) {
         Scanner input = new Scanner(System.in);
@@ -481,7 +496,9 @@ public class MenuLocadora {
     }
 
 
-    //LOCACAO
+    /**
+     * Método que exibe o menu de Locacao<br>
+     */
     private void menuLocacao() {
         Scanner input = new Scanner(System.in);
         int escolha = 0;
@@ -532,8 +549,9 @@ public class MenuLocadora {
     }
 
     
-    /** 
-     * @param inicio
+    /**
+     * Método que imprime as opções default dos veículos
+     * @param inicio int que indica a partir de qual opção deve ser impresso
      */
     private void imprimirOpcoesDefault(int inicio) {
         System.out.println(inicio + ") Editar ano do veículo");

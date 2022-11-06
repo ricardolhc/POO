@@ -1,3 +1,10 @@
+/**
+ * A classe MenuVeiculo modela o menu para cadastro, busca e modificação de informações do veiculo.
+ * @author Mateus, Maurício, Ricardo, Tales
+ * @since nov 2022
+ * @version 1.0
+ */
+
 package menu;
 
 import java.util.Scanner;
@@ -587,6 +594,10 @@ public class MenuVeiculo {
 
     /* ALTERA DO CAMINHAO */
 
+     /** 
+     * Recebe um novo número de eixos e altera;
+     * @param placa 
+     */
     public void alteraEixoCaminhao(String placa) {
         Scanner input = new Scanner(System.in);
         int numeroEixos = 0;
@@ -603,6 +614,10 @@ public class MenuVeiculo {
             
     }
 
+    /** 
+     * Recebe uma nova carga máxima e altera;
+     * @param placa 
+     */
     public void alteraCargaMaximaCaminhao(String placa) {
         Scanner input = new Scanner(System.in);
         int cargaMaxima = 0;
@@ -615,6 +630,10 @@ public class MenuVeiculo {
         }
     }
 
+    /** 
+     * Recebe uma placa e verifica se ela existe;
+     * Caso exista é removido, se não é informado que a placa do véiculo não existe.
+     */
     public void removerVeiculo() {
         Scanner input = new Scanner(System.in);
         String placa = null;
@@ -628,6 +647,11 @@ public class MenuVeiculo {
         }
     }
 
+    /** 
+     * Recebe uma placa e verifica se ela existe;
+     * Se ela existir retorna a placa.
+     * @return String
+     */
     public String receberPlaca() {
         Scanner input = new Scanner(System.in);
         String placa = null;

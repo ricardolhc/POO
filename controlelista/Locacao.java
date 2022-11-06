@@ -1,6 +1,6 @@
 /**
  * A classe Locacao modela uma locacao do sistema.
- * @author Ricardo, Tales, Mateus, Mauricio
+ * @author Mateus, Maurício, Ricardo, Tales
  * @since nov 2022
  * @version 1.0
  */

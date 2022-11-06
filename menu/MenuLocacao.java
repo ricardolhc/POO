@@ -1,3 +1,10 @@
+/**
+ * A classe MenuLocacao modela o menu para cadastro, busca e modificação de informações da locacao.
+ * @author Mateus, Maurício, Ricardo, Tales
+ * @since nov 2022
+ * @version 1.0
+ */
+
 package menu;
 
 import controlelista.ListaClientes;
@@ -11,20 +18,25 @@ import java.util.Scanner;
 public class MenuLocacao {
     
     /**
-     *
+     * O atributo listaLocacoes, do tipo ListaLocacoes, e utilizado para armazenar as locacoes
      */
     private ListaLocacoes listaLocacoes;
     /**
-     *
+     * O atributo listaClientes, do tipo ListaClientes, e utilizado para armazenar os clientes
      */
     private ListaClientes listaClientes;
     /**
-     *
+     * O atributo listaVeiculos, do tipo ListaVeiculos, e utilizado para armazenar os veiculos
      */
     private ListaVeiculos listaVeiculos;
 
 
-
+    /**
+     * Construtor default MenuLocacao, recebe como parametro as listas de locacoes, clientes e veiculos
+     * @param listaLocacoes lista de locacoes que identifica as locacoes
+     * @param listaClientes lista de clientes que identifica os clientes
+     * @param listaVeiculos lista de veiculos que identifica os veiculos
+     */
     public MenuLocacao(ListaLocacoes listaLocacoes, ListaClientes listaClientes, ListaVeiculos listaVeiculos) {
         this.listaLocacoes = listaLocacoes;
         this.listaClientes = listaClientes;
@@ -33,8 +45,8 @@ public class MenuLocacao {
 
 
     /** 
-     * @param inicioFim
-     * @return int
+     * 
+     * Menu para adicionar uma locação no sistema
      */
     public void adicionarLocacao() {
 
@@ -112,7 +124,10 @@ public class MenuLocacao {
     }
 
 
-
+    /**
+     * 
+     * Menu para obter obter informações de uma locação
+     */
     public void mostrarInfoLocacao(){
         Scanner input = new Scanner(System.in);
         int codigo = 0;
@@ -128,8 +143,10 @@ public class MenuLocacao {
 
     }
 
-    
-
+    /**
+     * 
+     * Menu para mostrar informações de todas as locações
+     */
     public void mostrarInfoLocacoes() {
         if(listaLocacoes.getInfo() != null) {
             System.out.println(listaLocacoes.getInfo());
@@ -138,7 +155,10 @@ public class MenuLocacao {
         }
     }
 
-
+    /**
+     * 
+     * Menu para remover uma locação do sistema
+     */
     public void removerLocacao() {
         Scanner input = new Scanner(System.in);
         int codigo = 0;
@@ -156,10 +176,9 @@ public class MenuLocacao {
 
     
     /** 
-     * @param inicioFim
-     * @return int
+     * @param inicioFim String que identifica se é a data inicial ou final
+     * @return int a data do dia
      */
-    /* FACILITADORES */
     public int cadastrarDia(String inicioFim) {
         Scanner input = new Scanner(System.in);
 
@@ -178,8 +197,8 @@ public class MenuLocacao {
 
     
     /** 
-     * @param inicioFim
-     * @return int
+     * @param inicioFim String que identifica se é a data inicial ou final
+     * @return int a data do mês
      */
     public int cadastrarMes(String inicioFim) {
         Scanner input = new Scanner(System.in);

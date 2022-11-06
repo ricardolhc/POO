@@ -1,3 +1,10 @@
+/**
+ * A classe ListaLocacoes é responsável por armazenar as locações de um cliente.
+ * @author Mateus, Maurício, Ricardo, Tales
+ * @since nov 2022
+ * @version 1.0
+ */
+
 package controlelista;
 
 import java.util.ArrayList;

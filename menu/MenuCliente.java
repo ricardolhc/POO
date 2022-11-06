@@ -1,11 +1,16 @@
+/**
+ * A classe MenuCliente modela o menu para cadastro, busca e modificação de informações do cliente.
+ * @author Mateus, Maurício, Ricardo, Tales
+ * @since nov 2022
+ * @version 1.0
+ */
+
 package menu;
 
 import java.util.Scanner;
 
 import controlelista.Cliente;
 import controlelista.ListaClientes;
-
-
 
 public class MenuCliente {
 

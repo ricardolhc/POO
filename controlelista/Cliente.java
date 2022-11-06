@@ -1,3 +1,10 @@
+/**
+ * A classe Cliente modela um cliente do sistema.
+ * @author Mateus, Maurício, Ricardo, Tales
+ * @since nov 2022
+ * @version 1.0
+ */
+
 package controlelista;
 
 public class Cliente {

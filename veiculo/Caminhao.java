@@ -1,3 +1,10 @@
+/**
+ * A classe Caminhao modela um caminhao do sistema.
+ * @author Ricardo, Tales, Mateus, Mauricio
+ * @since nov 2022
+ * @version 1.0
+ */
+
 package veiculo;
 
 public class Caminhao extends Veiculo {

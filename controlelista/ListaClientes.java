@@ -1,3 +1,10 @@
+/**
+ * A classe ListaClientes representa uma lista de clientes.
+ * @author Mateus, Maurício, Ricardo, Tales
+ * @since nov 2022
+ * @version 1.0
+ */
+
 package controlelista;
 
 import java.util.ArrayList;
@@ -19,7 +26,6 @@ public class ListaClientes implements IClientes {
 
     
     /** 
-     * Adiciona um cliente no arraylist de clientes 
      * @param c parâmetro necesário para adicionar o cliente
      */
     @Override
@@ -29,7 +35,6 @@ public class ListaClientes implements IClientes {
 
     
     /** 
-     * Procura na arraylist de clientes se o cpf existe
      * @param CPF cpf do cliente a ser procurado
      * @return O cliente que tem o cpf informado
      */

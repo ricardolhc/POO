@@ -1,3 +1,10 @@
+/**
+ * A classe ListaVeiculos modela uma lista de veiculos.
+ * @author Mateus, Maurício, Ricardo, Tales
+ * @since nov 2022
+ * @version 1.0
+ */
+
 package controlelista;
 
 import java.util.ArrayList;
@@ -10,6 +17,9 @@ public class ListaVeiculos implements IVeiculos {
      */
     private ArrayList<Veiculo> veiculos;
 
+    /**
+     * Construtor default da classe
+     */
     public ListaVeiculos() {
         veiculos = new ArrayList<Veiculo>();
     }
