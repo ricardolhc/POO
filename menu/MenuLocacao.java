@@ -45,8 +45,7 @@ public class MenuLocacao {
 
 
     /** 
-     * 
-     * Menu para adicionar uma locação no sistema
+     * O metodo menuLocacao, do tipo void, e utilizado para exibir o menu de locacao
      */
     public void adicionarLocacao() {
 
@@ -125,7 +124,6 @@ public class MenuLocacao {
 
 
     /**
-     * 
      * Menu para obter obter informações de uma locação
      */
     public void mostrarInfoLocacao(){
@@ -136,6 +134,7 @@ public class MenuLocacao {
         codigo = input.nextInt();
 
         if(listaLocacoes.existe(codigo)) {
+            System.out.println("\n====== INFORMAÇÕES DA LOCAÇÃO ======");
             System.out.println(listaLocacoes.getInfo(codigo));
         } else {
             System.out.println("Código da locação não existe");
@@ -144,11 +143,11 @@ public class MenuLocacao {
     }
 
     /**
-     * 
      * Menu para mostrar informações de todas as locações
      */
     public void mostrarInfoLocacoes() {
         if(listaLocacoes.getInfo() != null) {
+            System.out.println("\n====== INFORMAÇÕES DA LOCAÇÃO ======");
             System.out.println(listaLocacoes.getInfo());
         } else {
             System.out.println("Não existem locações");
@@ -156,7 +155,6 @@ public class MenuLocacao {
     }
 
     /**
-     * 
      * Menu para remover uma locação do sistema
      */
     public void removerLocacao() {
@@ -170,6 +168,85 @@ public class MenuLocacao {
             System.out.println("Código da locação não existe");
         } else {
             System.out.println("Locação removida com sucesso");
+        }
+    }
+
+    /**
+     * Menu para alterar a data inicial de uma locação
+     */
+    public void alteraDataInicial() {
+        Scanner input = new Scanner(System.in);
+        int codigo = 0;
+
+        Calendar dataInicial = Calendar.getInstance();
+
+        System.out.print("\nDigite o código da locação que deseja alterar a data inicial: ");
+        codigo = input.nextInt();
+
+        if(listaLocacoes.existe(codigo)) {
+            int dia = 0;
+            int mes = 0;
+            int ano = 0;
+
+            dia = cadastrarDia("inicial");
+            mes = cadastrarMes("inicial");
+            System.out.print("Informe o ano inicial: ");
+            ano = input.nextInt();
+
+            dataInicial.set(ano, mes - 1, dia);
+
+            long dataInicialLong = dataInicial.getTimeInMillis() / (1000 * 60 * 60 * 24);
+            long dataFinalLong = listaLocacoes.get(codigo).getDataFinal().getTimeInMillis() / (1000 * 60 * 60 * 24);
+
+            if(dataFinalLong <= dataInicialLong) {
+                System.out.println("A data inicial não pode ser maior ou igual que a data final");
+            } else {
+                listaLocacoes.get(codigo).setDataInicial(dataInicial);
+                System.out.println("Data inicial alterada com sucesso");
+            }
+
+        } else {
+            System.out.println("Código da locação não existe");
+        }
+    }
+
+
+    /**
+     * Menu para alterar a data final de uma locação
+     */
+    public void alteraDataFinal() {
+        Scanner input = new Scanner(System.in);
+        int codigo = 0;
+
+        Calendar dataFinal = Calendar.getInstance();
+
+        System.out.print("\nDigite o código da locação que deseja alterar a data final: ");
+        codigo = input.nextInt();
+
+        if(listaLocacoes.existe(codigo)) {
+            int dia = 0;
+            int mes = 0;
+            int ano = 0;
+
+            dia = cadastrarDia("final");
+            mes = cadastrarMes("final");
+            System.out.print("Informe o ano final: ");
+            ano = input.nextInt();
+
+            dataFinal.set(ano, mes - 1, dia);
+
+            long dataInicialLong = listaLocacoes.get(codigo).getDataInicial().getTimeInMillis() / (1000 * 60 * 60 * 24);
+            long dataFinalLong = dataFinal.getTimeInMillis() / (1000 * 60 * 60 * 24);
+
+            if(dataInicialLong >= dataFinalLong) {
+                System.out.println("A data final não pode ser menor ou igual que a data inicial");
+            } else {
+                listaLocacoes.get(codigo).setDataFinal(dataFinal);
+                System.out.println("Data final alterada com sucesso");
+            }
+
+        } else {
+            System.out.println("Código da locação não existe");
         }
     }
     

@@ -86,7 +86,7 @@ public class Locacao {
     /** 
      * @return Calendar que identifica a data inicial da locacao
      */
-    public Calendar getDatainicial() { 
+    public Calendar getDataInicial() { 
         return dataInicial; 
     }
 
@@ -94,7 +94,7 @@ public class Locacao {
     /** 
      * @return Calendar que identifica a data final da locacao
      */
-    public Calendar getDatafinal() { 
+    public Calendar getDataFinal() { 
         return dataFinal; 
     }
 

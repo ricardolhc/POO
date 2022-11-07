@@ -101,7 +101,9 @@ public abstract class Veiculo {
      * @return String que identifica as informações básicas do veículo
      */
     public String getResumo() {
-        return toString();
+        return "Placa: " + placa + 
+               "; Ano: " + ano + 
+               "; Diaria: " + diaria;
     }
 
 }

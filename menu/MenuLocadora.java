@@ -509,7 +509,9 @@ public class MenuLocadora {
             System.out.println("2) Remover Locação");
             System.out.println("3) Visualizar Locações");
             System.out.println("4) Visualizar uma Locação específica");
-            System.out.println("5) Voltar");
+            System.out.println("5) Editar data inicial");
+            System.out.println("6) Editar data final");
+            System.out.println("7) Voltar");
             System.out.print("Opção: ");
             escolha = input.nextInt();
 
@@ -533,9 +535,19 @@ public class MenuLocadora {
                 case 4:
                     menuLocacao.mostrarInfoLocacao();
                     break;
+
+                //Editar data inicial
+                case 5:
+                    menuLocacao.alteraDataInicial();
+                    break;
+
+                //Editar data final
+                case 6:
+                    menuLocacao.alteraDataFinal();
+                    break;
                 
                 //Sair
-                case 5:
+                case 7:
                     System.out.println("Você escolheu sair do menu locação");
                     break;
 
@@ -545,7 +557,7 @@ public class MenuLocadora {
                     break;
 
             }
-        } while(escolha != 5);
+        } while(escolha != 7);
     }
 
     
