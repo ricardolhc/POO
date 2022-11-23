@@ -40,12 +40,12 @@ public class ListaClientes implements IClientes {
      */
     @Override   
     public Cliente get(long CPF) {
-        for(int i = 0; i < clientes.size(); i++) {
-            if(clientes.get(i).getCpf() == CPF) {
-                return clientes.get(i);
+        for(Cliente cliente : clientes) {
+            if(cliente.getCpf() == CPF) {
+                return cliente;
             }
         }
-        return null;
+        throw new NullPointerException("Cliente não encontrado");
     }
 
     
@@ -55,11 +55,11 @@ public class ListaClientes implements IClientes {
      */
     @Override
     public String getInfo(long CPF) {
-        if(existe(CPF)) {
-            Cliente cliente = get(CPF);
-            return cliente.toString(); 
+        try {
+            return get(CPF).toString();
+        } catch (NullPointerException e) {
+            return e.getMessage();
         }
-        return null;
     }
 
     
@@ -68,14 +68,14 @@ public class ListaClientes implements IClientes {
      */
     @Override
     public String getInfo() {
-        if(clientes.size() >= 1) {
+        if(clientes.size() > 0) {
             String conteudo = "";
             for(Cliente cliente : clientes) {
                 conteudo += cliente.toString() + "\n";
             }
             return conteudo;
         }
-        return null;
+        throw new NullPointerException("Não existem clientes cadastrados");
     }
 
     
@@ -84,14 +84,14 @@ public class ListaClientes implements IClientes {
      */
     @Override
     public String getResumoInfo() {
-        if(clientes.size() >= 1) {
+        if(clientes.size() > 0) {
             String conteudo = "";
             for(Cliente cliente : clientes) {
                 conteudo += cliente.getResumo() + "\n";
             }
             return conteudo;
         }
-        return null;
+        throw new NullPointerException("Não existem clientes cadastrados");
     }
 
     
@@ -101,12 +101,12 @@ public class ListaClientes implements IClientes {
      */
     @Override
     public boolean remove(long CPF) {
-        if(existe(CPF)) {
-            Cliente cliente = get(CPF);
-            clientes.remove(cliente);
+        try {
+            clientes.remove(get(CPF));
             return true;
+        } catch (NullPointerException e) {
+            return false;
         }
-        return false;
     }
 
     
@@ -116,11 +116,12 @@ public class ListaClientes implements IClientes {
      */
     @Override
     public boolean existe(long CPF) {
-        Cliente cliente = get(CPF);
-        if(cliente != null) {
+        try {
+            get(CPF);
             return true;
+        } catch (NullPointerException e) {
+            return false;
         }
-        return false;
     }
 
     
