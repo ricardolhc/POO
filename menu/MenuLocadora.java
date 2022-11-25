@@ -36,19 +36,21 @@ public class MenuLocadora {
     */
 
 
-    private ListaClientes listaClientes;
+    //private ListaClientes listaClientes;
 
     /**
     * O atributo listaVeiculos é uma instancia da classe ListaVeiculos   
     */ 
 
-    private ListaLocacoes listaLocacoes;
+    //private ListaLocacoes listaLocacoes;
 
     /**
     * O atributo listaLocacoes é uma instancia da classe ListaLocacoes    
     */
 
-    private ListaVeiculos listaVeiculos;
+    //private ListaVeiculos listaVeiculos;
+
+    private Scanner input;
 
 
     /**
@@ -59,13 +61,14 @@ public class MenuLocadora {
      * @param listaLocacoes ListaLocacoes que identifica a lista de locacoes
      * @param listaVeiculos ListaVeiculos que identifica a lista de veiculos
      */
-    public MenuLocadora(ListaClientes listaClientes, ListaLocacoes listaLocacoes, ListaVeiculos listaVeiculos) {
-        this.listaClientes = listaClientes;
-        this.listaLocacoes = listaLocacoes;
-        this.listaVeiculos = listaVeiculos;
-        menuLocacao = new MenuLocacao(listaLocacoes, listaClientes, listaVeiculos);
-        menuCliente = new MenuCliente(listaClientes);
-        menuVeiculo = new MenuVeiculo(listaVeiculos);
+    public MenuLocadora(ListaClientes listaClientes, ListaLocacoes listaLocacoes, ListaVeiculos listaVeiculos, Scanner input) {
+        this.input = input;
+        //this.listaClientes = listaClientes;
+        //this.listaLocacoes = listaLocacoes;
+        //this.listaVeiculos = listaVeiculos;
+        menuLocacao = new MenuLocacao(listaLocacoes, listaClientes, listaVeiculos, input);
+        menuCliente = new MenuCliente(listaClientes, input);
+        menuVeiculo = new MenuVeiculo(listaVeiculos, input);
     }
 
     /**
@@ -74,7 +77,6 @@ public class MenuLocadora {
      * menuLocadora.exibirMenu();<br><br>
      */
     public void menu() {
-        Scanner input = new Scanner(System.in);
         int escolha = 0;
 
         do {
@@ -123,7 +125,6 @@ public class MenuLocadora {
      * menuLocadora.menuCliente();<br><br>
      */
     private void menuCliente() {
-        Scanner input = new Scanner(System.in);
         int escolha = 0;
         
         do {
@@ -214,7 +215,6 @@ public class MenuLocadora {
      */
     private void menuVeiculo() {
         int escolha = 0;
-        Scanner input = new Scanner(System.in);
         String placa = null;
 
         do {
@@ -317,7 +317,6 @@ public class MenuLocadora {
      * @param placa placa do carro que será buscado
      */
     private void menuCarro(String placa) {
-        Scanner input = new Scanner(System.in);
         int escolha = 0;
 
         do {
@@ -382,7 +381,6 @@ public class MenuLocadora {
      * @param placa placa do onibus que será buscado
      */
     private void menuOnibus(String placa) {
-        Scanner input = new Scanner(System.in);
         int escolha = 0;
 
         do {
@@ -447,7 +445,6 @@ public class MenuLocadora {
      * @param placa placa do caminhão que será buscado
      */
     private void menuCaminhao(String placa) {
-        Scanner input = new Scanner(System.in);
         int escolha = 0;
 
         do {
@@ -500,7 +497,6 @@ public class MenuLocadora {
      * Método que exibe o menu de Locacao<br>
      */
     private void menuLocacao() {
-        Scanner input = new Scanner(System.in);
         int escolha = 0;
         
         do {

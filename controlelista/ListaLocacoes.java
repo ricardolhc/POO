@@ -45,7 +45,7 @@ public class ListaLocacoes implements ILocacoes {
                 return locacoes.get(i);
             }
         }
-        return null;
+        throw new NullPointerException("Locação não encontrada");
     }
 
     
@@ -55,11 +55,11 @@ public class ListaLocacoes implements ILocacoes {
      */
     @Override
     public String getInfo(int codigo) {
-        if(existe(codigo)) {
-            Locacao locacao = get(codigo);
-            return locacao.toString();
+        try {
+            return get(codigo).toString();
+        } catch (NullPointerException e) {
+            return e.getMessage();
         }
-        return null;
     }
 
     
@@ -75,7 +75,7 @@ public class ListaLocacoes implements ILocacoes {
             }
             return conteudo;
         }
-        return null;
+        throw new NullPointerException("Não existem locações cadastradas");
     }
 
     
@@ -85,12 +85,13 @@ public class ListaLocacoes implements ILocacoes {
      */
     @Override
     public boolean remove(int codigo) {
-        if(existe(codigo)) {
-            Locacao locacao = get(codigo);
-            locacoes.remove(locacao);
+        try {
+            locacoes.remove(get(codigo));
             return true;
+        } catch(NullPointerException e) {
+            System.out.println("Erro: " + e.getMessage());
+            return false;
         }
-        return false;
     }
 
     
@@ -100,11 +101,13 @@ public class ListaLocacoes implements ILocacoes {
      */
     @Override
     public boolean existe(int codigo) {
-        Locacao locacao = get(codigo);
-        if(locacao != null) {
+        try {
+            get(codigo);
             return true;
+        } catch (NullPointerException e) {
+            System.out.println("Erro: " + e.getMessage());
+            return false;
         }
-        return false;
     }
 
 }

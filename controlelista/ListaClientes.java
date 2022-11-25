@@ -41,7 +41,7 @@ public class ListaClientes implements IClientes {
     @Override   
     public Cliente get(long CPF) {
         for(Cliente cliente : clientes) {
-            if(cliente.getCpf() == CPF) {
+            if(Long.parseLong(cliente.getCpf()) == CPF) {
                 return cliente;
             }
         }
@@ -105,6 +105,7 @@ public class ListaClientes implements IClientes {
             clientes.remove(get(CPF));
             return true;
         } catch (NullPointerException e) {
+            System.out.println("Erro: " + e.getMessage());
             return false;
         }
     }

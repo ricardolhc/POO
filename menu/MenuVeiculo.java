@@ -19,22 +19,20 @@ public class MenuVeiculo {
      */
     private ListaVeiculos listaVeiculos;
 
+    private Scanner input;
+
+
     /**
      * Construtor default da classe MenuVeiculo<br>
      * <b>Uso: </b>
      * MenuVeiculo menuVeiculo = new MenuVeiculo(listaVeiculos);<br><br>
      * @param listaVeiculos ListaVeiculos que identifica a lista de veiculos
      */
-    public MenuVeiculo(ListaVeiculos listaVeiculos) {
+    public MenuVeiculo(ListaVeiculos listaVeiculos, Scanner input) {
+        this.input = input;
         this.listaVeiculos = listaVeiculos;
     }
 
-    /**
-     * @return ListaVeiculos que identifica a lista de veiculos
-     */
-    public ListaVeiculos getListaVeiculos() {
-        return listaVeiculos;
-    }
 
     /** 
      * Verifica se possui veículos na listaVeiculos, caso possua imprime uma lista com as informações de todos os veículos.
@@ -52,7 +50,6 @@ public class MenuVeiculo {
      * Recebe uma placa, verifica se ela existe na listaVeiculos e caso possua imprime as informações do veículo.
      */
     public void getInformacaoVeiculo() {
-        Scanner input = new Scanner(System.in);
         String placa = null;
 
         System.out.print("\nDigite a placa que se deseja obter as informaçôes: ");
@@ -85,8 +82,6 @@ public class MenuVeiculo {
      * Logo em seguida, pede qual veículo será adicionado e encaminha para o menu de sua escolha.
      */
     public void adicionaVeiculo() {
-        Scanner input = new Scanner(System.in);
-
         String placa = null;
         double diaria = 0.0;
         int modeloCarro = 0;
@@ -167,7 +162,6 @@ public class MenuVeiculo {
      * @param diaria 
      */
     public void cadastrarCarro(String placa, int ano, double diaria) {
-        Scanner input = new Scanner(System.in);
         
         int numeroPassageiros = 0;
         int numeroPortas = 0;
@@ -234,7 +228,6 @@ public class MenuVeiculo {
      * @param diaria 
      */
     public void cadastrarCaminhao(String placa, int ano, double diaria) {
-        Scanner input = new Scanner(System.in);
 
         int numeroEixos = 0;
         int cargaMaxima = 0;
@@ -271,7 +264,6 @@ public class MenuVeiculo {
      * @param diaria 
      */
     public void cadastrarOnibus(String placa, int ano, double diaria) {
-        Scanner input = new Scanner(System.in);
 
         int numeroPassageiros = 0;
         Categoria categoria = Categoria.CONVENCIONAL;
@@ -355,7 +347,6 @@ public class MenuVeiculo {
      * @param placa 
      */
     public void alteraAno(String placa) {
-        Scanner input = new Scanner(System.in);
         int ano = 0;
 
         System.out.print("Digite o novo ano: ");
@@ -369,7 +360,6 @@ public class MenuVeiculo {
      * @param placa 
      */
     public void alteraDiaria(String placa) {
-        Scanner input = new Scanner(System.in);
         double diaria = 0.0;
 
         System.out.print("Digite a nova diaria: ");
@@ -387,7 +377,6 @@ public class MenuVeiculo {
      * @param placa 
      */
     public void alteraNumeroPassageiroCarro(String placa) {
-        Scanner input = new Scanner(System.in);
         int numeroPasseiros = 0;
 
         System.out.print("Digite o novo número de passageiros: ");
@@ -407,7 +396,6 @@ public class MenuVeiculo {
      * @param placa 
      */
     public void alteraNumeroPortaCarro(String placa) {
-        Scanner input = new Scanner(System.in);
         int numeroPortas = 0;
 
         System.out.print("Digite o novo número de portas: ");
@@ -419,8 +407,6 @@ public class MenuVeiculo {
             listaVeiculos.setNumeroPortaCarro(placa, numeroPortas);
             System.out.print("Número de portas alterado com sucesso!");
         }
-                    
-            
     }
 
     /** 
@@ -428,8 +414,6 @@ public class MenuVeiculo {
      * @param placa 
      */
     public void alteraMediaKmCarro(String placa) {
-        Scanner input = new Scanner(System.in);
-
         double mediaKm = 0.0;
         
         System.out.print("Digite a nova media de km: ");
@@ -448,7 +432,6 @@ public class MenuVeiculo {
      * @param placa 
      */
     public void alteraArCondicionadoCarro(String placa) {
-        Scanner input = new Scanner(System.in);
         int escolha = 0;
         boolean arcondicionado = false;
 
@@ -472,8 +455,6 @@ public class MenuVeiculo {
                 System.out.println("Ar-condicionado alterado com sucesso!");
             }
         } while(escolha < 1 || escolha > 2);
-                
-           
     }
 
     /* ALTERA DO ONIBUS  */
@@ -483,7 +464,6 @@ public class MenuVeiculo {
      * @param placa 
      */
     public void alteraNumeroPassageiroOnibus(String placa) {
-        Scanner input = new Scanner(System.in);
         int numeroPassageiros = 0;
         
         System.out.print("Digite o novo número de passageiros: ");
@@ -497,8 +477,6 @@ public class MenuVeiculo {
      * @param placa 
      */
     public void alteraCategoriaOnibus(String placa) {
-        Scanner input = new Scanner(System.in);
-
         int escolha = 0;
         Categoria categoria = Categoria.CONVENCIONAL;
         
@@ -533,7 +511,6 @@ public class MenuVeiculo {
      * @param placa 
      */
     public void alteraWifiOnibus(String placa) {
-        Scanner input = new Scanner(System.in);
         int escolha = 0;
         boolean wifi = false;
 
@@ -555,9 +532,7 @@ public class MenuVeiculo {
                 listaVeiculos.setWifiOnibus(placa, wifi);
                 System.out.println("Wifi alterado com sucesso");
             }
-        } while(escolha < 1 || escolha > 2);
-
-            
+        } while(escolha < 1 || escolha > 2);  
     }
         
     /** 
@@ -565,7 +540,6 @@ public class MenuVeiculo {
      * @param placa 
      */
     public void alteraArCondicionadoOnibus(String placa) {
-        Scanner input = new Scanner(System.in);
         int escolha = 0;
         boolean arcondicionado = false;
 
@@ -587,9 +561,7 @@ public class MenuVeiculo {
                 listaVeiculos.setArcondicionadoOnibus(placa, arcondicionado);
                 System.out.println("Ar-condicionado alterado com sucesso");
             }
-        } while(escolha < 1 || escolha > 2);
-
-            
+        } while(escolha < 1 || escolha > 2);       
     }
 
     /* ALTERA DO CAMINHAO */
@@ -599,7 +571,6 @@ public class MenuVeiculo {
      * @param placa 
      */
     public void alteraEixoCaminhao(String placa) {
-        Scanner input = new Scanner(System.in);
         int numeroEixos = 0;
         
         System.out.print("Digite o novo número de eixos: ");
@@ -619,7 +590,6 @@ public class MenuVeiculo {
      * @param placa 
      */
     public void alteraCargaMaximaCaminhao(String placa) {
-        Scanner input = new Scanner(System.in);
         int cargaMaxima = 0;
         
         System.out.print("Digite a carga máxima: ");
@@ -635,7 +605,6 @@ public class MenuVeiculo {
      * Caso exista é removido, se não é informado que a placa do véiculo não existe.
      */
     public void removerVeiculo() {
-        Scanner input = new Scanner(System.in);
         String placa = null;
 
         System.out.print("\nA placa do veiculo que deseja remover: ");
@@ -653,7 +622,6 @@ public class MenuVeiculo {
      * @return String
      */
     public String receberPlaca() {
-        Scanner input = new Scanner(System.in);
         String placa = null;
 
         System.out.print("\nDigite a placa do veiculo que deseja alterar: ");

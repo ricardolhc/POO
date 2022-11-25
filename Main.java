@@ -5,6 +5,8 @@
  * @version 1.0
  */
 
+import java.util.Scanner;
+
 import controlelista.ListaClientes;
 import controlelista.ListaLocacoes;
 import controlelista.ListaVeiculos;
@@ -12,7 +14,7 @@ import menu.MenuLocadora;
 
 public class Main {
     public static void main(String[] args) {
-       MenuLocadora menuLocadora = new MenuLocadora(new ListaClientes(), new ListaLocacoes(), new ListaVeiculos());
+       MenuLocadora menuLocadora = new MenuLocadora(new ListaClientes(), new ListaLocacoes(), new ListaVeiculos(), new Scanner(System.in));
        menuLocadora.menu();
     }
 }

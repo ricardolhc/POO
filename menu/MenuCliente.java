@@ -19,7 +19,12 @@ public class MenuCliente {
      */
     private ListaClientes listaClientes;
 
-    public MenuCliente(ListaClientes listaClientes) {
+    private Scanner input;
+
+
+
+    public MenuCliente(ListaClientes listaClientes, Scanner input) {
+        this.input = input;
         this.listaClientes = listaClientes;
     }
 
@@ -39,28 +44,26 @@ public class MenuCliente {
      * retorna uma mensagem se o cliente foi adicionado com sucesso
      */
     public void adicionaCliente() {
-        Scanner input = new Scanner(System.in);
-
         String nome = null;
-        long cpf = 0;
+        String cpf = null;
         int numeroCarteiraMotorista = 0;
         String endereco = null;
         long telefone = 0;
 
+        input.nextLine();
+
         do {
             System.out.print("\nDigite o CPF do cliente: ");
-            cpf = input.nextLong();
+            cpf = input.nextLine();
 
-            if (cpf < 10000000000L || cpf > 99999999999L) {
+            if(cpf.length() < 11 || cpf.length() > 11) {
                 System.out.println("CPF inválido!");
             } else {
-                if(listaClientes.existe(cpf)) {
+                if(listaClientes.existe(Long.parseLong(cpf))) {
                     System.out.print("O CPF já está adicionado no sistema!");
                 }
             }
-        } while(cpf < 10000000000L || cpf > 99999999999L || listaClientes.existe(cpf));
-
-        input.nextLine();
+        } while(cpf.length() < 11 || cpf.length() > 11 || listaClientes.existe(Long.parseLong(cpf)));
 
         System.out.print("Digite o nome do cliente: ");
         nome = input.nextLine();
@@ -74,11 +77,8 @@ public class MenuCliente {
         System.out.print("Digite o telefone: ");
         telefone = input.nextLong();
 
-
         listaClientes.add(new Cliente(cpf, nome, numeroCarteiraMotorista, endereco, telefone));
-
         System.out.println("Cliente adicionado com sucesso!");
-
     }
 
     
@@ -87,7 +87,6 @@ public class MenuCliente {
      * caso não exista o cpf ele imprimirá uma mensagem de erro
      */
     public void removeCliente() {
-        Scanner input = new Scanner(System.in);
         long cpf = 0;
         
         System.out.print("\nDigite o CPF do cliente que deseja remover: ");
@@ -105,7 +104,6 @@ public class MenuCliente {
      * caso não exista o cpf imprime uma mensagem de erro.
      */
     public void getInformacaoCliente() {
-        Scanner input = new Scanner(System.in);
         long cpf = 0;
 
         System.out.print("\nDigite o CPF que se deseja pegar as informaçôes: ");
@@ -148,7 +146,6 @@ public class MenuCliente {
      * caso não exista o cpf imprime uma mensagem de erro.
      */
     public void alteraNome() {
-        Scanner input = new Scanner(System.in);
         long cpf = 0;
         
         System.out.print("\nDigite o CPF que se deseja alterar o nome: ");
@@ -169,7 +166,6 @@ public class MenuCliente {
      * caso não exista o cpf imprime uma mensagem de erro.
      */
     public void alteraNumeroCarteira() {
-        Scanner input = new Scanner(System.in);
         long cpf = 0;
         
         System.out.print("\nDigite o CPF que se deseja alterar o numero da carteira: ");
@@ -189,7 +185,6 @@ public class MenuCliente {
      * caso não exista o cpf imprime uma mensagem de erro.
      */
     public void alteraEndereco() {
-        Scanner input = new Scanner(System.in);
         long cpf = 0;
         
         System.out.print("\nDigite o CPF que se deseja alterar o endereço: ");
@@ -210,7 +205,6 @@ public class MenuCliente {
      * caso não exista o cpf imprime uma mensagem de erro.
      */
     public void alteraTelefone() {
-        Scanner input = new Scanner(System.in);
         long cpf = 0;
         
         System.out.print("\nDigite o CPF que se deseja alterar o telefone: ");

@@ -13,18 +13,22 @@ public class Cliente {
      * O atributo nome, do tipo String, e utilizado para indentificar o nome do cliente
      */
     private String nome;
+    
     /**
-     * Atributo cpf, do tipo long, é utlizado para identificar o cpf do cliente
+     * Atributo cpf, do tipo String, é utlizado para identificar o cpf do cliente
      */
-    private long cpf;
+    private String cpf;
+
     /**
      * Atributo numeroCarteiraMotorista, do tipo int, é utilizado para identificar o numero da carteira de motorista do cliente
      */
     private int numeroCarteiraMotorista;
+
     /**
      * Atributo endereco, do tipo String, é utilizado para identificar o endereço do cliente
      */
     private String endereco;
+
     /**
      * Atributo telefone, do tipo long, é utilizado para identificar o telefone do cliente
      */
@@ -42,7 +46,7 @@ public class Cliente {
      * @param endereco string que identifica um novo cliente 
      * @param telefone long que identifica um novo cliente
      */
-    public Cliente(long cpf, String nome, int numeroCarteiraMotorista, String endereco, long telefone){
+    public Cliente(String cpf, String nome, int numeroCarteiraMotorista, String endereco, long telefone){
         this.nome = nome;
         this.cpf = cpf;
         this.numeroCarteiraMotorista = numeroCarteiraMotorista;
@@ -57,7 +61,7 @@ public class Cliente {
      * Cliente cliente = new Cliente(99999999999);<br><br>
      * @param cpf long que identifica um novo cliente
      */
-    public Cliente(long cpf) {
+    public Cliente(String cpf) {
         this(cpf, "", 0, "", 0);
     }
 
@@ -75,7 +79,7 @@ public class Cliente {
      * Captura uma String com o cpf do cliente
      * @return cpf do tipo long do cliente
      */
-    public long getCpf() { 
+    public String getCpf() { 
         return cpf; 
     }
 

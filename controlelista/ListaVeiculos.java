@@ -12,11 +12,13 @@ import veiculo.*;
 
 public class ListaVeiculos implements IVeiculos {
 
+
     /**
      * Arraylist do tipo Veiculo para armazenar os veiculos
      */
     private ArrayList<Veiculo> veiculos;
 
+    
     /**
      * Construtor default da classe
      */
@@ -45,7 +47,7 @@ public class ListaVeiculos implements IVeiculos {
                 return veiculos.get(i);
             }
         }
-        return null;
+        throw new NullPointerException("Veiculo não encontrado!");
     }
 
     
@@ -55,11 +57,11 @@ public class ListaVeiculos implements IVeiculos {
      */
     @Override
     public String getInfo(String placa) {
-        if(existe(placa)) {
-            Veiculo veiculo = get(placa);
-            return veiculo.toString();
+        try {
+            return get(placa).toString();
+        } catch (NullPointerException e) {
+            return e.getMessage();
         }
-        return null;
     }
 
     
@@ -68,14 +70,14 @@ public class ListaVeiculos implements IVeiculos {
      */
     @Override
     public String getInfo() {
-        if(veiculos.size() >= 1) {
+        if(veiculos.size() > 0) {
             String conteudo = "";
             for(Veiculo veiculo : veiculos) {
                 conteudo += veiculo.toString() + "\n";
             }
             return conteudo;
         }
-        return null;
+        throw new NullPointerException("Não existem locações cadastradas");
     }
 
     
@@ -91,7 +93,7 @@ public class ListaVeiculos implements IVeiculos {
             }
             return conteudo;
         }
-        return null;
+        throw new NullPointerException("Não existem locações cadastradas");
     }
 
     
@@ -101,12 +103,13 @@ public class ListaVeiculos implements IVeiculos {
      */
     @Override
     public boolean remove(String placa) {
-        if(existe(placa)) {
-            Veiculo veiculo = get(placa);
-            veiculos.remove(veiculo);
+        try {
+            veiculos.remove(get(placa));
             return true;
+        } catch (NullPointerException e) {
+            System.out.println("Erro: " + e.getMessage());
+            return false;
         }
-        return false;
     }
 
     
@@ -116,11 +119,13 @@ public class ListaVeiculos implements IVeiculos {
      */
     @Override
     public boolean existe(String placa) {
-        Veiculo veiculo = get(placa);
-        if(veiculo != null) {
+        try {
+            get(placa);
             return true;
+        } catch (NullPointerException e) {
+            System.out.println("Erro: " + e.getMessage());
+            return false;
         }
-        return false;
     }
 
     

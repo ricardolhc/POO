@@ -31,13 +31,17 @@ public class MenuLocacao {
     private ListaVeiculos listaVeiculos;
 
 
+    private Scanner input;
+
+
     /**
      * Construtor default MenuLocacao, recebe como parametro as listas de locacoes, clientes e veiculos
      * @param listaLocacoes lista de locacoes que identifica as locacoes
      * @param listaClientes lista de clientes que identifica os clientes
      * @param listaVeiculos lista de veiculos que identifica os veiculos
      */
-    public MenuLocacao(ListaLocacoes listaLocacoes, ListaClientes listaClientes, ListaVeiculos listaVeiculos) {
+    public MenuLocacao(ListaLocacoes listaLocacoes, ListaClientes listaClientes, ListaVeiculos listaVeiculos, Scanner input) {
+        this.input = input;
         this.listaLocacoes = listaLocacoes;
         this.listaClientes = listaClientes;
         this.listaVeiculos = listaVeiculos;
@@ -48,8 +52,6 @@ public class MenuLocacao {
      * O metodo menuLocacao, do tipo void, e utilizado para exibir o menu de locacao
      */
     public void adicionarLocacao() {
-
-        Scanner input = new Scanner(System.in);
 
         long cpf = 0;
         String placa = null;
@@ -126,8 +128,7 @@ public class MenuLocacao {
     /**
      * Menu para obter obter informações de uma locação
      */
-    public void mostrarInfoLocacao(){
-        Scanner input = new Scanner(System.in);
+    public void mostrarInfoLocacao() {
         int codigo = 0;
 
         System.out.print("\nDigite o código da locação que deseja obter as informações: ");
@@ -158,7 +159,6 @@ public class MenuLocacao {
      * Menu para remover uma locação do sistema
      */
     public void removerLocacao() {
-        Scanner input = new Scanner(System.in);
         int codigo = 0;
 
         System.out.print("\nDigite o código da locação que deseja remover: ");
@@ -175,7 +175,6 @@ public class MenuLocacao {
      * Menu para alterar a data inicial de uma locação
      */
     public void alteraDataInicial() {
-        Scanner input = new Scanner(System.in);
         int codigo = 0;
 
         Calendar dataInicial = Calendar.getInstance();
@@ -215,7 +214,6 @@ public class MenuLocacao {
      * Menu para alterar a data final de uma locação
      */
     public void alteraDataFinal() {
-        Scanner input = new Scanner(System.in);
         int codigo = 0;
 
         Calendar dataFinal = Calendar.getInstance();
@@ -257,9 +255,8 @@ public class MenuLocacao {
      * @return int a data do dia
      */
     public int cadastrarDia(String inicioFim) {
-        Scanner input = new Scanner(System.in);
+        int dia = 0;
 
-        int dia;
         do {
             System.out.print("\nInforme o dia " + inicioFim + ": ");   
             dia = input.nextInt();
@@ -278,9 +275,8 @@ public class MenuLocacao {
      * @return int a data do mês
      */
     public int cadastrarMes(String inicioFim) {
-        Scanner input = new Scanner(System.in);
-
-        int mes;
+        int mes = 0;
+        
         do {
             System.out.print("Informe o mês " + inicioFim + ": ");   
             mes = input.nextInt();
