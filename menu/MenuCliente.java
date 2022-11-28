@@ -28,15 +28,6 @@ public class MenuCliente {
     }
 
     
-    /** 
-     * Retorna a lista de clientes
-     * @return ListaClientes
-     */
-    public ListaClientes getListaClientes() {
-        return listaClientes;
-    }
-
-
     /**
      * captura as informãoes e adiciona um cliente 
      * valida cpf e verifica se já existe

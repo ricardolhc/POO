@@ -62,6 +62,7 @@ public class MenuLocacao {
 
         Calendar dataInicial = Calendar.getInstance();
         Calendar dataFinal = Calendar.getInstance();
+        
 
         int escolha = 0;
         boolean seguro = false;
@@ -186,7 +187,6 @@ public class MenuLocacao {
 
             dia = cadastrarDia("inicial");
             mes = cadastrarMes("inicial");
-            
             ano = lerInteiro("Informe o ano inicial: ");
 
             dataInicial.set(ano, mes - 1, dia);
