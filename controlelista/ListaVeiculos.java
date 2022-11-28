@@ -77,7 +77,7 @@ public class ListaVeiculos implements IVeiculos {
             }
             return conteudo;
         }
-        throw new NullPointerException("Não existem locações cadastradas");
+        throw new NullPointerException("Não existem veiculos cadastrados");
     }
 
     
@@ -93,7 +93,7 @@ public class ListaVeiculos implements IVeiculos {
             }
             return conteudo;
         }
-        throw new NullPointerException("Não existem locações cadastradas");
+        throw new NullPointerException("Não existem veiculos cadastrados");
     }
 
     
@@ -123,7 +123,6 @@ public class ListaVeiculos implements IVeiculos {
             get(placa);
             return true;
         } catch (NullPointerException e) {
-            System.out.println("Erro: " + e.getMessage());
             return false;
         }
     }

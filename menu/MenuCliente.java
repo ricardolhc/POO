@@ -7,6 +7,7 @@
 
 package menu;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import controlelista.Cliente;
@@ -20,8 +21,6 @@ public class MenuCliente {
     private ListaClientes listaClientes;
 
     private Scanner input;
-
-
 
     public MenuCliente(ListaClientes listaClientes, Scanner input) {
         this.input = input;
@@ -71,11 +70,10 @@ public class MenuCliente {
         System.out.print("Digite o endereço do cliente: ");
         endereco = input.nextLine();
 
-        System.out.print("Digite o numero da carteira de motorista: ");
-        numeroCarteiraMotorista = input.nextInt();
+        numeroCarteiraMotorista = lerInteiro("Digite o numero da carteiro de motorista: ");
 
-        System.out.print("Digite o telefone: ");
-        telefone = input.nextLong();
+        telefone = lerLong("Digite o telefone: ");
+        
 
         listaClientes.add(new Cliente(cpf, nome, numeroCarteiraMotorista, endereco, telefone));
         System.out.println("Cliente adicionado com sucesso!");
@@ -88,15 +86,19 @@ public class MenuCliente {
      */
     public void removeCliente() {
         long cpf = 0;
-        
-        System.out.print("\nDigite o CPF do cliente que deseja remover: ");
-        cpf = input.nextLong();
 
-        if(listaClientes.remove(cpf)) {
-            System.out.println("Remoção concluída com sucesso");
-        } else {
-            System.out.println("A remoção não foi bem sucedida!");
+        try {
+            System.out.print("\nDigite o CPF do cliente que deseja remover: ");
+            cpf = input.nextLong();
+            if(listaClientes.remove(cpf)) {
+                System.out.println("Remoção concluída com sucesso");
+            }
+        } catch(InputMismatchException e) {
+            System.out.println("Número inválido!");
+            input.nextLine();
         }
+
+        
     }
 
     /**
@@ -106,8 +108,7 @@ public class MenuCliente {
     public void getInformacaoCliente() {
         long cpf = 0;
 
-        System.out.print("\nDigite o CPF que se deseja pegar as informaçôes: ");
-        cpf = input.nextLong();
+        cpf = lerLong("\nDigite o CPF que se deseja pegar as informações: ");
 
         if(listaClientes.existe(cpf)) {
             System.out.println("\n====== INFORMAÇÕES DO CLIENTE ======");
@@ -121,23 +122,23 @@ public class MenuCliente {
      * imprime as informações de todos os clientes
      */
     public void getInformacoesClientes() {
-        if(listaClientes.getInfo() != null) {
+        try {
             System.out.println("\n====== INFORMAÇÕES DE TODOS OS CLIENTES ======");
             System.out.println(listaClientes.getInfo());
-        } else {
-            System.out.println("Não foi possível imprimir as informações");
-        } 
+        } catch (NullPointerException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
     }
 
     /**
      * imprime um resumo das informações dos clientes
      */
     public void getInformacoesClientesResumo() {
-        if(listaClientes.getResumoInfo() != null) {
+        try {
             System.out.println("\n====== RESUMO DAS INFORMAÇÕES DE TODOS OS CLIENTES ======");
             System.out.println(listaClientes.getResumoInfo());
-        } else {
-            System.out.println("Não foi possível imprimir as informações");
+        } catch (NullPointerException e) {
+            System.out.println("Erro: " + e.getMessage());
         }
     }
 
@@ -148,8 +149,7 @@ public class MenuCliente {
     public void alteraNome() {
         long cpf = 0;
         
-        System.out.print("\nDigite o CPF que se deseja alterar o nome: ");
-        cpf = input.nextLong();
+        cpf = lerLong("\nDigite o CPF que se deseja alterar o nome: ");
 
         if(listaClientes.existe(cpf)) {
             input.nextLine();
@@ -168,12 +168,12 @@ public class MenuCliente {
     public void alteraNumeroCarteira() {
         long cpf = 0;
         
-        System.out.print("\nDigite o CPF que se deseja alterar o numero da carteira: ");
-        cpf = input.nextLong();
+        cpf = lerLong("\nDigite o CPF que se deseja alterar o numero da carteira: ");
 
         if(listaClientes.existe(cpf)) {
-            System.out.print("Digite o novo numero: ");
-            listaClientes.setNumeroCarteira(cpf, input.nextInt());
+            int numeroCarteiraMotorista = 0;
+            numeroCarteiraMotorista = lerInteiro("Digite o novo numero: ");
+            listaClientes.setNumeroCarteira(cpf, numeroCarteiraMotorista);
             System.out.println("Numero da carteira de motorista alterado com sucesso!");
         } else {
             System.out.println("O CPF informado não existe!");
@@ -187,8 +187,7 @@ public class MenuCliente {
     public void alteraEndereco() {
         long cpf = 0;
         
-        System.out.print("\nDigite o CPF que se deseja alterar o endereço: ");
-        cpf = input.nextLong();
+        cpf = lerLong("\nDigite o CPF que se deseja alterar o endereço: ");
 
         if(listaClientes.existe(cpf)) {
             input.nextLine();
@@ -207,16 +206,55 @@ public class MenuCliente {
     public void alteraTelefone() {
         long cpf = 0;
         
-        System.out.print("\nDigite o CPF que se deseja alterar o telefone: ");
-        cpf = input.nextLong();
+        //System.out.print("\nDigite o CPF que se deseja alterar o telefone: ");
+        cpf = lerLong("\nDigite o CPF que se deseja alterar o telefone: ");
 
         if(listaClientes.existe(cpf)) {
-            System.out.print("Digite o novo telefone: ");
+            long telefone = 0;
+            telefone = lerLong("Digite o novo telefone: ");
             System.out.println("Telefone alterado com sucesso!");
-            listaClientes.setTelefone(cpf, input.nextLong());
+            listaClientes.setTelefone(cpf, telefone);
         } else {
             System.out.println("O CPF informado não existe!");
         }
+    }
+
+    private int lerInteiro(String mensagem) {
+        boolean flag = true;
+        int numero = 0;
+
+        do {
+            try {
+                System.out.print(mensagem);
+                numero = input.nextInt();
+                flag = false;
+            } catch(InputMismatchException e) {
+                System.out.println("Digite um número inteiro!");
+                input.nextLine();
+                flag = true;
+            }
+        } while(flag);
+
+        return numero;
+    }
+
+    private long lerLong(String mensagem) {
+        boolean flag = true;
+        long numero = 0;
+
+        do {
+            try {
+                System.out.print(mensagem);
+                numero = input.nextLong();
+                flag = false;
+            } catch(InputMismatchException e) {
+                System.out.println("Digite um número inteiro!");
+                input.nextLine();
+                flag = true;
+            }
+        } while(flag);
+
+        return numero;
     }
 
 }

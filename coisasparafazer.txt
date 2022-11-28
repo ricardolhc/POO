@@ -1,0 +1,15 @@
+menu cliente:
+
+opção de visualizar informações do cliente quando não há cliente cadastrado
+
+menu veiculo;
+
+repetindo erro ao adicionar uma placa de veiculo 
+
+
+
+
+
+
+
+RICARDO: receberPlaca EDITAR DO MENUVEICULO

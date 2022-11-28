@@ -6,6 +6,7 @@
  */
 
 package menu;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import controlelista.ListaClientes;
@@ -31,24 +32,7 @@ public class MenuLocadora {
 
     private MenuVeiculo menuVeiculo;
 
-    /**
-    * O atributo listaClientes é uma instancia da classe ListaClientes   
-    */
-
-
-    //private ListaClientes listaClientes;
-
-    /**
-    * O atributo listaVeiculos é uma instancia da classe ListaVeiculos   
-    */ 
-
-    //private ListaLocacoes listaLocacoes;
-
-    /**
-    * O atributo listaLocacoes é uma instancia da classe ListaLocacoes    
-    */
-
-    //private ListaVeiculos listaVeiculos;
+    
 
     private Scanner input;
 
@@ -63,9 +47,6 @@ public class MenuLocadora {
      */
     public MenuLocadora(ListaClientes listaClientes, ListaLocacoes listaLocacoes, ListaVeiculos listaVeiculos, Scanner input) {
         this.input = input;
-        //this.listaClientes = listaClientes;
-        //this.listaLocacoes = listaLocacoes;
-        //this.listaVeiculos = listaVeiculos;
         menuLocacao = new MenuLocacao(listaLocacoes, listaClientes, listaVeiculos, input);
         menuCliente = new MenuCliente(listaClientes, input);
         menuVeiculo = new MenuVeiculo(listaVeiculos, input);
@@ -79,14 +60,15 @@ public class MenuLocadora {
     public void menu() {
         int escolha = 0;
 
+        String menu = "\n====== MENU PRINCIPAL ======\n" +
+                      "1) Menu Cliente\n" +
+                      "2) Menu Veiculo\n" +
+                      "3) Menu Locação\n" +
+                      "4) Sair\n" +
+                      "Digite a opção desejada: ";
+
         do {
-            System.out.println("\n====== MENU PRINCIPAL ======");
-            System.out.println("1) Menu Cliente");
-            System.out.println("2) Menu Veiculo");
-            System.out.println("3) Menu Locação");
-            System.out.println("4) Sair");
-            System.out.print("Opção: ");
-            escolha = input.nextInt();
+            escolha = lerInteiro(menu);
 
             switch(escolha) {
 
@@ -126,22 +108,23 @@ public class MenuLocadora {
      */
     private void menuCliente() {
         int escolha = 0;
+
+        String menu = "\n====== MENU CLIENTE ======\n" +
+                      "1) Adicionar cliente\n" +
+                      "2) Remover cliente\n" +
+                      "3) Visualizar informações de um cliente específico\n" +
+                      "4) Visualizar informações de todos os clientes\n" +
+                      "5) Visualizar resumo das informações de todos os clientes\n" +
+                      "6) Alterar nome do cliente\n" +
+                      "7) Alterar número da carteira de motorista do cliente \n" +
+                      "8) Alterar endereço do cliente \n" +
+                      "9) Alterar telefone do cliente \n" +
+                      "10) Voltar \n" +
+                      "Digite a opção desejada: ";
+                        
         
         do {
-            System.out.println("\n====== MENU CLIENTE ======");
-            System.out.println("1) Adicionar cliente");
-            System.out.println("2) Remover cliente");
-            System.out.println("3) Visualizar informações de um cliente específico");
-            System.out.println("4) Visualizar informações de todos os clientes");
-            System.out.println("5) Visualizar resumo das informações de todos os clientes");
-            System.out.println("6) Alterar nome do cliente");
-            System.out.println("7) Alterar número da carteira de motorista do cliente");
-            System.out.println("8) Alterar endereço do cliente");
-            System.out.println("9) Alterar telefone do cliente");
-            System.out.println("10) Voltar");
-            System.out.print("Opção: ");
-
-            escolha = input.nextInt();
+            escolha = lerInteiro(menu);
             
             switch(escolha) {
 
@@ -202,11 +185,6 @@ public class MenuLocadora {
             }
         } while(escolha != 10);
     }
-
-    /* 
-    * 
-    *
-    */
     
     /**
      * Método que exibe o menu de veiculos<br>
@@ -217,18 +195,20 @@ public class MenuLocadora {
         int escolha = 0;
         String placa = null;
 
-        do {
-            System.out.println("\n====== MENU VEICULO ======");
-            System.out.println("1) Adicionar Veículo");
-            System.out.println("2) Excluir Veículo");
-            System.out.println("3) Visualizar um veículo específico");
-            System.out.println("4) Visualizar todos os veículos");
-            System.out.println("5) Visualizar o resumo de todos os veículos");
-            System.out.println("6) Editar Veículo");
-            System.out.println("7) Voltar");
-            System.out.print("Opção: ");
-            escolha = input.nextInt();
+        String menu = "\n====== MENU VEICULO ======\n" +
+                      "1) Adicionar Veículo\n" +
+                      "2) Excluir Veículo\n" +
+                      "3) Visualizar um veículo específico\n" +
+                      "4) Visualizar todos os veículos\n" +
+                      "5) Visualizar o resumo de todos os veículos\n" +
+                      "6) Editar Veículo\n" +
+                      "7) Voltar\n" +
+                      "Digite a opção desejada: ";
 
+        do {
+
+            escolha = lerInteiro(menu);
+            
             switch (escolha) {
 
                 //Adicionar Veículo
@@ -258,8 +238,12 @@ public class MenuLocadora {
 
                 //Editar carro
                 case 6:
-                    placa = menuVeiculo.receberPlaca();
-                    selecionarMenu(placa);
+                    try {
+                        placa = menuVeiculo.receberPlaca();
+                        selecionarMenu(placa);
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Erro: " + e.getMessage());
+                    }
                     break;
 
                 //Voltar
@@ -305,8 +289,6 @@ public class MenuLocadora {
                     menuOnibus(placa);
                     break;
             }
-        } else {
-            System.out.println("Placa não encontrada no sistema!");
         }
     }
 
@@ -319,16 +301,18 @@ public class MenuLocadora {
     private void menuCarro(String placa) {
         int escolha = 0;
 
+        String menu = "\n====== MENU CARRO ======\n" +
+                            "1) Alterar número de passageiros \n" +
+                            "2) Alterar número de portas \n" +
+                            "3) Alterar média de KM'S \n" +
+                            "4) Alterar ar-condicionado \n" +
+                            "5) Editar ano do veículo \n" +
+                            "6) Editar diaria do veículo \n" +
+                            "7) Voltar \n" +
+                            "Digite a opção desejada: ";    
         do {
-            System.out.println("\n====== MENU CARRO ======");
-            System.out.println("1) Alterar número de passageiros");
-            System.out.println("2) Alterar número de portas");
-            System.out.println("3) Alterar média de KM'S");
-            System.out.println("4) Alterar ar-condicionado");
-            imprimirOpcoesDefault(5);
-            System.out.println("7) Voltar");
-            System.out.print("Opção: ");
-            escolha = input.nextInt();
+            
+            escolha = lerInteiro(menu);
 
             switch (escolha) {
 
@@ -383,16 +367,19 @@ public class MenuLocadora {
     private void menuOnibus(String placa) {
         int escolha = 0;
 
+        String menu = "\n====== MENU ÔNIBUS ======\n" +
+                        "1) Alterar número de passageiros \n" +
+                        "2) Alterar categoria \n" +
+                        "3) Alterar wifi \n" +
+                        "4) Alterar ar-condicionado \n" +
+                        "5) Editar ano do veículo \n" +
+                        "6) Editar diaria do veículo \n" +
+                        "7) Voltar \n" +
+                        "Digite a opção desejada: ";
+
         do {
-            System.out.println("\n====== MENU ÔNIBUS ======");
-            System.out.println("1) Alterar número de passageiros");
-            System.out.println("2) Alterar categoria");
-            System.out.println("3) Alterar wifi");
-            System.out.println("4) Alterar ar-condicionado");
-            imprimirOpcoesDefault(5);
-            System.out.println("7) Voltar");
-            System.out.print("Opção: ");
-            escolha = input.nextInt();
+
+            escolha = lerInteiro(menu);
 
             switch (escolha) {
 
@@ -447,16 +434,18 @@ public class MenuLocadora {
     private void menuCaminhao(String placa) {
         int escolha = 0;
 
+       String menu = "\n====== MENU CAMINHÃO ======\n" +
+                      "1) Alterar número de eixos \n" +
+                      "2) Alterar carga máxima \n " +
+                      "3) Editar ano do veículo \n " +
+                      "4) Editar diaria do veículo \n " +
+                      "5) Voltar \n" +
+                      "Opção: ";
+                     
         do {
-            System.out.println("\n====== MENU CAMINHÃO ======");
-            System.out.println("1) Alterar número de eixos");
-            System.out.println("2) Alterar carga máxima");
-            imprimirOpcoesDefault(3);
-            System.out.println("5) Voltar");
-            System.out.print("Opção: ");
-            escolha = input.nextInt();
+            escolha = lerInteiro(menu);
             
-            switch (escolha) {
+            switch(escolha) {
 
                 //Alterar número de eixos
                 case 1:
@@ -499,17 +488,19 @@ public class MenuLocadora {
     private void menuLocacao() {
         int escolha = 0;
         
+        String menu = "\n====== MENU LOCAÇÃO ======\n" + 
+                        "1) Adicionar Locação\n" +
+                        "2) Remover Locação\n" +
+                        "3) Visualizar Locações\n" +
+                        "4) Visualizar uma Locação específica\n" +
+                        "5) Editar data inicial\n" +
+                        "6) Editar data final\n" +
+                        "7) Voltar\n" +
+                        "Digite a opção desejada: ";
+         
         do {
-            System.out.println("\n====== MENU LOCAÇÃO ======");
-            System.out.println("1) Adicionar Locação");
-            System.out.println("2) Remover Locação");
-            System.out.println("3) Visualizar Locações");
-            System.out.println("4) Visualizar uma Locação específica");
-            System.out.println("5) Editar data inicial");
-            System.out.println("6) Editar data final");
-            System.out.println("7) Voltar");
-            System.out.print("Opção: ");
-            escolha = input.nextInt();
+           
+            escolha = lerInteiro(menu);
 
             switch(escolha) {
                 //Adicionar Locação
@@ -557,13 +548,26 @@ public class MenuLocadora {
     }
 
     
-    /**
-     * Método que imprime as opções default dos veículos
-     * @param inicio int que indica a partir de qual opção deve ser impresso
-     */
-    private void imprimirOpcoesDefault(int inicio) {
-        System.out.println(inicio + ") Editar ano do veículo");
-        System.out.println((inicio + 1) + ") Editar diaria do veículo");
+
+
+    private int lerInteiro(String mensagem) {
+        boolean flag = true;
+        int numero = 0;
+
+        do {
+            try {
+                System.out.print(mensagem);
+                numero = input.nextInt();
+                flag = false;
+            } catch(InputMismatchException e) {
+                System.out.println("Número inválido!");
+                input.nextLine();
+                flag = true;
+            }
+        } while(flag);
+
+        return numero;
     }
 
+    
 }

@@ -7,6 +7,7 @@
 
 package menu;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import controlelista.ListaVeiculos;
@@ -38,11 +39,11 @@ public class MenuVeiculo {
      * Verifica se possui veículos na listaVeiculos, caso possua imprime uma lista com as informações de todos os veículos.
      */
     public void imprimirInfoVeiculos() {
-        if(listaVeiculos.getInfo() != null) {
+        try {
             System.out.println("\n====== INFORMAÇÕES DE TODOS OS VEICULOS ======");
             System.out.println(listaVeiculos.getInfo());
-        } else {
-            System.out.println("\nNão existem veículos");
+        } catch (NullPointerException e) {
+            System.out.println("Erro: " + e.getMessage());
         }
     }
 
@@ -51,6 +52,8 @@ public class MenuVeiculo {
      */
     public void getInformacaoVeiculo() {
         String placa = null;
+
+        input.nextLine();
 
         System.out.print("\nDigite a placa que se deseja obter as informaçôes: ");
         placa = input.nextLine();
@@ -67,12 +70,14 @@ public class MenuVeiculo {
      * Verifica se possui veículos na listaVeiculos, caso possua imprime uma lista com as informções da placa, diária e ano.
      */
     public void imprimirResumoVeiculos() {
-        if(listaVeiculos.getResumoInfo() != null) {
-           System.out.println("\n====== RESUMO DAS INFORMAÇÕES DE TODOS OS VEICULOS ======");
-           System.out.println(listaVeiculos.getResumoInfo());
-        } else {
-            System.out.println("\nNão existem veículos");
-        }   
+
+        try {
+            System.out.println("\n====== RESUMO DAS INFORMAÇÕES DE TODOS OS VEICULOS ======");
+            System.out.println(listaVeiculos.getResumoInfo());
+        } catch (NullPointerException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+        
     }
 
     /** 
@@ -87,6 +92,8 @@ public class MenuVeiculo {
         int modeloCarro = 0;
         int ano = 0;
         
+        input.nextLine();
+
         do {
             System.out.print("\nDigite a placa do veiculo: ");
             placa = input.nextLine();
@@ -101,29 +108,29 @@ public class MenuVeiculo {
         } while(placa == null || listaVeiculos.existe(placa));
 
         do {
-            System.out.print("Digite o ano do veiculo: ");
-            ano = input.nextInt();
+            ano = lerInteiro("Digite o ano do veiculo: ");
 
-            if (ano <= 0){
+            if(ano <= 0) {
                 System.out.println("Ano inválido!");
             }
         } while (ano <= 0);
 
         do {
-            System.out.print("Digite a diaria do veiculo: ");
-            diaria = input.nextDouble();
+            diaria = lerDouble("Digite a diaria do veiculo: ");
 
-            if (diaria <= 0){
+            if(diaria <= 0) {
                 System.out.println("Valor da diária inválido");
             }
         } while (diaria <= 0);
 
         do {
-            System.out.println("1) Ônibus");
-            System.out.println("2) Carro");
-            System.out.println("3) Caminhão");
-            System.out.print("Digite o modelo do veículo: ");
-            modeloCarro = input.nextInt();
+
+            String menu = "1) Ônibus\n" + 
+                          "2) Carro\n" +
+                          "3) Caminhão\n" +
+                          "Digite o modelo do veículo: ";
+
+            modeloCarro = lerInteiro(menu);
 
             input.nextLine();
 
@@ -171,8 +178,7 @@ public class MenuVeiculo {
         int escolha = 0;
 
         do {
-            System.out.print("Digite a quantidade de passageiros: ");
-            numeroPassageiros = input.nextInt();
+            numeroPassageiros = lerInteiro("Digite a quantidade de passageiros: ");
 
             if (numeroPassageiros <= 0 || numeroPassageiros > 5){
                 System.out.println("Número de passageiros inválido!");
@@ -180,17 +186,15 @@ public class MenuVeiculo {
         } while (numeroPassageiros <= 0 || numeroPassageiros > 5);
 
         do {
-            System.out.print("Digite a quantidade de portas: ");
-            numeroPortas = input.nextInt();
+            numeroPortas = lerInteiro("Digite a quantidade de portas: ");
 
             if(numeroPortas <= 0 || numeroPortas > 4){
                 System.out.println("Número de portas inválido!");
             }
         } while (numeroPortas <=0 || numeroPortas > 4);
 
-        do{
-            System.out.print("Digite a media de KM por litro: ");
-            mediaKM = input.nextDouble();
+        do {
+            mediaKM = lerDouble("Digite a media de KM por litro: ");
 
             if (mediaKM <=0){
                 System.out.println("Média de KM inválida!");
@@ -198,11 +202,12 @@ public class MenuVeiculo {
         } while (mediaKM <= 0);
 
         do {
-            System.out.println("Possui Ar-Condicionado?");
-            System.out.println("1) Sim");
-            System.out.println("2) Não");
-            System.out.print("Opção: ");
-            escolha = input.nextInt();
+            String menu = "Possui Ar-Condicionado?\n" +
+                          "1) Sim\n" +
+                          "2) Não\n" +
+                          "Opção: ";
+                          
+            escolha = lerInteiro(menu);
 
             if(escolha < 1 || escolha > 2) {
                 System.out.println("Escolha inválida!");
@@ -233,16 +238,14 @@ public class MenuVeiculo {
         int cargaMaxima = 0;
 
         do {
-            System.out.print("Digite o numero de eixos: ");
-            numeroEixos = input.nextInt();
+            numeroEixos = lerInteiro("Digite o numero de eixos: ");
             if(numeroEixos <= 0 || numeroEixos > 10) {
                 System.out.println("Número de eixos inválido!");
             }
         } while(numeroEixos <= 0 || numeroEixos > 10);
 
         do {
-            System.out.print("Digite a carga máxima: ");
-            cargaMaxima = input.nextInt();
+            cargaMaxima = lerInteiro("Digite a carga máxima: ");
 
             if(cargaMaxima <= 0 || cargaMaxima > 100000) {
                 System.out.println("Carga máxima inválida!");
@@ -273,20 +276,21 @@ public class MenuVeiculo {
         int escolha = 0;
 
         do{
-            System.out.print("Digite a quantidade de passageiros: ");
-            numeroPassageiros = input.nextInt();
+            numeroPassageiros = lerInteiro("Digite a quantidade de passageiros: ");
 
-            if (numeroPassageiros <=0 || numeroPassageiros > 61){
+            if (numeroPassageiros <= 0 || numeroPassageiros > 61){
                 System.out.println("Número de passageiros inválido!");
             }
-        } while (numeroPassageiros <=0 || numeroPassageiros > 61);
+        } while (numeroPassageiros <= 0 || numeroPassageiros > 61);
 
         do {
-            System.out.println("Possui wifi?");
-            System.out.println("1) Sim");
-            System.out.println("2) Não");
-            System.out.print("Opção: ");
-            escolha = input.nextInt();
+            
+            String menu = "Possui Wifi?\n" +
+                          "1) Sim\n" +
+                          "2) Não\n" +
+                          "Opção: ";
+
+            escolha = lerInteiro(menu);
 
             if(escolha < 1 || escolha > 2) {
                 System.out.println("Escolha inválida!");
@@ -300,11 +304,13 @@ public class MenuVeiculo {
         } while(escolha < 1 || escolha > 2);
                         
         do {
-            System.out.println("Possui Ar-Condicionado?");
-            System.out.println("1) Sim");
-            System.out.println("2) Não");
-            System.out.print("Opção: ");
-            escolha = input.nextInt();
+
+            String menu = "Possui Ar-Condicionado?\n" +
+                          "1) Sim\n" +
+                          "2) Não\n" +
+                          "Opção: ";
+        
+            escolha = lerInteiro(menu);
 
             if(escolha < 1 || escolha > 2) {
                 System.out.println("Escolha inválida!");
@@ -318,12 +324,13 @@ public class MenuVeiculo {
         } while(escolha < 1 || escolha > 2);
 
         do {
-            System.out.println("Categorias: ");
-            System.out.println("1) Leito");
-            System.out.println("2) Convencional");
-            System.out.println("3) Executivo");
-            System.out.print("Opção: ");
-            escolha = input.nextInt();
+            String menu = "Categorias: \n" + 
+                          "1) Leito\n" +
+                          "2) Convencional\n" +
+                          "3) Executivo\n" +
+                          "Opção: ";
+            
+            escolha = lerInteiro(menu);
 
             if(escolha < 1 || escolha > 3) {
                 System.out.println("Escolha inválida!");
@@ -340,8 +347,9 @@ public class MenuVeiculo {
 
         listaVeiculos.add(new Onibus(placa, ano, diaria, numeroPassageiros, categoria, wifi, arcondicionado));
         System.out.println("Ônibus adicionado com sucesso");
-
     }
+
+    
     /** 
      * Recebe um novo ano e altera;
      * @param placa 
@@ -350,11 +358,12 @@ public class MenuVeiculo {
         int ano = 0;
 
         System.out.print("Digite o novo ano: ");
-        ano = input.nextInt();
+        ano = lerInteiro();
         listaVeiculos.setAno(placa, ano);
         System.out.println("Ano alterado com sucesso!");
     }
 
+    
     /** 
      * Recebe uma nova diária e altera;
      * @param placa 
@@ -362,8 +371,7 @@ public class MenuVeiculo {
     public void alteraDiaria(String placa) {
         double diaria = 0.0;
 
-        System.out.print("Digite a nova diaria: ");
-        diaria = input.nextDouble();
+        diaria = lerDouble("Digite a nova diaria: ");
         listaVeiculos.setDiaria(placa, diaria);
         System.out.println("Diaria alterada com sucesso!");
     }
@@ -380,7 +388,7 @@ public class MenuVeiculo {
         int numeroPasseiros = 0;
 
         System.out.print("Digite o novo número de passageiros: ");
-        numeroPasseiros = input.nextInt();
+        numeroPasseiros = lerInteiro();
 
         if(numeroPasseiros <= 0 || numeroPasseiros > 5) {
             System.out.println("Número de passageiros inválido!");
@@ -399,7 +407,7 @@ public class MenuVeiculo {
         int numeroPortas = 0;
 
         System.out.print("Digite o novo número de portas: ");
-        numeroPortas = input.nextInt();
+        numeroPortas = lerInteiro();
                 
         if(numeroPortas <= 0 || numeroPortas > 5) {
             System.out.println("Número de portas inválido!");
@@ -416,8 +424,7 @@ public class MenuVeiculo {
     public void alteraMediaKmCarro(String placa) {
         double mediaKm = 0.0;
         
-        System.out.print("Digite a nova media de km: ");
-        mediaKm = input.nextDouble();
+        mediaKm = lerDouble("Digite a nova media de km: ");
 
         if(mediaKm <= 0){
             System.out.println("A media de km não pode ser negativa!");
@@ -436,12 +443,13 @@ public class MenuVeiculo {
         boolean arcondicionado = false;
 
         do {
-            System.out.println("Seu carro possui ar-condicionado?");
-            System.out.println("1) Sim");
-            System.out.println("2) Não");
-                    
-            System.out.print("Opção: ");
-            escolha = input.nextInt();
+
+            String menu = "Seu carro possui ar-condicionado?"
+                        + "1) Sim\n"
+                        + "2) Não\n"
+                        + "Opção: ";
+            
+            escolha = lerInteiro(menu);
 
             if(escolha < 1 || escolha > 2) {
                 System.out.println("Opção inválida!");
@@ -467,7 +475,7 @@ public class MenuVeiculo {
         int numeroPassageiros = 0;
         
         System.out.print("Digite o novo número de passageiros: ");
-        numeroPassageiros = input.nextInt();
+        numeroPassageiros = lerInteiro();
         listaVeiculos.setNumeroPassageiroOnibus(placa, numeroPassageiros);
         System.out.println("Número de passageiros alterado com sucesso!");
             
@@ -481,12 +489,13 @@ public class MenuVeiculo {
         Categoria categoria = Categoria.CONVENCIONAL;
         
         do {
-            System.out.println("Qual a nova categoria do ônibus? ");
-            System.out.println("1) Leito");
-            System.out.println("2) Convencional");
-            System.out.println("3) Executivo");
-            System.out.print("Opção: ");
-            escolha = input.nextInt();
+            String menu = "Qual a nova categoria do ônibus?"
+                          + "1) Leito \n" 
+                          + "2) Convencional \n" 
+                          + "3) Executivo \n" 
+                          +  "Opção: ";
+    
+            escolha = lerInteiro(menu);
 
             if(escolha < 1 || escolha > 3) {
                 System.out.println("Escolha inválida!");
@@ -515,11 +524,13 @@ public class MenuVeiculo {
         boolean wifi = false;
 
         do {
-            System.out.println("Possui wifi?");
-            System.out.println("1) Sim");
-            System.out.println("2) Não");
-            System.out.print("Opção: ");
-            escolha = input.nextInt();
+            
+             String menu = "Possui wifi? \n" + 
+                          "1) Sim \n" +
+                          "2) Não \n" +
+                          "Opção: ";
+
+            escolha = lerInteiro(menu);
 
             if(escolha < 1 || escolha > 2) {
                 System.out.println("Escolha inválida!");
@@ -544,11 +555,13 @@ public class MenuVeiculo {
         boolean arcondicionado = false;
 
         do {
-            System.out.println("Possui ar condicionado?");
-            System.out.println("1) Sim");
-            System.out.println("2) Não");
-            System.out.print("Opção: ");
-            escolha = input.nextInt();
+
+            String menu = "Possui ar condicionado?\n" +
+                            "1) Sim \n" +
+                            "2) Não \n" +
+                            "Opção: ";
+        
+            escolha = lerInteiro(menu);
 
             if(escolha < 1 || escolha > 2) {
                 System.out.println("Escolha inválida!");
@@ -566,15 +579,14 @@ public class MenuVeiculo {
 
     /* ALTERA DO CAMINHAO */
 
-     /** 
+    /** 
      * Recebe um novo número de eixos e altera;
      * @param placa 
      */
     public void alteraEixoCaminhao(String placa) {
         int numeroEixos = 0;
         
-        System.out.print("Digite o novo número de eixos: ");
-        numeroEixos = input.nextInt();
+        numeroEixos = lerInteiro("Digite o novo número de eixos: ");
 
         if (numeroEixos > 1 || numeroEixos > 10) {
             listaVeiculos.setNumeroEixoCaminhao(placa, numeroEixos);
@@ -592,8 +604,7 @@ public class MenuVeiculo {
     public void alteraCargaMaximaCaminhao(String placa) {
         int cargaMaxima = 0;
         
-        System.out.print("Digite a carga máxima: ");
-        cargaMaxima = input.nextInt();
+        cargaMaxima = lerInteiro("Digite a carga máxima: ");
 
         if(cargaMaxima <= 0 || cargaMaxima > 100000) {
             System.out.println("Carga máxima inválida!");
@@ -607,12 +618,13 @@ public class MenuVeiculo {
     public void removerVeiculo() {
         String placa = null;
 
+        input.nextLine();
+
         System.out.print("\nA placa do veiculo que deseja remover: ");
         placa = input.nextLine();
-        System.out.println("Veículo removido com sucesso!");
 
-        if(!listaVeiculos.remove(placa)) {
-            System.out.println("A placa do veículo não existe");
+        if(listaVeiculos.remove(placa)) {
+            System.out.println("Veículo removido com sucesso!");
         }
     }
 
@@ -624,27 +636,76 @@ public class MenuVeiculo {
     public String receberPlaca() {
         String placa = null;
 
+        input.nextLine();
+    
         System.out.print("\nDigite a placa do veiculo que deseja alterar: ");
         placa = input.nextLine();
-
+    
         if(listaVeiculos.existe(placa)) {
             return placa;
         }
-
-        return null;
+    
+        throw new IllegalArgumentException("A placa do veículo não existe");
     }
 
     public int receberTipo(String placa) {
-        Veiculo veiculo = listaVeiculos.get(placa);
+        try {
+            Veiculo veiculo = listaVeiculos.get(placa);
 
-        if(veiculo instanceof Carro) {
-            return 1;
-        } else if(veiculo instanceof Caminhao) {
-            return 2;
-        } else if(veiculo instanceof Onibus) {
-            return 3;
+            if(veiculo instanceof Carro) {
+                return 1;
+            } else if(veiculo instanceof Caminhao) {
+                return 2;
+            } else if(veiculo instanceof Onibus) {
+                return 3;
+            }
+            return 0;
+        } catch (NullPointerException e) {
+            System.out.println("Erro: " + e.getMessage());
+            return 0;
         }
-        return 0;
+    }
+
+    private int lerInteiro(String mensagem) {
+        boolean flag = true;
+        int numero = 0;
+
+        do {
+            try {
+                System.out.print(mensagem);
+                numero = input.nextInt();
+                flag = false;
+            } catch(InputMismatchException e) {
+                System.out.println("Digite um número inteiro!");
+                input.nextLine();
+                flag = true;
+            }
+        } while(flag);
+
+        return numero;
+    }
+    
+    private int lerInteiro() {
+        return lerInteiro("");
+    }
+    
+    private double lerDouble(String mensagem) {
+        boolean flag = true;
+        double numero = 0;
+
+        do {
+            try {
+                System.out.print(mensagem);
+                numero = input.nextDouble();
+                flag = false;
+            } catch(InputMismatchException e) {
+                System.out.println("Digite um número valor decimal ou inteiro!");
+                input.nextLine();
+                flag = true;
+            }
+        } while(flag);
+
+        return numero;
     }
 
 }

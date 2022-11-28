@@ -13,6 +13,7 @@ import controlelista.ListaVeiculos;
 import controlelista.Locacao;
 
 import java.util.Calendar;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MenuLocacao {
@@ -57,6 +58,8 @@ public class MenuLocacao {
         String placa = null;
         long dias = 0;
         
+        input.nextLine();
+
         Calendar dataInicial = Calendar.getInstance();
         Calendar dataFinal = Calendar.getInstance();
 
@@ -70,8 +73,7 @@ public class MenuLocacao {
             return;
         }
         
-        System.out.print("Digite um cpf para a locação: ");
-        cpf = input.nextLong();
+        cpf = lerLong("Digite um cpf para a locação: ");
         if(!listaClientes.existe(cpf)) {
             System.out.println("Digite um cpf válido!");
             return;
@@ -83,7 +85,7 @@ public class MenuLocacao {
             System.out.println("1) Sim");
             System.out.println("2) Não");
             System.out.print("Opção: ");
-            escolha = input.nextInt();
+            escolha = lerInteiro();
 
             if(escolha == 1) {
                 seguro = true;
@@ -101,14 +103,14 @@ public class MenuLocacao {
 
             dia = cadastrarDia("inicial");
             mes = cadastrarMes("inicial");
-            System.out.print("Informe o ano inicial: ");
-            ano = input.nextInt();
+            
+            ano = lerInteiro("Informe o ano inicial: ");
             dataInicial.set(ano, mes - 1, dia);
 
             dia = cadastrarDia("final");
             mes = cadastrarMes("final");
-            System.out.print("Informe o ano final: ");
-            ano = input.nextInt();
+            
+            ano = lerInteiro("Informe o ano final: ");
             
             dataFinal.set(ano, mes - 1, dia);
 
@@ -131,14 +133,11 @@ public class MenuLocacao {
     public void mostrarInfoLocacao() {
         int codigo = 0;
 
-        System.out.print("\nDigite o código da locação que deseja obter as informações: ");
-        codigo = input.nextInt();
+        codigo = lerInteiro("\nDigite o código da locação que deseja obter as informações: ");
 
         if(listaLocacoes.existe(codigo)) {
             System.out.println("\n====== INFORMAÇÕES DA LOCAÇÃO ======");
             System.out.println(listaLocacoes.getInfo(codigo));
-        } else {
-            System.out.println("Código da locação não existe");
         }
 
     }
@@ -147,11 +146,11 @@ public class MenuLocacao {
      * Menu para mostrar informações de todas as locações
      */
     public void mostrarInfoLocacoes() {
-        if(listaLocacoes.getInfo() != null) {
+        try {
             System.out.println("\n====== INFORMAÇÕES DA LOCAÇÃO ======");
             System.out.println(listaLocacoes.getInfo());
-        } else {
-            System.out.println("Não existem locações");
+        } catch (NullPointerException e) {
+            System.out.println("Erro: " + e.getMessage());
         }
     }
 
@@ -161,12 +160,10 @@ public class MenuLocacao {
     public void removerLocacao() {
         int codigo = 0;
 
-        System.out.print("\nDigite o código da locação que deseja remover: ");
-        codigo = input.nextInt();
+        
+        codigo = lerInteiro("\nDigite o código da locação que deseja remover: ");
 
-        if(!listaLocacoes.remove(codigo)) {
-            System.out.println("Código da locação não existe");
-        } else {
+        if(listaLocacoes.remove(codigo)) {
             System.out.println("Locação removida com sucesso");
         }
     }
@@ -179,8 +176,8 @@ public class MenuLocacao {
 
         Calendar dataInicial = Calendar.getInstance();
 
-        System.out.print("\nDigite o código da locação que deseja alterar a data inicial: ");
-        codigo = input.nextInt();
+       
+        codigo = lerInteiro("\nDigite o código da locação que deseja alterar a data inicial: ");
 
         if(listaLocacoes.existe(codigo)) {
             int dia = 0;
@@ -189,8 +186,8 @@ public class MenuLocacao {
 
             dia = cadastrarDia("inicial");
             mes = cadastrarMes("inicial");
-            System.out.print("Informe o ano inicial: ");
-            ano = input.nextInt();
+            
+            ano = lerInteiro("Informe o ano inicial: ");
 
             dataInicial.set(ano, mes - 1, dia);
 
@@ -218,8 +215,8 @@ public class MenuLocacao {
 
         Calendar dataFinal = Calendar.getInstance();
 
-        System.out.print("\nDigite o código da locação que deseja alterar a data final: ");
-        codigo = input.nextInt();
+        
+        codigo = lerInteiro("\nDigite o código da locação que deseja alterar a data final: ");
 
         if(listaLocacoes.existe(codigo)) {
             int dia = 0;
@@ -228,8 +225,8 @@ public class MenuLocacao {
 
             dia = cadastrarDia("final");
             mes = cadastrarMes("final");
-            System.out.print("Informe o ano final: ");
-            ano = input.nextInt();
+            
+            ano = lerInteiro("Informe o ano final: ");
 
             dataFinal.set(ano, mes - 1, dia);
 
@@ -243,8 +240,6 @@ public class MenuLocacao {
                 System.out.println("Data final alterada com sucesso");
             }
 
-        } else {
-            System.out.println("Código da locação não existe");
         }
     }
     
@@ -258,8 +253,8 @@ public class MenuLocacao {
         int dia = 0;
 
         do {
-            System.out.print("\nInforme o dia " + inicioFim + ": ");   
-            dia = input.nextInt();
+               
+            dia = lerInteiro("\nInforme o dia " + inicioFim + ": ");
 
             if(dia > 31 || dia < 1){
                 System.out.println("Informe um dia válido!");
@@ -278,8 +273,7 @@ public class MenuLocacao {
         int mes = 0;
         
         do {
-            System.out.print("Informe o mês " + inicioFim + ": ");   
-            mes = input.nextInt();
+            mes = lerInteiro("Informe o mês " + inicioFim + ": ");
 
             if(mes > 12 || mes < 1){
                 System.out.println("Informe um mes válido!");
@@ -288,5 +282,49 @@ public class MenuLocacao {
 
         return mes;
     }
+
+    private int lerInteiro(String mensagem) {
+        boolean flag = true;
+        int numero = 0;
+
+        do {
+            try {
+                System.out.print(mensagem);
+                numero = input.nextInt();
+                flag = false;
+            } catch(InputMismatchException e) {
+                System.out.println("Digite um número inteiro!");
+                input.nextLine();
+                flag = true;
+            }
+        } while(flag);
+
+        return numero;
+    }
+
+    private int lerInteiro() {
+        return lerInteiro("");
+    }
+
+    private long lerLong(String mensagem) {
+        boolean flag = true;
+        long numero = 0;
+
+        do {
+            try {
+                System.out.print(mensagem);
+                numero = input.nextLong();
+                flag = false;
+            } catch(InputMismatchException e) {
+                System.out.println("Digite um número inteiro!");
+                input.nextLine();
+                flag = true;
+            }
+        } while(flag);
+
+        return numero;
+    }
+
+    
 
 }
