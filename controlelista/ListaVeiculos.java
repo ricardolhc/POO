@@ -42,9 +42,9 @@ public class ListaVeiculos implements IVeiculos {
      */
     @Override
     public Veiculo get(String placa) {
-        for(int i = 0; i < veiculos.size(); i++) {
-            if(veiculos.get(i).getPlaca().equals(placa)) {
-                return veiculos.get(i);
+        for(Veiculo veiculo : veiculos) {
+            if(veiculo.getPlaca().equals(placa)) {
+                return veiculo;
             }
         }
         throw new NullPointerException("Veiculo não encontrado!");
@@ -86,7 +86,7 @@ public class ListaVeiculos implements IVeiculos {
      */
     @Override
     public String getResumoInfo() {
-        if(veiculos.size() >= 1) {
+        if(veiculos.size() > 0) {
             String conteudo = "";
             for(Veiculo veiculo : veiculos) {
                 conteudo += veiculo.getResumo() + "\n";
@@ -133,8 +133,7 @@ public class ListaVeiculos implements IVeiculos {
      * @param ano do tipo int que é usado para alterar o ano do veiculo
      */
     public void setAno(String placa, int ano) {
-        Veiculo veiculo = get(placa);
-        veiculo.setAno(ano);
+        get(placa).setAno(ano);
     }
 
     
@@ -143,8 +142,7 @@ public class ListaVeiculos implements IVeiculos {
      * @param diaria do tipo double que é usado para alterar o valor da diaria do veiculo
      */
     public void setDiaria(String placa, double diaria){
-        Veiculo veiculo = get(placa);
-        veiculo.setDiaria(diaria);
+        get(placa).setDiaria(diaria);
     }
 
     

@@ -12,41 +12,49 @@ import veiculo.Veiculo;
 
 public class Locacao {
 
+
     /**
      * O atributo codigoUnico, do tipo int, e utilizado para indentificar o codigo unico da locacao
      */
     private static int codigoUnico = 1;
+
 
     /**
      * O atributo codigo, do tipo int, e utilizado para indentificar o codigo da locacao
      */
     private int codigo;
 
+
     /**
      * O atributo seguro, do tipo boolean, e utilizado para indentificar se a locacao tem seguro
      */
     private boolean seguro;
+
 
     /**
      * O atributo dataInicial, do tipo Calendar, e utilizado para indentificar a data inicial da locacao
      */
     private Calendar dataInicial;
 
+
     /**
      * O atributo dataFinal, do tipo Calendar, e utilizado para indentificar a data final da locacao
      */
     private Calendar dataFinal;
+
 
     /**
      * O atributo cliente, do tipo Cliente, e utilizado para indentificar o cliente da locacao
      */
     private Cliente cliente;
 
+
     /**
      * O atributo veiculo, do tipo Veiculo, e utilizado para indentificar o veiculo da locacao
      */
     private Veiculo veiculo;
 
+    
     /**
      * Construtor default da classe Locacao<br>
      * <b>Uso: </b>

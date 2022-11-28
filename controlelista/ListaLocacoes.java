@@ -40,9 +40,9 @@ public class ListaLocacoes implements ILocacoes {
      */
     @Override
     public Locacao get(int codigo) {
-        for(int i = 0; i < locacoes.size(); i++) {
-            if(locacoes.get(i).getCodigo() == codigo) {
-                return locacoes.get(i);
+        for(Locacao locacao : locacoes) {
+            if(locacao.getCodigo() == codigo) {
+                return locacao;
             }
         }
         throw new NullPointerException("Locação não encontrada");
@@ -68,7 +68,7 @@ public class ListaLocacoes implements ILocacoes {
      */
     @Override
     public String getInfo() {
-        if(locacoes.size() >= 1) {
+        if(locacoes.size() > 0) {
             String conteudo = "";
             for(Locacao locacao : locacoes) {
                 conteudo += locacao.toString() + "\n";

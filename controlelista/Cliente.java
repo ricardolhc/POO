@@ -9,26 +9,31 @@ package controlelista;
 
 public class Cliente {
 
+
     /**
      * O atributo nome, do tipo String, e utilizado para indentificar o nome do cliente
      */
     private String nome;
     
+
     /**
      * Atributo cpf, do tipo String, é utlizado para identificar o cpf do cliente
      */
     private String cpf;
+
 
     /**
      * Atributo numeroCarteiraMotorista, do tipo int, é utilizado para identificar o numero da carteira de motorista do cliente
      */
     private int numeroCarteiraMotorista;
 
+
     /**
      * Atributo endereco, do tipo String, é utilizado para identificar o endereço do cliente
      */
     private String endereco;
 
+    
     /**
      * Atributo telefone, do tipo long, é utilizado para identificar o telefone do cliente
      */

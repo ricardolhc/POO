@@ -17,6 +17,7 @@ public class ListaClientes implements IClientes {
      */
     private ArrayList<Cliente> clientes;
 
+
     /**
      * Construtor default da classe
      */
@@ -131,8 +132,7 @@ public class ListaClientes implements IClientes {
      * @param nome String que identifica o cliente
      */
     public void setNome(long CPF, String nome) {
-        Cliente cliente = get(CPF);
-        cliente.setNome(nome);
+        get(CPF).setNome(nome);
     }
 
     
@@ -141,8 +141,7 @@ public class ListaClientes implements IClientes {
      * @param numeroCarteiraMotorista int que identifica o número da carteira de motorista do cliente
      */
     public void setNumeroCarteira(long CPF, int numeroCarteiraMotorista) {
-        Cliente cliente = get(CPF);
-        cliente.setNumeroCarteira(numeroCarteiraMotorista);
+        get(CPF).setNumeroCarteira(numeroCarteiraMotorista);
     }
 
     
@@ -151,8 +150,7 @@ public class ListaClientes implements IClientes {
      * @param endereco String que identifica o endereço do cliente
      */
     public void setEndereco(long CPF, String endereco) {
-        Cliente cliente = get(CPF);
-        cliente.setEndereco(endereco);
+        get(CPF).setEndereco(endereco);
     }
 
     
@@ -161,8 +159,7 @@ public class ListaClientes implements IClientes {
      * @param telefone int que identifica o telefone do cliente
      */
     public void setTelefone(long CPF, long telefone) {
-        Cliente cliente = get(CPF);
-        cliente.setTelefone(telefone);
+        get(CPF).setTelefone(telefone);
     }
     
 }
