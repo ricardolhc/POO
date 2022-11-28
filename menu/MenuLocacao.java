@@ -239,7 +239,6 @@ public class MenuLocacao {
                 listaLocacoes.get(codigo).setDataFinal(dataFinal);
                 System.out.println("Data final alterada com sucesso");
             }
-
         }
     }
     
