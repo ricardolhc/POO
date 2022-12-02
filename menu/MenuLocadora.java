@@ -1,6 +1,6 @@
 /**
  * A classe MenuLocadora modela e integra os outros menus para a gerencia.
- * @author Mateus, Maurício, Ricardo, Tales
+ * @author Mateus, Mauricio, Ricardo, Tales
  * @since nov 2022
  * @version 1.0
  */
@@ -267,29 +267,29 @@ public class MenuLocadora {
     private void selecionarMenu(String placa) {
         int tipoVeiculo = menuVeiculo.receberTipo(placa);
 
-        if(placa != null) {
-            switch(tipoVeiculo) {
-                //Erro
-                case 0:
-                    System.out.println("ERRO INESPERADO!");
-                    break;
+        switch(tipoVeiculo) {
+            
+            //Erro
+            case 0:
+                System.out.println("ERRO INESPERADO!");
+                break;
 
-                //Carro
-                case 1:
-                    menuCarro(placa);
-                    break;
+            //Carro
+            case 1:
+                menuCarro(placa);
+                break;
 
-                //Caminhao
-                case 2:
-                    menuCaminhao(placa);
-                    break;
+            //Caminhao
+            case 2:
+                menuCaminhao(placa);
+                break;
 
-                //Onibus
-                case 3:
-                    menuOnibus(placa);
-                    break;
-            }
+            //Onibus
+            case 3:
+                menuOnibus(placa);
+                break;
         }
+        
     }
 
 
@@ -495,7 +495,13 @@ public class MenuLocadora {
                         "4) Visualizar uma Locação específica\n" +
                         "5) Editar data inicial\n" +
                         "6) Editar data final\n" +
-                        "7) Voltar\n" +
+                        "7) Visualizar todas as locações de um cliente\n" +
+                        "8) Visualizar todas as locações de um veículo\n" +
+                        "9) Visualizar locações em um dia, mês e ano especifico\n" +
+                        "10) Visualizar locações de um mês e ano específico \n" +
+                        "11) Visualizar locações de um ano específico\n" +
+                        "12) Visualizar locações entra duas datas\n" +
+                        "13) Voltar\n" +
                         "Digite a opção desejada: ";
          
         do {
@@ -533,8 +539,32 @@ public class MenuLocadora {
                     menuLocacao.alteraDataFinal();
                     break;
                 
-                //Sair
                 case 7:
+                    menuLocacao.listarLocacaoCliente();
+                    break;
+                
+                case 8:
+                    menuLocacao.listarLocacaoVeiculo();
+                    break;
+
+                case 9:
+                    menuLocacao.listarLocacaoDiaMesAno();
+                    break;
+
+                case 10:
+                    menuLocacao.listarLocacaoMesAno();
+                    break;
+
+                case 11:    
+                    menuLocacao.listarLocacaoAno();
+                    break;
+
+                case 12:
+                    menuLocacao.listarLocacaoPeriodo();
+                    break;
+
+                //Sair
+                case 13:
                     System.out.println("Você escolheu sair do menu locação");
                     break;
 
@@ -544,7 +574,7 @@ public class MenuLocadora {
                     break;
 
             }
-        } while(escolha != 7);
+        } while(escolha != 13);
     }
 
     

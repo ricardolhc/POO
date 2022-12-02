@@ -98,13 +98,9 @@ public class MenuVeiculo {
             System.out.print("\nDigite a placa do veiculo: ");
             placa = input.nextLine();
 
-            if(placa == null) {
-                System.out.println("Placa inválida!");
-            } else {
-                if(listaVeiculos.existe(placa)) {
-                    System.out.println("A placa já está adicionada no sistema!");
-                }
-            }
+            if(listaVeiculos.existe(placa)) {
+                System.out.println("A placa já está adicionada no sistema!");
+            } 
         } while(placa == null || listaVeiculos.existe(placa));
 
         do {

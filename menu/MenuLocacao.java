@@ -62,7 +62,6 @@ public class MenuLocacao {
 
         Calendar dataInicial = Calendar.getInstance();
         Calendar dataFinal = Calendar.getInstance();
-        
 
         int escolha = 0;
         boolean seguro = false;
@@ -169,6 +168,8 @@ public class MenuLocacao {
         }
     }
 
+    
+
     /**
      * Menu para alterar a data inicial de uma locação
      */
@@ -187,6 +188,7 @@ public class MenuLocacao {
 
             dia = cadastrarDia("inicial");
             mes = cadastrarMes("inicial");
+            
             ano = lerInteiro("Informe o ano inicial: ");
 
             dataInicial.set(ano, mes - 1, dia);
@@ -252,7 +254,6 @@ public class MenuLocacao {
         int dia = 0;
 
         do {
-               
             dia = lerInteiro("\nInforme o dia " + inicioFim + ": ");
 
             if(dia > 31 || dia < 1){
@@ -268,11 +269,11 @@ public class MenuLocacao {
      * @param inicioFim String que identifica se é a data inicial ou final
      * @return int a data do mês
      */
-    public int cadastrarMes(String inicioFim) {
+    public int cadastrarMes(String inicioFim, String pular) {
         int mes = 0;
         
         do {
-            mes = lerInteiro("Informe o mês " + inicioFim + ": ");
+            mes = lerInteiro(pular + "Informe o mês " + inicioFim + ": ");
 
             if(mes > 12 || mes < 1){
                 System.out.println("Informe um mes válido!");
@@ -280,6 +281,142 @@ public class MenuLocacao {
         } while(mes > 12 || mes < 1);
 
         return mes;
+    }
+
+    /** 
+     * @param inicioFim String que identifica se é a data inicial ou final
+     * @return int a data do mês
+     */
+    public int cadastrarMes(String inicioFim) {
+        return cadastrarMes(inicioFim, "");
+    }
+
+
+    /**
+     * Menu para remover uma locação do sistema
+     */
+    public void listarLocacaoCliente() {
+        long cpf = 0;
+        
+        cpf = lerLong("\nDigite o cpf do cliente que deseja pesquisar ");
+
+        if(listaClientes.existe(cpf)) {
+            try {
+                System.out.println("\n====== LOCAÇÕES DO CLIENTE ======");
+                System.out.println(listaLocacoes.getLocacaoByCliente(listaClientes.get(cpf)));
+            } catch (NullPointerException e) {
+                System.out.println("Erro: " + e.getMessage());
+            }
+        } else {
+            System.out.println("Cliente não existe");
+        }
+    }
+
+    /**
+     * Menu para remover uma locação do sistema
+     */
+    public void listarLocacaoVeiculo() {
+        String placa = null;
+
+        input.nextLine();
+        
+        System.out.print("\nDigite a placa do veículo que deseja pesquisar: ");
+        placa = input.nextLine();
+
+        if(listaVeiculos.existe(placa)) {
+            try {
+                System.out.println("\n====== LOCAÇÕES DO VEICULO ======");
+                System.out.println(listaLocacoes.getLocacaoByVeiculo(listaVeiculos.get(placa)));
+            } catch (NullPointerException e) {
+                System.out.println("Erro: " + e.getMessage());
+            }
+        } else {
+            System.out.println("Veiculo não existe");
+        }
+    }
+
+
+    public void listarLocacaoDiaMesAno() {
+        int dia = 0;
+        int mes = 0;
+        int ano = 0;
+
+        dia = cadastrarDia("inicial");
+        mes = cadastrarMes("inicial");
+        ano = lerInteiro("Informe o ano inicial: ");
+
+        Calendar data = Calendar.getInstance();
+        data.set(ano, mes - 1, dia);
+
+        try {
+            System.out.println("\n====== LOCAÇÕES DO DIA ======");
+            System.out.println(listaLocacoes.getLocacaoByDiaMesAno(data));
+        } catch (NullPointerException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+
+    }
+
+    public void listarLocacaoMesAno() {
+        int mes = 0;
+        int ano = 0;
+
+        mes = cadastrarMes("inicial", "\n");
+        ano = lerInteiro("Informe o ano inicial: ");
+
+        Calendar data = Calendar.getInstance();
+        data.set(ano, mes - 1, 1);
+
+        try {
+            System.out.println("\n====== LOCAÇÕES DO MÊS E ANO ======");
+            System.out.println(listaLocacoes.getLocacaoByMesAno(data));
+        } catch (NullPointerException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+    }
+
+    public void listarLocacaoAno() {
+        int ano = 0;
+
+        ano = lerInteiro("Informe o ano inicial: ");
+
+        Calendar data = Calendar.getInstance();
+        data.set(ano, 1, 1);
+
+        try {
+            System.out.println("\n====== LOCAÇÕES DO ANO ======");
+            System.out.println(listaLocacoes.getLocacaoByAno(data));
+        } catch (NullPointerException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+    }
+
+    public void listarLocacaoPeriodo() {
+        int dia = 0;
+        int mes = 0;
+        int ano = 0;
+
+        Calendar dataInicial = Calendar.getInstance();
+        Calendar dataFinal = Calendar.getInstance();
+
+        dia = cadastrarDia("inicial");
+        mes = cadastrarMes("inicial");
+        ano = lerInteiro("Informe o ano inicial: ");
+
+        dataInicial.set(ano, mes - 1, dia);
+
+        dia = cadastrarDia("final");
+        mes = cadastrarMes("final");
+        ano = lerInteiro("Informe o ano final: ");
+
+        dataFinal.set(ano, mes - 1, dia);
+
+        try {
+            System.out.println("\n====== LOCAÇÕES ENTRE OS DIAS ======");
+            System.out.println(listaLocacoes.getLocacaoByPeriodo(dataInicial, dataFinal));
+        } catch (NullPointerException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
     }
 
     private int lerInteiro(String mensagem) {
@@ -323,6 +460,8 @@ public class MenuLocacao {
 
         return numero;
     }
+
+    
 
     
 

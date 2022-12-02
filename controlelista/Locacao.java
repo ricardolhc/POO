@@ -15,6 +15,7 @@ public class Locacao {
 
     /**
      * O atributo codigoUnico, do tipo int, e utilizado para indentificar o codigo unico da locacao
+     * O atributo é static para que o codigo seja unico para todas as locacoes
      */
     private static int codigoUnico = 1;
 

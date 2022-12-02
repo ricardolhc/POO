@@ -8,6 +8,9 @@
 package controlelista;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+
+import veiculo.Veiculo;
 
 public class ListaLocacoes implements ILocacoes {
 
@@ -109,5 +112,114 @@ public class ListaLocacoes implements ILocacoes {
             return false;
         }
     }
+
+
+    // ASSIM POR ENQUANTO
+    public String getLocacaoByCliente(Cliente cliente) {
+        String conteudo = "";
+        boolean temp = false;
+        for(Locacao locacao : locacoes) {
+            if(locacao.getCliente().equals(cliente)) {
+                conteudo += locacao.toString() + "\n";
+                temp = true;
+            }
+        }
+        if(temp) {
+            return conteudo;
+        } else {
+            throw new NullPointerException("O Cliente não possui locações");
+        }
+    }
+
+    // ASSIM POR ENQUANTO
+    public String getLocacaoByVeiculo(Veiculo veiculo) {
+        String conteudo = "";
+        boolean temp = false;
+        for(Locacao locacao : locacoes) {
+            if(locacao.getVeiculo().equals(veiculo)) {
+                conteudo += locacao.toString() + "\n";
+                temp = true;
+            }
+        }
+        if(temp) {
+            return conteudo;
+        } else {
+            throw new NullPointerException("O Veiculo não possui locações");
+        }
+    }
+
+    public String getLocacaoByDiaMesAno(Calendar calendar) {
+        String conteudo = "";
+        boolean temp = false;
+
+        for(Locacao locacao : locacoes) {
+            if(locacao.getDataInicial().get(Calendar.DAY_OF_MONTH) == calendar.get(Calendar.DAY_OF_MONTH) 
+            && locacao.getDataInicial().get(Calendar.MONTH) == calendar.get(Calendar.MONTH) 
+            && locacao.getDataInicial().get(Calendar.YEAR) == calendar.get(Calendar.YEAR)) {
+                conteudo += locacao.toString() + "\n";
+                temp = true;
+            }
+        }
+        if(temp) {
+            return conteudo;
+        } else {
+            throw new NullPointerException("Não foi possível encontrar uma locação");
+        }
+    }
+
+    public String getLocacaoByMesAno(Calendar calendar) {
+        String conteudo = "";
+        boolean temp = false;
+
+        for(Locacao locacao : locacoes) {
+            if(locacao.getDataInicial().get(Calendar.MONTH) == calendar.get(Calendar.MONTH) 
+            && locacao.getDataInicial().get(Calendar.YEAR) == calendar.get(Calendar.YEAR)) {
+                conteudo += locacao.toString() + "\n";
+                temp = true;
+            }
+        }
+        if(temp) {
+            return conteudo;
+        } else {
+            throw new NullPointerException("Não foi possível encontrar uma locação");
+        }
+    }
+
+    public String getLocacaoByAno(Calendar calendar) {
+        String conteudo = "";
+        boolean temp = false;
+
+        for(Locacao locacao : locacoes) {
+            if(locacao.getDataInicial().get(Calendar.YEAR) == calendar.get(Calendar.YEAR)) {
+                conteudo += locacao.toString() + "\n";
+                temp = true;
+            }
+        }
+        if(temp) {
+            return conteudo;
+        } else {
+            throw new NullPointerException("Não foi possível encontrar uma locação");
+        }
+    }
+
+    public String getLocacaoByPeriodo(Calendar dataInicial, Calendar dataFinal) {
+        String conteudo = "";
+        boolean temp = false;
+
+        for(Locacao locacao : locacoes) {
+            if(locacao.getDataInicial().after(dataInicial) && locacao.getDataFinal().before(dataFinal)) {
+                conteudo += locacao.toString() + "\n";
+                temp = true;
+            }
+        }
+        if(temp) {
+            return conteudo;
+        } else {
+            throw new NullPointerException("Não foi possível encontrar uma locação");
+        }
+    }
+
+
+
 
 }

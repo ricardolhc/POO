@@ -27,7 +27,6 @@ public class MenuCliente {
         this.listaClientes = listaClientes;
     }
 
-    
     /**
      * captura as informãoes e adiciona um cliente 
      * valida cpf e verifica se já existe
